@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
     <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
     <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
@@ -12,7 +12,7 @@
     <link
       rel="stylesheet"
       type="text/css"
-      href="/stylesheet.css"
+      href="stylesheet.css"
     />
 
     <title>Horry County Flood <Map></Map></title>
@@ -20,22 +20,23 @@
 </head>
 <body>
 
-        <style>
+        <!-- <style>
             iframe {
                 width: 800px;
                 height: 600px;
             }
         </style>
         <iframe
-        src='https://api.mapbox.com/styles/v1/slyssy/ckkoxkdw11gvk17ov2mygxy5t.html?fresh=true&title=false&access_token=pk.eyJ1Ijoic2x5c3N5IiwiYSI6ImNrZjl3MGl6bDBwd2Eyd3Jxc3lkcnpoZmcifQ.e7I6-TJ6eJx2yXOvgeKZLQ' />
-        
-        
+        src='https://api.mapbox.com/styles/v1/slyssy/ckkoxkdw11gvk17ov2mygxy5t.html?fresh=true&title=false&access_token=pk.eyJ1Ijoic2x5c3N5IiwiYSI6ImNrZjl3MGl6bDBwd2Eyd3Jxc3lkcnpoZmcifQ.e7I6-TJ6eJx2yXOvgeKZLQ' /> -->
+   
+        <div id="barChart" class = "row"></div>
 
-        <!-- <div id='map'></div> -->
-        <!-- <div class='map-overlay' id='features'><h2>Flood Risk</h2><div id='fr'><p>Hover over region!</p></div></div> -->
-        <!-- <div class='map-overlay' id='legend'></div> -->
+<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry_County_Flood_Map_Reduced_Shapefile" src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=44bd926d234e4d35830e147d987f9289&extent=-79.577,33.5988,-78.2208,34.2665&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&legendlayers=true&disable_scroll=false&theme=light"></iframe></div>        
+        <!-- <div id='map' class='row-map'></div> 
+        <div class='map-overlay' id='features'><h2>Flood Risk</h2><div id='fr'><p>Hover over region!</p></div></div>
+        <div class='map-overlay' id='legend'></div> 
         
-        <!-- <script>
+        <script>
         mapboxgl.accessToken = 'pk.eyJ1Ijoic2x5c3N5IiwiYSI6ImNrZjl3MGl6bDBwd2Eyd3Jxc3lkcnpoZmcifQ.e7I6-TJ6eJx2yXOvgeKZLQ';
         const map = new mapboxgl.Map({
         container: 'map',
@@ -62,9 +63,9 @@
             item.appendChild(key);
             item.appendChild(value);
             legend.appendChild(item);
-            }
+            } -->
 
-        // map.on('mousemove', function(e) {
+        <!-- // map.on('mousemove', function(e) {
         //     var floodRisk = map.queryRenderedFeatures(e.point, {
         //         layers: ['statedata']
         //     });
@@ -77,5 +78,9 @@
         //     });
         });
         </script> -->
+
+       
+
+        <script src="d3.js"></script>
 </body>
 </html>
