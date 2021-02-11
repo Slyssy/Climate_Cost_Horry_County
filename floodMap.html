@@ -6,78 +6,17 @@
 
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
 
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.js'></script>
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.0.1/mapbox-gl.css' rel='stylesheet' />
-
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="stylesheet.css"
-    />
+    <link rel="stylesheet" type="text/css" href="stylesheet.css"/>
 
     <title>Horry County Flood <Map></Map></title>
     
 </head>
 <body>
+    <div id="barChart" class = "row"></div>
+    <div class="embed-container">
+        <iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry_County_Flood_Map_Reduced_Shapefile" src="https://ccpic2050.maps.arcgis.com/apps/webappviewer/index.html?id=d451473ad4564a67a87124dbfa762005"></iframe>
+    </div>  
 
-        <!-- <style>
-            iframe {
-                width: 800px;
-                height: 600px;
-            }
-        </style>
-        <iframe
-        src='https://api.mapbox.com/styles/v1/slyssy/ckkoxkdw11gvk17ov2mygxy5t.html?fresh=true&title=false&access_token=pk.eyJ1Ijoic2x5c3N5IiwiYSI6ImNrZjl3MGl6bDBwd2Eyd3Jxc3lkcnpoZmcifQ.e7I6-TJ6eJx2yXOvgeKZLQ' /> -->
-   
-        <div id="barChart" class = "row"></div>
-
-<div class="embed-container"><iframe width="500" height="400" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry_County_Flood_Map_Reduced_Shapefile" src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=44bd926d234e4d35830e147d987f9289&extent=-79.577,33.5988,-78.2208,34.2665&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&legendlayers=true&disable_scroll=false&theme=light"></iframe></div>        
-        <!-- <div id='map' class='row-map'></div> 
-        <div class='map-overlay' id='features'><h2>Flood Risk</h2><div id='fr'><p>Hover over region!</p></div></div>
-        <div class='map-overlay' id='legend'></div> 
-        
-        <script>
-        mapboxgl.accessToken = 'pk.eyJ1Ijoic2x5c3N5IiwiYSI6ImNrZjl3MGl6bDBwd2Eyd3Jxc3lkcnpoZmcifQ.e7I6-TJ6eJx2yXOvgeKZLQ';
-        const map = new mapboxgl.Map({
-        container: 'map',
-        style: 'mapbox://styles/slyssy/ckkoxkdw11gvk17ov2mygxy5t', // stylesheet location
-        center: [-79.014, 33.914], // starting position [lng, lat]
-        zoom: 9.5 // starting zoom
-        });
-
-        map.on('load', function() {
-            const layers = ['0.2% Annual Change Flood Hazard', 'A', 'AE', 'VE', 'X'];
-            const colors = ['#dad662', '#e7975a', '#d95e8b', '#69bf80', '#496dee'];
-
-            //Add a Legend
-            for (i = 0; i < layers.length; i++) {
-            var layer = layers[i];
-            var color = colors[i];
-            var item = document.createElement('div');
-            var key = document.createElement('span');
-            key.className = 'legend-key';
-            key.style.backgroundColor = color;
-
-            var value = document.createElement('span');
-            value.innerHTML = layer;
-            item.appendChild(key);
-            item.appendChild(value);
-            legend.appendChild(item);
-            } -->
-
-        <!-- // map.on('mousemove', function(e) {
-        //     var floodRisk = map.queryRenderedFeatures(e.point, {
-        //         layers: ['statedata']
-        //     });
-
-        //     if (states.length > 0) {
-        //         document.getElementById('pd').innerHTML = '<h3><strong>' + floodRisk[0].properties.name + '</strong></h3><p><strong><em>' + floodRisk[0].properties.density + '</strong> people per square mile</em></p>';
-        //     } else {
-        //         document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
-        //     }
-        //     });
-        });
-        </script> -->
 
        
 

@@ -1,7 +1,7 @@
 console.log("Hello World!")
 var outerWidth = 960;
 var outerHeight = 500;
-var margin = { left: 90, top: 16, right: 30, bottom: 85 };
+var margin = { left: 90, top: 40, right: 30, bottom: 85 };
 var barPadding = 0.2;
 
 var xColumn = "Flood_Area";
@@ -21,6 +21,20 @@ var xAxisG = g.append("g")
     .attr("transform", "translate(0," + innerHeight + ")");
 var yAxisG = g.append("g")
     .attr("class", "y axis");
+
+    yAxisG.append('text')
+        .attr('class', 'yAxis-Label')
+        .attr('y', -50)
+        .attr('x', -320)
+        .attr('transform', `rotate(-90)`)
+        .attr('fill', 'black')
+        .text("# of  Houses Flooded")
+
+    g.append('text')
+    .attr('y', -10)
+    .attr('x', 140)
+    .attr('class', 'title')
+    .text("Flooded Houses in Each Flood Zone")
 
 var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
 var yScale = d3.scale.linear().range([innerHeight, 0]);
