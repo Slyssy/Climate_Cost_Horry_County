@@ -1,4 +1,4 @@
-console.log("Hello World!")
+
 var outerWidth = 960;
 var outerHeight = 500;
 var margin = { left: 90, top: 40, right: 30, bottom: 85 };
@@ -79,7 +79,33 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
           .attr("height", function (d){ return innerHeight - yScale(d[yColumn]); })
           .attr("fill", function (d){ return colorScale(d[colorColumn]); });
         bars.exit().remove();
-      }
+
+        // Tooltips
+        bars
+        .on("mouseover", function (d) {
+          d3.select(this).style("fill", "#ce42f5");
+          d3.select("#tool_tip").text(d.Count); 
+          console.log(d.Count)       
+      
+      //Position the tooltip <div> and set its content
+      let x = d3.event.pageX - 200;
+      let y = d3.event.pageY - 1000;
+
+      //Position tooltip and make it visible
+      d3.select("#tooltip-bar")
+      .style("left", x + "px")
+      .style("top", y + "px")
+      .style("opacity", 1);
+  })
+
+  .on("mouseout", function () {
+    d3.select(this).style("fill", function (d){ return colorScale(d[colorColumn]); });
+
+    //Hide the tooltip
+    d3.select("#tooltip-bar").style("opacity", "0");
+  });
+
+    }
 
       function type(d){
         d.Count = +d.Count;
