@@ -1,6 +1,6 @@
-
-var outerWidth = 500;
-var outerHeight = 300;
+console.log("Hello World!")
+var outerWidth = 960;
+var outerHeight = 500;
 var margin = { left: 90, top: 40, right: 30, bottom: 85 };
 var barPadding = 0.2;
 
@@ -86,4 +86,4 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
         return d;
       }
 
-      d3.csv("../static/Flood_Area_Count.csv", type, render);
+      d3.csv("/static/Flood_Area_Count.csv", type, render);
