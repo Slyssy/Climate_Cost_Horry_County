@@ -1,6 +1,6 @@
-console.log("Hello World!")
-var outerWidth = 960;
-var outerHeight = 500;
+
+var outerWidth = 500;
+var outerHeight = 300;
 var margin = { left: 90, top: 40, right: 30, bottom: 85 };
 var barPadding = 0.2;
 
@@ -23,12 +23,19 @@ var yAxisG = g.append("g")
     .attr("class", "y axis");
 
     yAxisG.append('text')
-        .attr('class', 'yAxis-Label')
-        .attr('y', -50)
-        .attr('x', -320)
-        .attr('transform', `rotate(-90)`)
-        .attr('fill', 'black')
-        .text("# of  Houses Flooded")
+      .attr('class', 'yAxis-Label')
+      .attr('y', -50)
+      .attr('x', -320)
+      .attr('transform', `rotate(-90)`)
+      .attr('fill', 'black')
+      .text("# of  Houses Flooded")
+
+    xAxisG.append('text')
+    .attr('class', 'xAxis-Label')
+    // .attr('y', outerHeight - 30)
+    .attr('x', 360)
+    .attr('y', 40)
+    .text("Flood Zones")
 
     g.append('text')
     .attr('y', -10)
@@ -38,7 +45,7 @@ var yAxisG = g.append("g")
 
 var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
 var yScale = d3.scale.linear().range([innerHeight, 0]);
-var colorScale =  d3.scale.ordinal().range(["#a7c636", "#149ece", "#ed5151"]);
+var colorScale =  d3.scale.ordinal().range(["#6aeb5e", "#ebe028", "#976aeb"]);
 
 var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
     .outerTickSize(0);
@@ -50,7 +57,7 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
 
     function render(data){
 
-        xScale.domain(       data.map( function (d){ return d[xColumn]; }));
+        xScale.domain(data.map( function (d){ return d[xColumn]; }));
         yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]);
         colorScale.domain(data.map(function (d){ return d[colorColumn]; }));
 
@@ -72,16 +79,6 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
           .attr("height", function (d){ return innerHeight - yScale(d[yColumn]); })
           .attr("fill", function (d){ return colorScale(d[colorColumn]); });
         bars.exit().remove();
-
-      //   g.selectAll(".text")
-      //     .data(data)
-      //     .enter()
-      //     .append("text")
-      //     .attr("class","label")
-      //     .attr("x", (function(d) { return xScale(xColumn); }  ))
-      //     .attr("y", function(d) { return yScale(yColumn) - 20; })
-      //     .attr("dy", ".75em")
-      //     .text(function(d) { return yColumn; })
       }
 
       function type(d){
@@ -89,4 +86,4 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
         return d;
       }
 
-      d3.csv("Flood_Area_Count.csv", type, render);
+      d3.csv("../static/Flood_Area_Count.csv", type, render);

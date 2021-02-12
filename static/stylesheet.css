@@ -3,18 +3,29 @@
   font-family: 'Open Sans', sans-serif;
   font-size: 20pt;
 }
-.axis .label {
-  font-size: 20pt;
+.yAxis-Label {
+  stroke: #57595a;
+  fill: #57595a
+}
+
+.xAxis-Label {
+  stroke: #57595a;
+  fill: #57595a
 }
 
 .axis path, .axis line {
   fill: none;
-  stroke: #000;
+  stroke: #57595a;
   shape-rendering: crispEdges;
 }
 
 .x.axis text {
   font-size: 20pt;
+}
+
+.tick {
+  stroke: #57595a;
+  fill: #57595a
 }
 
 rect {
@@ -24,9 +35,9 @@ rect {
 .title {
   font-family: 'Open Sans', sans-serif;
   font-size: 2em;
-  fill: black;
+  fill: #57595a;
 }
-.embed-container {
+/* .embed-container {
   position: relative; 
   padding-bottom: 80%; 
   height: 0; 
@@ -34,19 +45,19 @@ rect {
 } 
 
 .embed-container iframe, 
-.embed-container object, 
+.embed-container object,  */
 
-.embed-container iframe{
+/* .embed-container iframe{
   position: absolute; 
   top: 0; 
   left: 0; 
   width: 60%; 
   height: 60%;
-} 
-small{
+}  */
+/* small{
   position: absolute; 
   z-index: 40;
    bottom: 0; 
    margin-bottom: -15px;
-  }
+  } */
 
