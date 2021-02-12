@@ -88,7 +88,7 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
           console.log(d.Count)       
       
       //Position the tooltip <div> and set its content
-      let x = d3.event.pageX - 200;
+      let x = d3.event.pageX - 500;
       let y = d3.event.pageY - 1000;
 
       //Position tooltip and make it visible
