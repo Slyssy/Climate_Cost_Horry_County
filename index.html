@@ -26,11 +26,11 @@
       
         <!-- Portfolio Item Row -->
         <div class="row">      
-          <div class="col-md-8">
+          <!-- <div class="col-md-8">
             <div class="embed-container">
                 <iframe width="1000" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry County Flood Map" src="https://ccpic2050.maps.arcgis.com/apps/webappviewer/index.html?id=a1d7c87b48dd4e92a067e6c366500eab"></iframe>
             </div> 
-          </div>
+          </div> -->
       
           <div class="col-md-4">
             <h3 class="my-3">Map Description</h3>
@@ -60,10 +60,17 @@
         <br><br><br><br>
         <div class="row">
       
-          <div class="col-md-12 col-sm-6 mb-4">
+          <div class="col-md-6 col-sm-6 mb-4">
             <div id="barChart" class = "row"></div>
             <div id="tooltip-bar">
                 # of Houses: <span id="tool_tip" class="info"></span><br>          
+              </div>
+          </div>
+          <div class="col-md-6 col-sm-6 mb-4">
+            <select id="yearSelect"></select>
+            <div id="precipChart" class = "row"></div>
+            <div id="tooltip-precip">
+                Flood Zone:  <span id="tool_tip_precip" class="info"></span><br>          
               </div>
           </div>
       

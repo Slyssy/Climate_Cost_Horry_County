@@ -1,6 +1,6 @@
 
-var outerWidth = 960;
-var outerHeight = 500;
+var outerWidth = 768;
+var outerHeight = 400;
 var margin = { left: 90, top: 40, right: 30, bottom: 85 };
 var barPadding = 0.2;
 
@@ -25,7 +25,7 @@ var yAxisG = g.append("g")
     yAxisG.append('text')
       .attr('class', 'yAxis-Label')
       .attr('y', -50)
-      .attr('x', -320)
+      .attr('x', -270)
       .attr('transform', `rotate(-90)`)
       .attr('fill', 'black')
       .text("# of  Houses Flooded")
@@ -33,13 +33,13 @@ var yAxisG = g.append("g")
     xAxisG.append('text')
     .attr('class', 'xAxis-Label')
     // .attr('y', outerHeight - 30)
-    .attr('x', 360)
+    .attr('x', 270)
     .attr('y', 40)
     .text("Flood Zones")
 
     g.append('text')
     .attr('y', -10)
-    .attr('x', 140)
+    .attr('x', 90)
     .attr('class', 'title')
     .text("Flooded Houses in Each Flood Zone")
 
@@ -113,3 +113,107 @@ var yAxis = d3.svg.axis().scale(yScale).orient("left")
       }
 
       d3.csv("/static/Flood_Area_Count.csv", type, render);
+
+      
+
+      //Start Precipitation Bar Chart///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //     d3.csv("/static/Horry_County_Precipitation.csv", function(error, data) {
+  //        // Looping through data to pull the Unique years in the data set.
+  //       const years = data
+  //       .map((a) => a.DATE)
+  //       .filter((value, index, self) => self.indexOf(value) === index);
+  //     years.sort(function (a, b) {
+  //       return a - b;
+  //     });
+     
+  //     //Adding years to dropdown menu.
+  //     const options = d3
+  //       .select("#yearSelect")
+  //       .selectAll("option")
+  //       .data(years)
+  //       .enter()
+  //       .append("option")
+  //       .text((d) => d);
+
+  //     var svg=d3.select("#precipChart"),
+  //       margin = { left: 90, top: 40, right: 30, bottom: 85 };
+  //       outerWidth = 768;
+  //       outerHeight = 400;
+
+  //     //Setting Scales
+  //     var x = d3.scaleBand()
+  //       .range([margin.left, outerWidth - margin.right])
+  //       .padding(0.1)
+  //       .paddingOuter(0.2);
+
+  //     var y = d3.scaleLinear()
+  //       .range([outerHeight - margin.bottom,margin.top]);
+
+  //     var xAxis = (g) =>
+  //     g
+  //     .attr("transform", "translate(0," + (outerHeight - margin.bottom) + ")")
+  //     .call(d3.axisBottom(x).tickSizeOuter(0));
+
+  //     var yAxis = (g) =>
+  //   g
+  //     .attr("transform", "translate(" + margin.left + ",0)")
+  //     .call(d3.axisLeft(y).tickSize(-outerWidth));
+
+  //   svg.append("g").attr("class", "x-axis"); 
+
+  //   svg
+  //   .append("g")
+  //   .attr("class", "y-axis")
+  //   .append("text")
+  //   .attr("class", "yAxis")
+  //   .attr("y", -70)
+  //   .attr("x", -220)
+  //   .attr("transform", `rotate(-90)`)
+  //   .attr("fill", "#635f5d")
+  //   .style("font-size", "2.5em")
+  //   .text("Annual Precipitation (in)");
+
+  // svg
+  //   .append("text")
+  //   .attr("y", 35)
+  //   .attr("x", 630)
+  //   .attr("class", "title")
+  //   .text("Weather Station Name");
+
+  //   update(d3.select("#yearSelect").property("value"), 0);
+
+  //   function update(year, speed) {
+  //     var dataF = data.filter((f) = f.year == year);
+
+  //     y.domain([
+  //       0,
+  //       d3.max(data, (d) => d.PRCP)* 1.2,
+  //     ]).nice();
+
+  //     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis)
+
+  //     x.domain(data.map((d) => d.NAME));
+
+  //     svg.selectAll(".x-axis").transition().duration(speed).call(xAxis);
+
+  //     var bar = svg.selectAll(".bar").data(dataF, (d) => d.NAME);
+
+  //     bar.exit().remove();
+
+  //     var bar1 = bar
+  //     .enter()
+  //     .append("rect")
+  //     .attr("class", "bar")
+  //     .style("fill", "#4f93e0")
+  //     .attr("opacity", ".5")
+  //     .attr("width", x.bandwidth());
+  //   }
+
+  //   bar1
+  //     .merge(bar)
+  //     .transition()
+  //     .duration(speed)
+  //     .attr("x", (d) => x(d.NAME))
+  //     .attr("y", (d) => y(d.PRCP))
+  //     .attr("height", (d) => y(0) - y(d.PRCP));
+  //     })
