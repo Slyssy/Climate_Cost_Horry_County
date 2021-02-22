@@ -148,7 +148,7 @@ console.log(data)
         d3.select("#annualPrecipitation").text(" "+ d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = event.pageX -1100;
+        let x = event.pageX;
         let y = event.pageY - 1000;
 
         //Position tooltip and make it visible
