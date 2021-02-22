@@ -64,6 +64,9 @@ function chart(csv) {
 
   var y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
 
+  var colorScale =  d3.scaleOrdinal()
+.range(["#ed5151", "#149ece", "#3caf99", "#004c73", "#fc921f", "#a8a800", "#f789d8", "#732600", "#ff00c5", "#9e559c", "#a7c636", "#7f7f7f", "#6b6bd6", "#a87000"]);
+
   var xAxis = (g) =>
     g
       .attr("transform", "translate(0," + (height - margin.bottom) + ")")
@@ -78,7 +81,9 @@ function chart(csv) {
  var yAxis = (g) =>
     g
       .attr("transform", "translate(" + margin.left + ",0)")
-      .call(d3.axisLeft(y).tickSize(-width));
+      .call(d3.axisLeft(y)
+      .ticks(5)
+      .tickSize(-width));
 
   svg.append("g").attr("class", "x-axis");
 
@@ -86,18 +91,18 @@ function chart(csv) {
     .append("g")
     .attr("class", "y-axis")
     .append("text")
-    .attr("class", "yAxis")
-    .attr("y", -70)
-    .attr("x", -220)
+    .attr("class", "yAxisPRCP")
+    .attr("y", -30)
+    .attr("x", -85)
     .attr("transform", `rotate(-90)`)
-    .attr("fill", "#635f5d")
-    .style("font-size", "2.5em")
+    // .attr("fill", "#635f5d")
+    // .style("font-size", "2.5em")
     .text("Precipitation (in)");
 
   svg
     .append("text")
     .attr("y", 35)
-    .attr("x", 630)
+    .attr("x", 270)
     .attr("class", "title")
     .text("Annual Precipitation Totals");
 
@@ -128,13 +133,12 @@ console.log(data)
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .style("fill", "#6aeb5e")
+      .style("fill", function (d){ return colorScale(d.NAME); })
       .attr("opacity", ".5")
       .attr("width", x.bandwidth())
       .attr("height", (d) => y(0) - y(d.PRCP));
       
-
-    bar1
+     bar1
         .merge(bar)
         .transition()
       .duration(speed)
@@ -143,15 +147,17 @@ console.log(data)
       .attr("width", x.bandwidth())
       .attr("height", (d) => y(0) - y(d.PRCP));
 
+
     // Adding Tooltip Behavior
     bar1
-      .on("mouseover", function (d) {
+      .on("mouseover", function (event, d) {
         d3.select(this).style("fill", "#ebe028");
-        d3.select("#annualPrecipitation").text(+d.PRCP);
+        d3.select("#stationName").text(" "+  d.NAME)
+        d3.select("#annualPrecipitation").text(" "+ d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = d3.event.pageX;
-        let y = d3.event.pageY - 40;
+        let x = event.pageX -1100;
+        let y = event.pageY - 1000;
 
         //Position tooltip and make it visible
         d3.select("#tooltip")
@@ -161,15 +167,16 @@ console.log(data)
       })
 
       .on("mouseout", function () {
-        d3.select(this).style("fill", "#6aeb5e");
+        d3.select(this).style("fill", function (d){ return colorScale(d.NAME); });
 
         //Hide the tooltip
         d3.select("#tooltip").style("opacity", "0");
       });
   }
   chart.update = update;
+ 
 }
-// chart(csv)
+
 
 var select = d3
   .select("#year")
