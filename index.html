@@ -65,14 +65,23 @@
         <!-- Related Projects Row -->
         <!-- <h3 class="my-4"></h3> -->
         <br><br><br><br>
-        <div class="row">
-       
-          <div class="col-md-6 col-sm-6 mb-4">
-            <div id="barChart" class = "row"></div>
-            <div id="tooltip-bar">
-                # of Houses: <span id="tool_tip" class="info"></span><br>          
-              </div>
-          </div>
+        <div class="row">       
+          <div
+          id="precipitationVisualization"
+          class="col-md-6 col-sm-6 mb-4"
+        >
+        Choose Weather Station:
+        <select id="weatherStation"></select>
+        <input type="checkbox" id="sortPRCP">	
+    Toggle sort by Precipitation Volume
+          <div class="row">         
+              <svg id="prcpTrends" width="768" height="400"></svg>              
+            <div id="tooltipTrends">
+              <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+              Annual Precipitation:<span id="annualPrecipitationTrends" class="info"></span><br>          
+            </div>               
+          </div>      
+        </div>
           <div
           id="precipitationVisualization"
           class="col-md-6 col-sm-6 mb-4"
@@ -91,22 +100,12 @@
         </div>
         </div>
         <div class="row">
-          <div
-          id="precipitationVisualization"
-          class="col-md-6 col-sm-6 mb-4"
-        >
-        Choose Weather Station:
-        <select id="weatherStation"></select>
-        <input type="checkbox" id="sortPRCP">	
-    Toggle sort by Precipitation Volume
-          <div class="row">         
-              <svg id="prcpTrends" width="768" height="400"></svg>              
-            <div id="tooltipTrends">
-              <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
-              Annual Precipitation:<span id="annualPrecipitationTrends" class="info"></span><br>          
-            </div>               
-          </div>      
-        </div>
+          <div class="col-md-6 col-sm-6 mb-4">
+            <div id="barChart" class = "row"></div>
+            <div id="tooltip-bar">
+                # of Houses: <span id="tool_tip" class="info"></span><br>          
+              </div>
+          </div>   
         </div>
         
       
