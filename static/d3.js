@@ -1,115 +1,123 @@
+      
+// Set Demensions and margins for the bar chart
+var width = 768;
+      height = 400;
+      margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
-var outerWidth = 960;
-var outerHeight = 500;
-var margin = { left: 90, top: 40, right: 30, bottom: 85 };
-var barPadding = 0.2;
+     // Setting the ranges
+var x = d3.scaleBand()
+     .range([0, width])
+     .padding(0.1);
+var y = d3.scaleLinear()
+     .range([height, 0]);
+var colorScale =  d3.scaleOrdinal()
+.range(["#6aeb5e", "#ebe028", "#976aeb"]);
 
-var xColumn = "Flood_Area";
-var yColumn = "Count";
-var colorColumn = "Flood_Area";
-
-var innerWidth  = outerWidth  - margin.left - margin.right;
-var innerHeight = outerHeight - margin.top  - margin.bottom;
-
+     
+// append the svg object to the body of the page
+// append a 'group' element to 'svg'
+// moves the 'group' element to the top left margin
 var svg = d3.select("#barChart").append("svg")
-    .attr("width",  outerWidth)
-    .attr("height", outerHeight);
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", 
+          "translate(" + margin.left + "," + margin.top + ")");
+
 var g = svg.append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
 var xAxisG = g.append("g")
     .attr("class", "x axis")
     .attr("transform", "translate(0," + innerHeight + ")");
+
 var yAxisG = g.append("g")
     .attr("class", "y axis");
 
-    yAxisG.append('text')
+  yAxisG.append('text')
       .attr('class', 'yAxis-Label')
-      .attr('y', -50)
-      .attr('x', -320)
+      .attr('y', -140)
+      .attr('x', -250)
       .attr('transform', `rotate(-90)`)
       .attr('fill', 'black')
       .text("# of  Houses Flooded")
 
-    xAxisG.append('text')
+  g.append('text')
     .attr('class', 'xAxis-Label')
-    // .attr('y', outerHeight - 30)
-    .attr('x', 360)
-    .attr('y', 40)
+    .attr('x', 230)
+    .attr('y', 400)
     .text("Flood Zones")
 
-    g.append('text')
-    .attr('y', -10)
-    .attr('x', 140)
+  g.append('text')
+    .attr('y', -80)
+    .attr('x', 20)
     .attr('class', 'title')
     .text("Flooded Houses in Each Flood Zone")
 
-var xScale = d3.scale.ordinal().rangeBands([0, innerWidth], barPadding);
-var yScale = d3.scale.linear().range([innerHeight, 0]);
-var colorScale =  d3.scale.ordinal().range(["#6aeb5e", "#ebe028", "#976aeb"]);
+// Load the Data
+d3.csv("/static/Flood_Area_Count.csv").then(function(data) {
+    // Format the data
+    data.forEach(function(d) {
+      d.Flood_Area = d.Flood_Area;
+      d.Count = +d.Count
+    });
+    // console.log(data)
+    
+// Scale the range of the data in the domains
+x.domain(data.map(function(d) { return d.Flood_Area; }));
+y.domain([0, d3.max(data, function(d) { return d.Count; }) + 2]);
 
-var xAxis = d3.svg.axis().scale(xScale).orient("bottom")
-    .outerTickSize(0);
-var yAxis = d3.svg.axis().scale(yScale).orient("left")
-    .ticks(5)
-    // .tickFormat(customTickFormat)
-    .outerTickSize(-960)
-    .innerTickSize(-960);
+// append the rectangles for the bar chart
+var bar = svg.selectAll(".bar")
+.data(data)
 
-    function render(data){
+var bar1 = bar
+.enter().append("rect")
+.attr("class", "bar")
+.attr("x", function(d) { return x(d.Flood_Area); })
+.attr("width", x.bandwidth())
+.attr("y", function(d) { return y(d.Count); })
+.attr("height", function(d) { return height - y(d.Count); })
+.attr("fill", function (d){ return colorScale(d.Flood_Area); });
 
-        xScale.domain(data.map( function (d){ return d[xColumn]; }));
-        yScale.domain([0, d3.max(data, function (d){ return d[yColumn]; })]);
-        colorScale.domain(data.map(function (d){ return d[colorColumn]; }));
 
-        xAxisG
-          .call(xAxis)
-          .selectAll("text")  
-          .attr("dx", "-0.4em")
-          .attr("dy", "1.24em")
-        //   .attr("transform", "rotate(-16)" );
 
-        yAxisG.call(yAxis);
+// add the x Axis
+svg.append("g")
+.attr("transform", "translate(0," + height + ")")
+.call(d3.axisBottom(x).tickSizeOuter(0));
 
-        var bars = g.selectAll("rect").data(data);
-        bars.enter().append("rect")
-          .attr("width", xScale.rangeBand());
-        bars
-          .attr("x", function (d){ return xScale(d[xColumn]); })
-          .attr("y", function (d){ return yScale(d[yColumn]); })
-          .attr("height", function (d){ return innerHeight - yScale(d[yColumn]); })
-          .attr("fill", function (d){ return colorScale(d[colorColumn]); });
-        bars.exit().remove();
+// add the y Axis
+svg.append("g")
+.call(d3.axisLeft(y)
+.ticks(5)
+.tickSize(-width));
 
-        // Tooltips
-        bars
-        .on("mouseover", function (d) {
-          d3.select(this).style("fill", "#ce42f5");
-          d3.select("#tool_tip").text(d.Count); 
-          console.log(d.Count)       
-      
-      //Position the tooltip <div> and set its content
-      let x = d3.event.pageX - 500;
-      let y = d3.event.pageY - 1000;
+// Adding Tooltip Behavior
+bar1
+.on("mouseover", function (event, d) {
+  d3.select(this).style("fill", "#ce42f5");
+  d3.select("#tool_tip").text(" "+  d.Count)
 
-      //Position tooltip and make it visible
-      d3.select("#tooltip-bar")
-      .style("left", x + "px")
-      .style("top", y + "px")
-      .style("opacity", 1);
+
+  //Position the tooltip <div> and set its content
+  let x = event.pageX - 300;
+  let y = event.pageY - 1000;
+
+  //Position tooltip and make it visible
+  d3.select("#tooltip-bar")
+    .style("left", x + "px")
+    .style("top", y + "px")
+    .style("opacity", 1);
+})
+
+.on("mouseout", function () {
+  d3.select(this).style("fill",  function (d){ return colorScale(d.Flood_Area); });
+
+  //Hide the tooltip
+  d3.select("#tooltip-bar").style("opacity", "0");
+
+});
   })
 
-  .on("mouseout", function () {
-    d3.select(this).style("fill", function (d){ return colorScale(d[colorColumn]); });
-
-    //Hide the tooltip
-    d3.select("#tooltip-bar").style("opacity", "0");
-  });
-
-    }
-
-      function type(d){
-        d.Count = +d.Count;
-        return d;
-      }
-
-      d3.csv("/static/Flood_Area_Count.csv", type, render);
+  

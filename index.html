@@ -9,7 +9,14 @@
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 
+    
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script>
+      var d3v3 = window.d3;
+      window.d3 = null;
+  </script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+   
 
     <link rel="stylesheet" type="text/css" href="../static/stylesheet.css"/>
 
@@ -59,13 +66,36 @@
         <!-- <h3 class="my-4"></h3> -->
         <br><br><br><br>
         <div class="row">
-      
-          <div class="col-md-12 col-sm-6 mb-4">
+       
+          <div class="col-md-6 col-sm-6 mb-4">
             <div id="barChart" class = "row"></div>
             <div id="tooltip-bar">
                 # of Houses: <span id="tool_tip" class="info"></span><br>          
               </div>
           </div>
+          <div
+          id="precipitationVisualization"
+          class="col-md-6 col-sm-6 mb-4"
+        >
+        Choose year:
+        <select id="year"></select>
+        <input type="checkbox" id="sort">	
+    Toggle sort by Precipitation Volume
+          <div class="row">         
+              <svg id="precipitation_barchart" width="768" height="400"></svg>              
+            <div id="tooltip">
+              <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+              Annual Precipitation:<span id="annualPrecipitation" class="info"></span><br>          
+            </div>               
+          </div>      
+        </div>
+          <!-- <div class="col-md-6 col-sm-6 mb-4">
+            <select id="yearSelect"></select>
+            <div id="precipChart" class = "row"></div>
+            <div id="tooltip-precip">
+                Flood Zone:  <span id="tool_tip_precip" class="info"></span><br>          
+              </div>
+          </div> -->
       
           <!-- <div class="col-md-3 col-sm-6 mb-4">
             <a href="#">
@@ -94,5 +124,9 @@
        
 
         <script src="../static/d3.js"></script>
+        <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
+        <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
+        <script src="../static/precipitation.js"></script>
+    
 </body>
 </html>

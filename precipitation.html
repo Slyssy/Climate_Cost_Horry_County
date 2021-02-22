@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Precipitation</title>
+
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet.css"/>
+</head>
+
+<body>
+    <div
+      id="precipitationVisualization"
+      class="container-fluid dashboard_visualizations"
+    >
+    Choose year:
+    <select id="year"></select>
+    <input type="checkbox" id="sort">	
+Toggle sort by Precipitation Volume
+      <div class="row">         
+          <svg id="precipitation_barchart" width="1515" height="600"></svg>              
+        <div id="tooltip">
+          Annual Precipitation:<span id="annualPrecipitation" class="info"></span><br>          
+        </div>               
+      </div>      
+    </div>
+    
+    <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
+    <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
+    <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
+    <script src="../static/precipitation.js"></script>
+</body>
+</html>
