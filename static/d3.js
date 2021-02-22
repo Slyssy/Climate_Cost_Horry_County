@@ -102,7 +102,7 @@ bar1
 
   //Position the tooltip <div> and set its content
   let x = event.pageX - 300;
-  let y = event.pageY - 1000;
+  let y = event.pageY - 1400;
 
   //Position tooltip and make it visible
   d3.select("#tooltip-bar")
