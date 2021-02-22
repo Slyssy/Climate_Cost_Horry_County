@@ -1,23 +1,23 @@
-const stations = [
-    "CONWAY, SC US",
-    "CONWAY 6.2 E, SC US",
-    "MYRTLE BEACH 8.6 SW, SC US",
-    "MYRTLE BEACH 9.1 WSW, SC US",
-    "LORIS 2.9 WSW, SC US",
-    "MYRTLE BEACH 9.2 WSW, SC US",
-    "MURRELLS INLET 1.7 N, SC US",
-    "MYRTLE BEACH 2.4 ENE, SC US",
-    "MYRTLE BEACH 7.4 NNW, SC US",
-    "MURRELLS INLET 4.0 NE, SC US",
-    "MYRTLE BEACH 5.0 WNW, SC US",
-    "MYRTLE BEACH 4.8 NNW, SC US",
-    "LORIS 1.4 ENE, SC US",
-    "NORTH MYRTLE BEACH, SC US"
-]
+// const stations = [
+//     "CONWAY, SC US",
+//     "CONWAY 6.2 E, SC US",
+//     "MYRTLE BEACH 8.6 SW, SC US",
+//     "MYRTLE BEACH 9.1 WSW, SC US",
+//     "LORIS 2.9 WSW, SC US",
+//     "MYRTLE BEACH 9.2 WSW, SC US",
+//     "MURRELLS INLET 1.7 N, SC US",
+//     "MYRTLE BEACH 2.4 ENE, SC US",
+//     "MYRTLE BEACH 7.4 NNW, SC US",
+//     "MURRELLS INLET 4.0 NE, SC US",
+//     "MYRTLE BEACH 5.0 WNW, SC US",
+//     "MYRTLE BEACH 4.8 NNW, SC US",
+//     "LORIS 1.4 ENE, SC US",
+//     "NORTH MYRTLE BEACH, SC US"
+// ]
 
-d3.csv("/static/Horry_County_Precipitation.csv").then (d => chart(d));
+d3.csv("/static/Horry_County_Precipitation.csv").then (d => chartTrend(d));
 
-function chart(csv) {
+function chartTrend(csv) {
     csv.forEach(function(d) {
         d.DATE = d.DATE;
         d.PRCP = +d.PRCP;
@@ -25,29 +25,28 @@ function chart(csv) {
         
     })
 
-
-    const years = csv
-    .map((a) => a.DATE)
+    const weatherStation = csv
+    .map((a) => a.NAME)
     .filter((value, index, self) => self.indexOf(value) === index);
-  years.sort(function (a, b) {
+    weatherStation.sort(function (a, b) {
     return b - a;
   });
-  // console.log(years)
+  console.log(weatherStation)
 
   d3
-    .select("#year")
+    .select("#weatherStation")
     .selectAll("option")
-    .data(years)
+    .data(weatherStation)
     .enter()
     .append("option")
     .text((d) => d);
 
-  var svg = d3.select("#precipitation_barchart"),
+  var svg = d3.select("#prcpTrends"),
     margin = { top: 70, right: -35, bottom: 50, left: 110 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
-  // Setting x Scale
+//   Setting x Scale
   const x = d3
     .scaleBand()
     .range([margin.left, width - margin.right])
@@ -64,11 +63,11 @@ function chart(csv) {
       .attr("transform", "translate(0," + (height - margin.bottom) + ")")
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .selectAll('text')
-      .attr("y", 0)
-      .attr("x", 9)
-      .attr("dy", ".35em")
-      .attr("transform", "rotate(60)")
-      .style("text-anchor", "start");
+      .attr("y", 10)
+      .attr("x", 0)
+    //   .attr("dy", ".35em")
+    //   .attr("transform", "rotate(60)")
+    //   .style("text-anchor", "start");
 
  var yAxis = (g) =>
     g
@@ -93,31 +92,31 @@ function chart(csv) {
 
   svg
     .append("text")
-    .attr("y", 35)
-    .attr("x", 270)
+    .attr("y", 40)
+    .attr("x", 185)
     .attr("class", "title")
-    .text("Annual Precipitation Totals");
+    .text("Weather Station Precipitation Totals");
 
-  update(d3.select("#year").property("value"), 0);
+  update(d3.select("#weatherStation").property("value"), 0);
 
-  function update(year, speed) {
-    var data = csv.filter(d => d.DATE == year);
-// console.log(data)
+  function update(name, speed) {
+    var data = csv.filter(d => d.NAME == name);
+console.log(data)
     y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
 
     data.sort(
-      d3.select("#sort").property("checked")
+      d3.select("#sortPRCP").property("checked")
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => stations.indexOf(a.NAME) - stations.indexOf(b.NAME)
     );
 
-    x.domain(data.map((d) => d.NAME));
+    x.domain(data.map((d) => d.DATE));
 
     svg.selectAll(".x-axis").transition().duration(speed).call(xAxis);
 
-    var bar = svg.selectAll(".bar").data(data, (d) => d.NAME);
+    var bar = svg.selectAll(".bar").data(data, (d) => d.DATE);
 
     bar.exit().remove();
 
@@ -125,7 +124,7 @@ function chart(csv) {
       .enter()
       .append("rect")
       .attr("class", "bar")
-      .style("fill", function (d){ return colorScale(d.NAME); })
+      .style("fill", "#149ece")
       .attr("opacity", ".5")
       .attr("width", x.bandwidth())
       .attr("height", (d) => y(0) - y(d.PRCP));
@@ -134,7 +133,7 @@ function chart(csv) {
         .merge(bar)
         .transition()
       .duration(speed)
-      .attr("x", (d) => x(d.NAME))
+      .attr("x", (d) => x(d.DATE))
       .attr("y", (d) => y(d.PRCP))
       .attr("width", x.bandwidth())
       .attr("height", (d) => y(0) - y(d.PRCP));
@@ -145,44 +144,40 @@ function chart(csv) {
       .on("mouseover", function (event, d) {
         d3.select(this).style("fill", "#ebe028");
         d3.select("#stationName").text(" "+  d.NAME)
-        d3.select("#annualPrecipitation").text(" "+ d.PRCP + " inches");
+        d3.select("#annualPrecipitationTrends").text(" "+ d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = event.pageX -1100;
-        let y = event.pageY - 1000;
+        let x = event.pageX -400;
+        let y = event.pageY - 1550;
 
         //Position tooltip and make it visible
-        d3.select("#tooltip")
+        d3.select("#tooltipTrends")
           .style("left", x + "px")
           .style("top", y + "px")
           .style("opacity", 1);
       })
 
       .on("mouseout", function () {
-        d3.select(this).style("fill", function (d){ return colorScale(d.NAME); });
+        d3.select(this).style("fill", "#149ece");
 
         //Hide the tooltip
-        d3.select("#tooltip").style("opacity", "0");
+        d3.select("#tooltipTrends").style("opacity", "0");
       });
   }
-  chart.update = update; 
+  chartTrend.update = update; 
 }
 
 
 var select = d3
-  .select("#year")
+  .select("#weatherStation")
   .style("border-radius", "5px")
   .on("change", function () {
-    chart.update(this.value, 750);
+    chartTrend.update(this.value, 750);
   });
 
 var checkbox = d3
-  .select("#sort")
-  .style("margin-left", "30%")
+  .select("#sortPRCP")
+  .style("margin-left", "1%")
   .on("click", function () {
-    chart.update(select.property("value"), 750);
+    chartTrend.update(select.property("value"), 750);
   });
-
-
-
-
