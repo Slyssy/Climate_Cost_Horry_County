@@ -34,9 +34,9 @@
         <!-- Portfolio Item Row -->
         <div class="row">      
           <div class="col-md-8">
-            <div class="embed-container">
+            <!-- <div class="embed-container">
                 <iframe width="1000" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry County Flood Map" src="https://ccpic2050.maps.arcgis.com/apps/webappviewer/index.html?id=a1d7c87b48dd4e92a067e6c366500eab"></iframe>
-            </div> 
+            </div>  -->
           </div>
       
           <div class="col-md-4">
@@ -89,34 +89,26 @@
             </div>               
           </div>      
         </div>
-          <!-- <div class="col-md-6 col-sm-6 mb-4">
-            <select id="yearSelect"></select>
-            <div id="precipChart" class = "row"></div>
-            <div id="tooltip-precip">
-                Flood Zone:  <span id="tool_tip_precip" class="info"></span><br>          
-              </div>
-          </div> -->
-      
-          <!-- <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                  <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                </a>
-          </div> -->
-      
-          <!-- <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                  <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                </a>
-          </div>
-      
-          <div class="col-md-3 col-sm-6 mb-4">
-            <a href="#">
-                  <img class="img-fluid" src="http://placehold.it/500x300" alt="">
-                </a>
-          </div> -->
-      
         </div>
-        <!-- /.row -->
+        <div class="row">
+          <div
+          id="precipitationVisualization"
+          class="col-md-6 col-sm-6 mb-4"
+        >
+        Choose Weather Station:
+        <select id="weatherStation"></select>
+        <input type="checkbox" id="sortPRCP">	
+    Toggle sort by Precipitation Volume
+          <div class="row">         
+              <svg id="prcpTrends" width="768" height="400"></svg>              
+            <div id="tooltipTrends">
+              <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+              Annual Precipitation:<span id="annualPrecipitationTrends" class="info"></span><br>          
+            </div>               
+          </div>      
+        </div>
+        </div>
+        
       
       </div>
       <!-- /.container -->
@@ -127,6 +119,7 @@
         <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
         <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
         <script src="../static/precipitation.js"></script>
+        <script src="../static/prcpTrends.js"></script>
     
 </body>
 </html>
