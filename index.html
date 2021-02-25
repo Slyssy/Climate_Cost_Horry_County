@@ -11,10 +11,6 @@
 
     
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
-    <script>
-      var d3v3 = window.d3;
-      window.d3 = null;
-  </script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
    
 
@@ -34,9 +30,9 @@
         <!-- Portfolio Item Row -->
         <div class="row">      
           <div class="col-md-8">
-            <div class="embed-container">
+            <!-- <div class="embed-container">
                 <iframe width="1000" height="750" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" title="Horry County Flood Map" src="https://ccpic2050.maps.arcgis.com/apps/webappviewer/index.html?id=a1d7c87b48dd4e92a067e6c366500eab"></iframe>
-            </div> 
+            </div>  -->
           </div>
       
           <div class="col-md-4">
@@ -67,7 +63,7 @@
         <br><br><br><br>
         <div class="row">       
           <div
-          id="precipitationVisualization"
+          id="precipitationTrendsBar"
           class="col-md-6 col-sm-6 mb-4"
         >
         Choose Weather Station:
@@ -110,7 +106,7 @@
         
       
       </div>
-      <!-- /.container -->
+      <!-- .container -->
 
        
 
@@ -119,6 +115,7 @@
         <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
         <script src="../static/precipitation.js"></script>
         <script src="../static/prcpTrends.js"></script>
+
     
 </body>
 </html>

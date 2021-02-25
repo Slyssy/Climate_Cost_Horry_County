@@ -25,10 +25,27 @@ Toggle sort by Precipitation Volume
         </div>               
       </div>      
     </div>
+    <div
+    id="precipitationTrendsBar"
+    class="col-md-6 col-sm-6 mb-4"
+  >
+  Choose Weather Station:
+  <select id="weatherStation"></select>
+  <input type="checkbox" id="sortPRCP">	
+Toggle sort by Precipitation Volume
+    <div class="row">         
+        <svg id="prcpTrends" width="768" height="400"></svg>              
+      <div id="tooltipTrends">
+        <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+        Annual Precipitation:<span id="annualPrecipitationTrends" class="info"></span><br>          
+      </div>               
+    </div>      
+  </div>
     
     <script src="https://unpkg.com/d3@5.6.0/dist/d3.min.js"></script>
     <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
     <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
     <script src="../static/precipitation.js"></script>
+    <script src="../static/prcpTrends.js"></script>
 </body>
 </html>

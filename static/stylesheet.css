@@ -3,16 +3,16 @@
 }
 
 .axis text {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 20pt;
 }
 .yAxis-Label {
   stroke: #57595a;
-  fill: #57595a
+  fill: #57595a;
 }
 
 .yAxisPRCP {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 12pt;
   stroke: #57595a;
   fill: #57595a;
@@ -23,7 +23,8 @@
   font-size: 20pt;
 }
 
-.axis path, .axis line {
+.axis path,
+.axis line {
   fill: none;
   stroke: #57595a;
   shape-rendering: crispEdges;
@@ -39,14 +40,14 @@
 }
 
 .tick line {
-  stroke: #c0c0bb
+  stroke: #c0c0bb;
 }
 rect {
-  opacity: .5;
+  opacity: 0.5;
 }
 
 .title {
-  font-family: 'Open Sans', sans-serif;
+  font-family: "Open Sans", sans-serif;
   font-size: 2em;
   fill: #57595a;
 }
@@ -135,4 +136,3 @@ iframe {
    bottom: 0; 
    margin-bottom: -15px;
   } */
-
