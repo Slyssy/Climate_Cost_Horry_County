@@ -15,22 +15,22 @@
 //     "NORTH MYRTLE BEACH, SC US"
 // ]
 
-d3.csv("/static/Horry_County_Precipitation1.csv").then((d) => chartTrend(d));
+d3.csv("/static/Horry_County_Precipitation_Trends.csv").then((d) => chartTrend(d));
 
-function chartTrend(csv) {
-  csv.forEach(function (d) {
+function chartTrend(csvTrends) {
+  csvTrends.forEach(function (d) {
     d.DATE = d.DATE;
     d.PRCP = +d.PRCP;
     return d;
   });
 
-  const weatherStation = csv
+  const weatherStation = csvTrends
     .map((a) => a.NAME)
     .filter((value, index, self) => self.indexOf(value) === index);
   weatherStation.sort(function (a, b) {
     return b - a;
   });
-  console.log(weatherStation);
+  // console.log(weatherStation);
 
   d3.select("#weatherStation")
     .selectAll("option")
@@ -112,13 +112,13 @@ function chartTrend(csv) {
   update1(d3.select("#weatherStation").property("value"), 0);
 
   function update1(name, speed) {
-    var data = csv.filter((d) => d.NAME == name);
-    console.log(data);
-    y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
+    var data1 = csvTrends.filter((d) => d.NAME == name);
+    console.log(data1);
+    y.domain([0, d3.max(data1, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
 
-    data.sort(
+    data = data1.sort(
       d3.select("#sortPRCP").property("checked")
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => a.NAME - b.NAME
