@@ -118,7 +118,7 @@ function chart(csv) {
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
 
-    data3= data2.sort(
+    data3 = data2.sort(
       d3.select("#sort").property("checked")
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => a.NAME - b.NAME
@@ -183,7 +183,7 @@ function chart(csv) {
   chart.update = update;
 }
 
-var select = d3
+var select1 = d3
   .select("#year")
   .style("border-radius", "5px")
   .on("change", function () {
@@ -194,6 +194,6 @@ var checkbox = d3
   .select("#sort")
   .style("margin-left", "30%")
   .on("click", function () {
-    chart.update(select.property("value"), 750);
+    chart.update(select1.property("value"), 750);
   });
 

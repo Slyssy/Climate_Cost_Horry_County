@@ -15,7 +15,7 @@
 //     "NORTH MYRTLE BEACH, SC US"
 // ]
 
-d3.csv("/static/Horry_County_Precipitation_Trends.csv").then((d) => chartTrend(d));
+d3.csv("/static/Horry_County_Precipitation.csv").then((d) => chartTrend(d));
 
 function chartTrend(csvTrends) {
   csvTrends.forEach(function (d) {
