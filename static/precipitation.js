@@ -113,7 +113,7 @@ function chart(csv) {
 
   function update(year, speed) {
     var data = csv.filter((d) => d.DATE == year);
-    console.log(data);
+    // console.log(data);
     y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
