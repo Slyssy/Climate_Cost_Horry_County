@@ -123,7 +123,7 @@ function chart(csv) {
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => a.NAME - b.NAME
     );
-    console.log(data)
+    // console.log(data)
 
     x.domain(data.map((d) => d.NAME));
 

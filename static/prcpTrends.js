@@ -109,11 +109,11 @@ function chartTrend(csvTrends) {
     .attr("class", "title")
     .text("Weather Station Precipitation Totals");
 
-  update1(d3.select("#weatherStation").property("value"), 0);
+  update(d3.select("#weatherStation").property("value"), 0);
 
-  function update1(name, speed) {
+  function update(name, speed) {
     var data = csvTrends.filter((d) => d.NAME == name);
-    console.log(data);
+    // console.log(data);
     y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
@@ -175,7 +175,7 @@ function chartTrend(csvTrends) {
         d3.select("#tooltipTrends").style("opacity", "0");
       });
   }
-  chartTrend.update1 = update1;
+  chartTrend.update1 = update;
 }
 
 var select = d3
