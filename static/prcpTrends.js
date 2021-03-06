@@ -112,13 +112,13 @@ function chartTrend(csvTrends) {
   update1(d3.select("#weatherStation").property("value"), 0);
 
   function update1(name, speed) {
-    var data1 = csvTrends.filter((d) => d.NAME == name);
-    console.log(data1);
-    y.domain([0, d3.max(data1, (d) => d.PRCP)]).nice();
+    var data = csvTrends.filter((d) => d.NAME == name);
+    console.log(data);
+    y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
 
-    data = data1.sort(
+    data.sort(
       d3.select("#sortPRCP").property("checked")
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => a.NAME - b.NAME

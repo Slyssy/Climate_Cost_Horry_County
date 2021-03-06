@@ -112,24 +112,24 @@ function chart(csv) {
   update(d3.select("#year").property("value"), 0);
 
   function update(year, speed) {
-    var data2 = csv.filter((d) => d.DATE == year);
-    console.log(data2);
-    y.domain([0, d3.max(data2, (d) => d.PRCP)]).nice();
+    var data = csv.filter((d) => d.DATE == year);
+    console.log(data);
+    y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
     svg.selectAll(".y-axis").transition().duration(speed).call(yAxis);
 
-    data3 = data2.sort(
+    data.sort(
       d3.select("#sort").property("checked")
         ? (a, b) => b.PRCP - a.PRCP
         : (a, b) => a.NAME - b.NAME
     );
-    console.log(data3)
+    console.log(data)
 
-    x.domain(data3.map((d) => d.NAME));
+    x.domain(data.map((d) => d.NAME));
 
     svg.selectAll(".x-axis").transition().duration(speed).call(xAxis);
 
-    var bar = svg.selectAll(".bar").data(data3, (d) => d.NAME);
+    var bar = svg.selectAll(".bar").data(data, (d) => d.NAME);
 
     bar.exit().remove();
 
