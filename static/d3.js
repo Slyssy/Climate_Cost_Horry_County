@@ -110,7 +110,7 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
       d3.select("#tool_tip").text(" " + d.Count);
 
       //Position the tooltip <div> and set its content
-      let x = event.pageX - 300;
+      let x = event.pageX - 500;
       let y = event.pageY - 1400;
 
       //Position tooltip and make it visible
