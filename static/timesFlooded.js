@@ -116,7 +116,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
       d3.select("#tool_tip_times_flooded").text(" " + d.CountFlooding);
 
       //Position the tooltip <div> and set its content
-      let x = event.pageX - 1200;
+      let x = event.pageX - 1000;
       let y = event.pageY - 1400;
 
       //Position tooltip and make it visible
