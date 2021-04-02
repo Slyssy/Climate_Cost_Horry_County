@@ -6,7 +6,7 @@ margin = { left: 90, top: 70, right: 30, bottom: 85 };
 // Setting the ranges
 var x1 = d3.scaleBand().range([0, width]).padding(0.1);
 var y1 = d3.scaleLinear().range([height, 0]);
-var colorScale = d3.scaleOrdinal()
+var colorScale1 = d3.scaleOrdinal()
 .range([
     "#ed5151", 
     "#149ece", 
@@ -97,7 +97,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
       return height - y1(d.CountFlooding);
     })
     .attr("fill",  function (d) {
-      return colorScale(d.NumberFlooding);
+      return colorScale1(d.NumberFlooding);
     });
 
   // add the x Axis
@@ -128,7 +128,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
 
     .on("mouseout", function () {
       d3.select(this).style("fill",  function (d) {
-        return colorScale(d.NumberFlooding);
+        return colorScale1(d.NumberFlooding);
       });
 
       //Hide the tooltip
