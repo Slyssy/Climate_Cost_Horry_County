@@ -1,16 +1,16 @@
-// Set Demensions and margins for the bar chart
+// * Set Demensions and margins for the bar chart
 var width = 768;
 height = 400;
 margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
-// Setting the ranges
-var x1 = d3.scaleBand().range([0, width]).padding(0.1);
-var y1 = d3.scaleLinear().range([height, 0]);
+// * Setting the ranges
+var x2 = d3.scaleBand().range([0, width]).padding(0.1);
+var y2 = d3.scaleLinear().range([height, 0]);
 var colorScale = d3.scaleOrdinal().range(["#6aeb5e", "#ebe028", "#976aeb"]);
 
-// append the svg object to the body of the page
-// append a 'group' element to 'svg'
-// moves the 'group' element to the top left margin
+// * append the svg object to the body of the page
+// * append a 'group' element to 'svg'
+// * moves the 'group' element to the top left margin
 var svg = d3
   .select("#barChart")
   .append("svg")
@@ -51,29 +51,29 @@ g.append("text")
   .attr("class", "title")
   .text("Flooded Houses in Each Flood Zone");
 
-// Load the Data
+// * Load the Data
 d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
-  // Format the data
+  // * Format the data
   data.forEach(function (d) {
     d.Flood_Area = d.Flood_Area;
     d.Count = +d.Count;
   });
   // console.log(data)
 
-  // Scale the range of the data in the domains
-  x1.domain(
+  // * Scale the range of the data in the domains
+  x2.domain(
     data.map(function (d) {
       return d.Flood_Area;
     })
   );
-  y1.domain([
+  y2.domain([
     0,
     d3.max(data, function (d) {
       return d.Count;
     }) + 2,
   ]);
 
-  // append the rectangles for the bar chart
+  // * append the rectangles for the bar chart
   var bar = svg.selectAll(".bar").data(data);
 
   var bar1 = bar
@@ -81,39 +81,42 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
     .append("rect")
     .attr("class", "bar")
     .attr("x", function (d) {
-      return x1(d.Flood_Area);
+      return x2(d.Flood_Area);
     })
-    .attr("width", x1.bandwidth())
+    .attr("width", x2.bandwidth())
     .attr("y", function (d) {
-      return y1(d.Count);
+      return y2(d.Count);
     })
     .attr("height", function (d) {
-      return height - y1(d.Count);
+      return height - y2(d.Count);
     })
     .attr("fill", function (d) {
       return colorScale(d.Flood_Area);
     });
 
-  // add the x Axis
+  // * add the x Axis
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x1).tickSizeOuter(0));
+    .call(d3.axisBottom(x2).tickSizeOuter(0))
+    .selectAll("text")
+    .attr("class", "floodedHouses_xAxis_tickLabel");
 
-  // add the y Axis
-  svg.append("g").call(d3.axisLeft(y1).ticks(5).tickSize(-width));
 
-  // Adding Tooltip Behavior
+  // * add the y Axis
+  svg.append("g").call(d3.axisLeft(y2).ticks(5).tickSize(-width));
+
+  // * Adding Tooltip Behavior
   bar1
     .on("mouseover", function (event, d) {
       d3.select(this).style("fill", "#ce42f5");
       d3.select("#tool_tip").text(" " + d.Count);
 
-      //Position the tooltip <div> and set its content
+      //* Position the tooltip <div> and set its content
       let x = event.pageX - 500;
       let y = event.pageY - 1400;
 
-      //Position tooltip and make it visible
+      //* Position tooltip and make it visible
       d3.select("#tooltip-bar")
         .style("left", x + "px")
         .style("top", y + "px")
@@ -125,7 +128,7 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
         return colorScale(d.Flood_Area);
       });
 
-      //Hide the tooltip
+      //* Hide the tooltip
       d3.select("#tooltip-bar").style("opacity", "0");
     });
 });

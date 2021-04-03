@@ -77,6 +77,7 @@ function chartTrend(csvTrends) {
       .attr("transform", "translate(0," + (height - margin.bottom) + ")")
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .selectAll("text")
+      .attr("class", "weatherStation_xAxis_tickLabels")
       .attr("y", 10)
       .attr("x", 0);
   //   .attr("dy", ".35em")

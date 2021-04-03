@@ -78,10 +78,10 @@ function chart(csv) {
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .selectAll("text")
       .attr("y", 0)
-      .attr("x", 9)
+      .attr("x", -10)
       .attr("dy", ".35em")
-      .attr("transform", "rotate(60)")
-      .style("text-anchor", "start");
+      .attr("transform", "rotate(300)")
+      .style("text-anchor", "end");
 
   var yAxis = (g) =>
     g

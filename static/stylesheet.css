@@ -37,6 +37,31 @@
 .tick {
   stroke: #57595a;
   fill: #57595a;
+  font-size: 8pt;
+}
+
+.oop_xAxis_tickLabel {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 10pt;
+}
+
+.timesFlooded_xAxis_tickLabel {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 10pt;
+}
+
+.floodedHouses_xAxis_tickLabel {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 14pt;
+}
+
+.weatherStation_xAxis_tickLabels {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 14pt;
 }
 
 .tick line {
@@ -72,6 +97,25 @@ rect {
 }
 
 #tooltip-bar-times-flooded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: rgba(34, 35, 36, 0.75);
+  opacity: 0;
+  pointer-events: none;
+}
+
+#tooltip-bar-oop {
   position: absolute;
   top: 0;
   left: 0;
