@@ -18,7 +18,7 @@ var colorScale2 = d3.scaleOrdinal()
       "#732600",
       "#ff00c5",
       "#9e559c",
-      "#a7c636",,]);
+      "#a7c636",]);
 
 // * append the svg object to the body of the page
 // * append a 'group' element to 'svg'
