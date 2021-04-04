@@ -53,15 +53,15 @@ yAxisG
 
 g.append("text")
   .attr("class", "xAxis-Label")
-  .attr("x", 120)
+  .attr("x", 150)
   .attr("y", 480)
-  .text("Out of Pocket Expense");
+  .text("Household Income");
 
 g.append("text")
   .attr("y", -80)
   .attr("x", 50)
   .attr("class", "title")
-  .text("Reported Out of Pocket Expense");
+  .text("Reported Household Income");
 
 // Load the Data
 d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data1) {
