@@ -96,7 +96,7 @@ function chart(csv) {
     .append("text")
     .attr("class", "yAxisPRCP")
     .attr("y", -30)
-    .attr("x", -85)
+    .attr("x", -200)
     .attr("transform", `rotate(-90)`)
     // .attr("fill", "#635f5d")
     // .style("font-size", "2.5em")
