@@ -156,7 +156,7 @@ function chart(csv) {
     // Adding Tooltip Behavior
     bar1
       .on("mouseover", function (event, d) {
-        d3.select(this).style("fill", "#ebe028");
+        d3.select(this).style("fill", "#ce42f5");
         d3.select("#stationName").text(" " + d.NAME);
         d3.select("#annualPrecipitation").text(" " + d.PRCP + " inches");
 
