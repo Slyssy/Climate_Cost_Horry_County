@@ -161,8 +161,8 @@ function chart(csv) {
         d3.select("#annualPrecipitation").text(" " + d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = event.pageX - 1300;
-        let y = event.pageY - 1000;
+        let x = event.pageX;
+        let y = event.pageY;
 
         //Position tooltip and make it visible
         d3.select("#tooltip")
@@ -196,4 +196,3 @@ var checkbox = d3
   .on("click", function () {
     chart.update(select1.property("value"), 750);
   });
-
