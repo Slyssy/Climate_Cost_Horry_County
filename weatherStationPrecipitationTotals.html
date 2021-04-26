@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet.css" />
+
+    <title>Weather Station Precipitation Totals</title>
+  </head>
+  <body>
+    <div id="precipitationTrendsBar" class="col-md-6 col-sm-6 mb-4">
+      Choose Weather Station:
+      <select id="weatherStation"></select>
+      <input type="checkbox" id="sortPRCP" />
+      Toggle sort by Precipitation Volume
+      <div class="row">
+        <svg id="prcpTrends" width="768" height="400"></svg>
+        <div id="tooltipTrends">
+          <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+          Annual Precipitation:<span
+            id="annualPrecipitationTrends"
+            class="info"
+          ></span
+          ><br />
+        </div>
+      </div>
+    </div>
+    <script src="../static/prcpTrends.js"></script>
+    <script src="../static/precipitation.js"></script>
+  </body>
+</html>

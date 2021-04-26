@@ -154,13 +154,15 @@ function chartTrend(csvTrends) {
     // Adding Tooltip Behavior
     bar1
       .on("mouseover", function (event, d) {
-        d3.select(this).style("fill", "#ebe028");
+        d3.select(this).style("fill", "#ce42f5");
         d3.select("#stationName").text(" " + d.NAME);
         d3.select("#annualPrecipitationTrends").text(" " + d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = event.pageX - 500;
-        let y = event.pageY - 1000;
+        // let x = event.pageX - 500;
+        // let y = event.pageY - 1000;
+        let x = event.pageX;
+        let y = event.pageY;
 
         //Position tooltip and make it visible
         d3.select("#tooltipTrends")
