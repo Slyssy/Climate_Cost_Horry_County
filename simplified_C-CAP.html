@@ -22,6 +22,10 @@
     <svg id="chart" width="650" height="420"></svg>
     <input type="checkbox" id="sort" />
     Toggle Sort
+    <div id="tooltip">
+      <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+      Coverage in Square Acres:<span id="squareAcres" class="info"></span><br />
+    </div>
     <script>
       d3.csv("/static/Simplified_C-CAP_Scheme.csv").then((d) => chart(d));
 
