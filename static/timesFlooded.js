@@ -1,18 +1,14 @@
 // Times Flooded Bar Chart>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-var width = 768;
-height = 400;
+var width = 1080;
+height = 393;
 margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
 // Setting the ranges
 var x1 = d3.scaleBand().range([0, width]).padding(0.1);
 var y1 = d3.scaleLinear().range([height, 0]);
-var colorScale3 = d3.scaleOrdinal()
-.range([
-    "#ed5151", 
-    "#149ece", 
-    "#3caf99", 
-    "#004c73", 
-    "#fc921f",]);
+var colorScale3 = d3
+  .scaleOrdinal()
+  .range(["#ed5151", "#149ece", "#3caf99", "#004c73", "#fc921f"]);
 
 // append the svg object to the body of the page
 // append a 'group' element to 'svg'
@@ -32,7 +28,7 @@ var g = svg1
 var xAxisG = g
   .append("g")
   .attr("class", "x axis")
-  .attr("transform", "translate(0," + innerHeight + ")");
+  .attr("transform", "translate(0," + height + ")");
 
 var yAxisG = g.append("g").attr("class", "y axis");
 
@@ -47,18 +43,20 @@ yAxisG
 
 g.append("text")
   .attr("class", "xAxis-Label")
-  .attr("x", 80)
+  .attr("x", 280)
   .attr("y", 400)
   .text("Number of Reported Flood Events");
 
 g.append("text")
   .attr("y", -80)
-  .attr("x", 90)
+  .attr("x", 320)
   .attr("class", "title")
   .text("Reported Flood Events");
 
 // Load the Data
-d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data1) {
+d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (
+  data1
+) {
   // Format the data
   data1.forEach(function (d) {
     d.NumberFlooding = d.NumberFlooding;
@@ -96,7 +94,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
     .attr("height", function (d) {
       return height - y1(d.CountFlooding);
     })
-    .attr("fill",  function (d) {
+    .attr("fill", function (d) {
       return colorScale3(d.NumberFlooding);
     });
 
@@ -109,7 +107,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
     .attr("class", "timesFlooded_xAxis_tickLabel");
 
   // add the y Axis
-  svg1.append("g").call(d3.axisLeft(y1).ticks(5).tickSize(-width));
+  svg1.append("g").call(d3.axisLeft(y1).ticks(5).tickSize(-1080));
 
   // Adding Tooltip Behavior
   bar1
@@ -118,8 +116,8 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
       d3.select("#tool_tip_times_flooded").text(" " + d.CountFlooding);
 
       //Position the tooltip <div> and set its content
-      let x = event.pageX - 1300;
-      let y = event.pageY - 1400;
+      let x = event.pageX;
+      let y = event.pageY;
 
       //Position tooltip and make it visible
       d3.select("#tooltip-bar-times-flooded")
@@ -129,7 +127,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
     })
 
     .on("mouseout", function () {
-      d3.select(this).style("fill",  function (d) {
+      d3.select(this).style("fill", function (d) {
         return colorScale3(d.NumberFlooding);
       });
 

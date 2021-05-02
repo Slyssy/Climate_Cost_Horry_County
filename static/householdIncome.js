@@ -1,24 +1,26 @@
 // *Household Income>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-var width = 768;
-height = 400;
+var width = 1080;
+height = 393;
 margin = { left: 90, top: 70, right: 150, bottom: 160 };
 
 // Setting the ranges
 var x3 = d3.scaleBand().range([0, width]).padding(0.1);
 var y3 = d3.scaleLinear().range([height, 0]);
-var colorScale3 = d3.scaleOrdinal()
-.range([
+var colorScale3 = d3
+  .scaleOrdinal()
+  .range([
     "#ed5151",
-      "#149ece",
-      "#3caf99",
-      "#004c73",
-      "#fc921f",
-      "#a8a800",
-      "#f789d8",
-      "#732600",
-      "#ff00c5",
-      "#9e559c",
-      "#a7c636",]);
+    "#149ece",
+    "#3caf99",
+    "#004c73",
+    "#fc921f",
+    "#a8a800",
+    "#f789d8",
+    "#732600",
+    "#ff00c5",
+    "#9e559c",
+    "#a7c636",
+  ]);
 
 // * append the svg object to the body of the page
 // * append a 'group' element to 'svg'
@@ -53,18 +55,20 @@ yAxisG
 
 g.append("text")
   .attr("class", "xAxis-Label")
-  .attr("x", 150)
+  .attr("x", 320)
   .attr("y", 480)
   .text("Household Income");
 
 g.append("text")
   .attr("y", -80)
-  .attr("x", 50)
+  .attr("x", 310)
   .attr("class", "title")
   .text("Reported Household Income");
 
 // Load the Data
-d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data1) {
+d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (
+  data1
+) {
   // Format the data
   data1.forEach(function (d) {
     d.Household_Income = d.Household_Income;
@@ -102,7 +106,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
     .attr("height", function (d) {
       return height - y3(d.Count_Household_Income);
     })
-    .attr("fill",  function (d) {
+    .attr("fill", function (d) {
       return colorScale3(d.Household_Income);
     });
 
@@ -128,8 +132,8 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
       d3.select("#tool_tip_times_flooded").text(" " + d.Count_Household_Income);
 
       //Position the tooltip <div> and set its content
-      let x = event.pageX - 1300;
-      let y = event.pageY - 1400;
+      let x = event.pageX;
+      let y = event.pageY;
 
       //Position tooltip and make it visible
       d3.select("#tooltip-bar-times-flooded")
@@ -139,7 +143,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (data
     })
 
     .on("mouseout", function () {
-      d3.select(this).style("fill",  function (d) {
+      d3.select(this).style("fill", function (d) {
         return colorScale3(d.Household_Income);
       });
 

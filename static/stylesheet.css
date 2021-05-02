@@ -7,8 +7,71 @@ body {
 
   display: grid;
 
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 70px 1fr 1fr 1fr 1fr 1fr 100px;
+
+  gap: 10px;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.container div {
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 5;
+  text-align: center;
+}
+
+.embed-container {
+  grid-column-start: 1;
+  grid-column-end: 3;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mapDescription {
+  grid-column-start: 3;
+  grid-column-end: 5;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.weatherStationTotals {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.annualTotals {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+.floodedHouses {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.Times_Flooded {
+  grid-column-start: 3;
+  grid-column-end: 5;
+}
+
+.OOP_Expense {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
+
+.householdIncome {
+  grid-column-start: 3;
+  grid-column-end: 5;
 }
 
 .axis text {
@@ -27,6 +90,7 @@ body {
   fill: #57595a;
 }
 .xAxis-Label {
+  font-family: "Open Sans", sans-serif;
   stroke: #57595a;
   fill: #57595a;
   font-size: 20pt;
@@ -82,7 +146,8 @@ rect {
 
 .title {
   font-family: "Open Sans", sans-serif;
-  font-size: 2em;
+  font-size: 1.4em;
+  font-weight: bold;
   fill: #57595a;
 }
 

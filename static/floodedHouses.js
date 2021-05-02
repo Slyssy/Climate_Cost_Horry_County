@@ -1,6 +1,6 @@
 // * Set Demensions and margins for the bar chart
-var width = 768;
-height = 400;
+var width = 1080;
+height = 393;
 margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
 // * Setting the ranges
@@ -26,7 +26,7 @@ var g = svg
 var xAxisG = g
   .append("g")
   .attr("class", "x axis")
-  .attr("transform", "translate(0," + innerHeight + ")");
+  .attr("transform", "translate(0," + height + ")");
 
 var yAxisG = g.append("g").attr("class", "y axis");
 
@@ -41,13 +41,13 @@ yAxisG
 
 g.append("text")
   .attr("class", "xAxis-Label")
-  .attr("x", 230)
+  .attr("x", 370)
   .attr("y", 400)
   .text("Flood Zones");
 
 g.append("text")
   .attr("y", -80)
-  .attr("x", 20)
+  .attr("x", 280)
   .attr("class", "title")
   .text("Flooded Houses in Each Flood Zone");
 
@@ -102,7 +102,6 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
     .selectAll("text")
     .attr("class", "floodedHouses_xAxis_tickLabel");
 
-
   // * add the y Axis
   svg.append("g").call(d3.axisLeft(y3).ticks(5).tickSize(-width));
 
@@ -113,8 +112,8 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
       d3.select("#tool_tip").text(" " + d.Count);
 
       //* Position the tooltip <div> and set its content
-      let x = event.pageX - 500;
-      let y = event.pageY - 1400;
+      let x = event.pageX;
+      let y = event.pageY;
 
       //* Position tooltip and make it visible
       d3.select("#tooltip-bar")
@@ -132,5 +131,3 @@ d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
       d3.select("#tooltip-bar").style("opacity", "0");
     });
 });
-
-

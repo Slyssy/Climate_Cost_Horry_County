@@ -40,7 +40,7 @@ function chartTrend(csvTrends) {
     .text((d) => d);
 
   var svg = d3.select("#prcpTrends"),
-    margin = { top: 70, right: -35, bottom: 50, left: 110 },
+    margin = { top: 70, right: -35, bottom: 20, left: 110 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -97,7 +97,7 @@ function chartTrend(csvTrends) {
     .append("text")
     .attr("class", "yAxisPRCP")
     .attr("y", -30)
-    .attr("x", -200)
+    .attr("x", -130)
     .attr("transform", `rotate(-90)`)
     // .attr("fill", "#635f5d")
     // .style("font-size", "2.5em")
@@ -106,7 +106,7 @@ function chartTrend(csvTrends) {
   svg
     .append("text")
     .attr("y", 40)
-    .attr("x", 185)
+    .attr("x", 125)
     .attr("class", "title")
     .text("Weather Station Precipitation Totals");
 

@@ -96,7 +96,7 @@ function chart(csv) {
     .append("text")
     .attr("class", "yAxisPRCP")
     .attr("y", -30)
-    .attr("x", -200)
+    .attr("x", -90)
     .attr("transform", `rotate(-90)`)
     // .attr("fill", "#635f5d")
     // .style("font-size", "2.5em")
@@ -105,7 +105,7 @@ function chart(csv) {
   svg
     .append("text")
     .attr("y", 35)
-    .attr("x", 270)
+    .attr("x", 170)
     .attr("class", "title")
     .text("Annual Precipitation Totals");
 
