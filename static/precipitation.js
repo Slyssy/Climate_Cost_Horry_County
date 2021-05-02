@@ -105,7 +105,7 @@ function chart(csv) {
   svg
     .append("text")
     .attr("y", 35)
-    .attr("x", 170)
+    .attr("x", 110)
     .attr("class", "title")
     .text("Annual Precipitation Totals");
 

@@ -17,7 +17,7 @@ body {
 
 .container div {
   padding: 10px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
 }
 
 .header {
@@ -267,6 +267,21 @@ rect {
 
 iframe {
   max-width: 100%;
+}
+
+.page-title {
+  font-family: "Open Sans", sans-serif;
+}
+
+.my-3 {
+  font-family: "Open Sans", sans-serif;
+}
+
+p {
+  font-family: "Open Sans", sans-serif;
+}
+.listText {
+  font-family: "Open Sans", sans-serif;
 }
 /* .embed-container {
   position: relative; 
