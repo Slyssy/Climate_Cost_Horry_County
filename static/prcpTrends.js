@@ -39,10 +39,20 @@ function chartTrend(csvTrends) {
     .append("option")
     .text((d) => d);
 
-  var svg = d3.select("#prcpTrends"),
-    margin = { top: 70, right: -35, bottom: 20, left: 110 },
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
+  var svg = d3
+    .select("div#weatherStationTotals")
+    .append("div")
+    .classed("svg-container", true)
+    .append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 1200 548")
+    .classed("prcpTrends", true)
+    .attr("width", 1200)
+    .attr("height", 548);
+
+  let margin = { top: 70, right: -35, bottom: 20, left: 110 };
+  let width = +svg.attr("width") - margin.left - margin.right;
+  let = +svg.attr("height") - margin.top - margin.bottom;
 
   //   Setting x Scale
   const x = d3
@@ -80,9 +90,6 @@ function chartTrend(csvTrends) {
       .attr("class", "weatherStation_xAxis_tickLabels")
       .attr("y", 10)
       .attr("x", 0);
-  //   .attr("dy", ".35em")
-  //   .attr("transform", "rotate(60)")
-  //   .style("text-anchor", "start");
 
   var yAxis = (g) =>
     g
@@ -97,10 +104,8 @@ function chartTrend(csvTrends) {
     .append("text")
     .attr("class", "yAxisPRCP")
     .attr("y", -30)
-    .attr("x", -130)
+    .attr("x", -165)
     .attr("transform", `rotate(-90)`)
-    // .attr("fill", "#635f5d")
-    // .style("font-size", "2.5em")
     .text("Precipitation (in)");
 
   svg
@@ -159,8 +164,6 @@ function chartTrend(csvTrends) {
         d3.select("#annualPrecipitationTrends").text(" " + d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        // let x = event.pageX - 500;
-        // let y = event.pageY - 1000;
         let x = event.pageX;
         let y = event.pageY;
 

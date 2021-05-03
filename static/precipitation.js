@@ -39,10 +39,20 @@ function chart(csv) {
     .append("option")
     .text((d) => d);
 
-  var svg = d3.select("#precipitation_barchart"),
-    margin = { top: 70, right: -35, bottom: 50, left: 110 },
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
+  var svg = d3
+    .select("div#annualTotals")
+    .append("div")
+    .classed("svg-container1", true)
+    .append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 1200 548")
+    .classed("prcpYears", true)
+    .attr("width", 1200)
+    .attr("height", 548);
+
+  let margin = { top: 70, right: -35, bottom: 50, left: 110 };
+  let width = +svg.attr("width") - margin.left - margin.right;
+  let height = +svg.attr("height") - margin.top - margin.bottom;
 
   // Setting x Scale
   const x = d3

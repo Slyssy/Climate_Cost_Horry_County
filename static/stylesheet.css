@@ -44,14 +44,48 @@ body {
   margin-right: auto;
 }
 
-.weatherStationTotals {
+#weatherStationTotals {
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+.svg-container {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+#prcpTrends {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
 }
 
 .annualTotals {
   grid-column-start: 3;
   grid-column-end: 5;
+}
+
+.svg-container1 {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
+  vertical-align: middle;
+  overflow: hidden;
+}
+
+#prcpYears {
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  top: 10px;
+  left: 0;
 }
 
 .floodedHouses {
