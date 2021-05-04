@@ -5,6 +5,19 @@ h1 {
   color: rgb(103, 107, 107);
 }
 
-svg {
+/* svg {
   background-color: rgb(240, 241, 241);
+} */
+
+.xAxisText {
+  font-size: 16px;
+}
+
+.yAxisLabel {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.legendText {
+  fill: black;
 }
