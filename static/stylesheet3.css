@@ -23,6 +23,80 @@ h1 {
   color: rgb(103, 107, 107);
 }
 
+.title {
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.4em;
+  font-weight: bold;
+  fill: #57595a;
+}
+
+.tick {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 8pt;
+}
+
+.tick line {
+  stroke: #c0c0bb;
+}
+
+.weatherStation_xAxis_tickLabels {
+  stroke: #57595a;
+  fill: #57595a;
+  font-size: 14pt;
+}
+
+.yAxisPRCP {
+  font-family: "Open Sans", sans-serif;
+  font-size: 12pt;
+  stroke: #57595a;
+  fill: #57595a;
+}
+
+/* *Tooltip for Weather Station Totals */
+#tooltipTrends {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: rgba(34, 35, 36, 0.75);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* *Y Axis Labels for Annual Preciptitation */
+.yAxisAnnualLabels {
+  font-size: 12pt;
+}
+/* *Tooltip for Annual Preciptiation Totals */
+#tooltip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: rgba(34, 35, 36, 0.75);
+  opacity: 0;
+  pointer-events: none;
+}
+
 /* svg {
   background-color: rgb(240, 241, 241);
 } */

@@ -1,20 +1,4 @@
-// const stations = [
-//     "CONWAY, SC US",
-//     "CONWAY 6.2 E, SC US",
-//     "MYRTLE BEACH 8.6 SW, SC US",
-//     "MYRTLE BEACH 9.1 WSW, SC US",
-//     "LORIS 2.9 WSW, SC US",
-//     "MYRTLE BEACH 9.2 WSW, SC US",
-//     "MURRELLS INLET 1.7 N, SC US",
-//     "MYRTLE BEACH 2.4 ENE, SC US",
-//     "MYRTLE BEACH 7.4 NNW, SC US",
-//     "MURRELLS INLET 4.0 NE, SC US",
-//     "MYRTLE BEACH 5.0 WNW, SC US",
-//     "MYRTLE BEACH 4.8 NNW, SC US",
-//     "LORIS 1.4 ENE, SC US",
-//     "NORTH MYRTLE BEACH, SC US"
-// ]
-
+//Weather Station Totals
 d3.csv("/static/Horry_County_Precipitation.csv").then((d) => chartTrend(d));
 
 function chartTrend(csvTrends) {
@@ -39,10 +23,20 @@ function chartTrend(csvTrends) {
     .append("option")
     .text((d) => d);
 
-  var svg = d3.select("#prcpTrends"),
-    margin = { top: 70, right: -35, bottom: 20, left: 110 },
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
+  var svg = d3
+    .select("div#weatherStationTotals")
+    .append("div")
+    .classed("svg-container", true)
+    .append("svg")
+    .attr("preserveAspectRatio", "xMinYMin meet")
+    .attr("viewBox", "0 0 1200 548")
+    .classed("prcpTrends", true)
+    .attr("width", 1200)
+    .attr("height", 548);
+
+  let margin = { top: 70, right: -35, bottom: 20, left: 110 };
+  let width = +svg.attr("width") - margin.left - margin.right;
+  let height = +svg.attr("height") - margin.top - margin.bottom;
 
   //   Setting x Scale
   const x = d3
@@ -80,9 +74,6 @@ function chartTrend(csvTrends) {
       .attr("class", "weatherStation_xAxis_tickLabels")
       .attr("y", 10)
       .attr("x", 0);
-  //   .attr("dy", ".35em")
-  //   .attr("transform", "rotate(60)")
-  //   .style("text-anchor", "start");
 
   var yAxis = (g) =>
     g
@@ -96,9 +87,8 @@ function chartTrend(csvTrends) {
     .attr("class", "y-axis")
     .append("text")
     .attr("class", "yAxisPRCP")
-    .attr("y", 50 - margin.left)
+    .attr("y", 80 - margin.left)
     .attr("x", 0 - height / 2)
-    .attr("dy", "1em")
     .attr("transform", `rotate(-90)`)
     .style("text-anchor", "middle")
     .text("Precipitation (in)");
@@ -159,8 +149,6 @@ function chartTrend(csvTrends) {
         d3.select("#annualPrecipitationTrends").text(" " + d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        // let x = event.pageX - 500;
-        // let y = event.pageY - 1000;
         let x = event.pageX;
         let y = event.pageY;
 
