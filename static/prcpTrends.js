@@ -52,7 +52,7 @@ function chartTrend(csvTrends) {
 
   let margin = { top: 70, right: -35, bottom: 20, left: 110 };
   let width = +svg.attr("width") - margin.left - margin.right;
-  let = +svg.attr("height") - margin.top - margin.bottom;
+  let height = +svg.attr("height") - margin.top - margin.bottom;
 
   //   Setting x Scale
   const x = d3
