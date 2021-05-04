@@ -1,5 +1,6 @@
+"use strict";
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 200, left: 50 },
+var margin = { top: 10, right: 30, bottom: 140, left: 50 },
   width = 860 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
 
@@ -14,7 +15,7 @@ var svg = d3
 
 // Parse the Data
 d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
-  // List of subgroups = header of the csv files = 1996 or 2016
+  // List of subgroups = header of the csv files = soil condition here
   var subgroups = data.columns.slice(5);
   console.log(subgroups);
 
@@ -25,32 +26,32 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     })
     .keys();
   console.log(groups);
-
   // Add X axis
   var x = d3.scaleBand().domain(groups).range([0, width]).padding([0.2]);
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
-    .call(d3.axisBottom(x).tickSizeOuter(0))
+    .call(d3.axisBottom(x).tickSize(0))
     .selectAll("text")
     .attr("y", 0)
     .attr("x", -10)
     .attr("dy", ".35em")
     .attr("transform", "rotate(300)")
     .style("text-anchor", "end");
-
-  var y = d3.scaleLinear().domain([0, 550]).range([height, 0]);
+  // Add Y axis
+  var y = d3.scaleLinear().domain([0, 300]).range([height, 0]);
   svg.append("g").call(d3.axisLeft(y));
 
-  // color palette = one color per subgroup
-  var color = d3.scaleOrdinal().domain(subgroups).range(["#149ece", "#ed5151"]);
+  // Another scale for subgroup position?
+  var xSubgroup = d3
+    .scaleBand()
+    .domain(subgroups)
+    .range([0, x.bandwidth()])
+    .padding([0.05]);
 
-  //stack the data? --> stack per subgroup
-  var stackedData = d3.stack().keys(subgroups)(data);
-  console.log(stackedData);
-  // ----------------
-  // Create a tooltip
-  // ----------------
+  // color palette = one color per subgroup
+  var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
+
   var tooltip = d3
     .select("#my_dataviz")
     .append("div")
@@ -66,10 +67,10 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
     // d3.select(this).style("fill", "#ce42f5");
-    var subgroupName = d3.select(this.parentNode).datum().key;
-    var subgroupValue = d.data[subgroupName];
+    var subgroupName = d.key;
+    var subgroupValue = d.value;
     console.log(subgroupName);
-    console.log(subgroupValue);
+
     tooltip
       .html(
         "Year: " +
@@ -92,37 +93,39 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     // });
     tooltip.style("opacity", 0);
   };
-
+  console.log(data);
   // Show the bars
   svg
     .append("g")
     .selectAll("g")
-    // Enter in the stack data = loop key per key = group per group
-    .data(stackedData)
+    // Enter in data = loop group per group
+    .data(data)
     .enter()
     .append("g")
-    .attr("fill", function (d) {
-      return color(d.key);
+    .attr("transform", function (d) {
+      return "translate(" + x(d.C_CAP) + ",0)";
     })
-    .attr("opacity", ".75")
     .selectAll("rect")
-    // enter a second time = loop subgroup per subgroup to add all rectangles
     .data(function (d) {
-      return d;
+      return subgroups.map(function (key) {
+        return { key: key, value: d[key] };
+      });
     })
     .enter()
     .append("rect")
     .attr("x", function (d) {
-      return x(d.data.C_CAP);
+      return xSubgroup(d.key);
     })
     .attr("y", function (d) {
-      return y(d[1]);
+      return y(d.value);
     })
+    .attr("width", xSubgroup.bandwidth())
     .attr("height", function (d) {
-      return y(d[0]) - y(d[1]);
+      return height - y(d.value);
     })
-    .attr("width", x.bandwidth())
-    .attr("stroke", "grey")
+    .attr("fill", function (d) {
+      return color(d.key);
+    })
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
