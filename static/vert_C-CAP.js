@@ -1,5 +1,5 @@
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 200, left: 50 },
+var margin = { top: 10, right: 80, bottom: 200, left: 70 },
   width = 860 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
 
@@ -41,6 +41,16 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
 
   var y = d3.scaleLinear().domain([0, 550]).range([height, 0]);
   svg.append("g").call(d3.axisLeft(y));
+
+  svg
+    .append("text")
+    .attr("class", "yAxisLabel")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Land Coverage (sq mi)");
 
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal().domain(subgroups).range(["#149ece", "#ed5151"]);
@@ -126,4 +136,34 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
+
+  var years = ["1996", "2016"];
+
+  var legend = svg
+    .selectAll(".legend")
+    .data(years.slice())
+    .enter()
+    .append("g")
+    .attr("class", "legend")
+    .attr("transform", function (d, i) {
+      return "translate(0," + i * 20 + ")";
+    });
+
+  legend
+    .append("rect")
+    .attr("x", width + 18)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", color);
+
+  legend
+    .append("text")
+    .attr("class", "legendText")
+    .attr("x", width + 40)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "start")
+    .text(function (d, i) {
+      return years[i];
+    });
 });
