@@ -1,12 +1,12 @@
 "use strict";
 // set the dimensions and margins of the graph
-var margin = { top: 10, right: 30, bottom: 140, left: 50 },
+var margin = { top: 40, right: 80, bottom: 212, left: 70 },
   width = 860 - margin.left - margin.right,
   height = 800 - margin.top - margin.bottom;
 
 // append the svg object to the body of the page
 var svg = d3
-  .select("#my_dataviz")
+  .select("#my_dataviz_vert")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -33,14 +33,25 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickSize(0))
     .selectAll("text")
+    .attr("class", "xAxisText")
     .attr("y", 0)
     .attr("x", -10)
     .attr("dy", ".35em")
-    .attr("transform", "rotate(300)")
+    .attr("transform", "rotate(270)")
     .style("text-anchor", "end");
   // Add Y axis
   var y = d3.scaleLinear().domain([0, 300]).range([height, 0]);
   svg.append("g").call(d3.axisLeft(y));
+
+  svg
+    .append("text")
+    .attr("class", "yAxisLabel")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Land Coverage (sq mi)");
 
   // Another scale for subgroup position?
   var xSubgroup = d3
@@ -53,7 +64,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
   var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
 
   var tooltip = d3
-    .select("#my_dataviz")
+    .select("#my_dataviz_vert")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -67,25 +78,24 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
     // d3.select(this).style("fill", "#ce42f5");
-    var subgroupName = d.key;
-    var subgroupValue = d.value;
-    console.log(subgroupName);
+    var year = d.key;
+    var coverage = d.value;
 
     tooltip
       .html(
         "Year: " +
-          subgroupName +
+          year +
           "<br>" +
           "Land Coverage: " +
-          subgroupValue +
+          coverage +
           " Square Miles"
       )
       .style("opacity", 1);
   };
   var mousemove = function (d) {
     tooltip
-      .style("left", d3.mouse(this)[0] + 90 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", d3.mouse(this)[1] + "px");
+      .style("left", d3.select(this).attr("rect") + 90 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+      .style("top", d3.select(this).attr("rect") + 90 + "px");
   };
   var mouseleave = function (d) {
     // d3.select(this).style("fill", function (d) {
@@ -129,4 +139,34 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .on("mouseover", mouseover)
     .on("mousemove", mousemove)
     .on("mouseleave", mouseleave);
+
+  var years = ["1996", "2016"];
+
+  var legend = svg
+    .selectAll(".legend")
+    .data(years.slice())
+    .enter()
+    .append("g")
+    .attr("class", "legend")
+    .attr("transform", function (d, i) {
+      return "translate(0," + i * 20 + ")";
+    });
+
+  legend
+    .append("rect")
+    .attr("x", width + 18)
+    .attr("width", 18)
+    .attr("height", 18)
+    .style("fill", color);
+
+  legend
+    .append("text")
+    .attr("class", "legendText")
+    .attr("x", width + 40)
+    .attr("y", 9)
+    .attr("dy", ".35em")
+    .style("text-anchor", "start")
+    .text(function (d, i) {
+      return years[i];
+    });
 });
