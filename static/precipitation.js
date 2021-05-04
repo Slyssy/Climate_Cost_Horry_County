@@ -40,7 +40,7 @@ function chart(csv) {
     .text((d) => d);
 
   var svg = d3.select("#precipitation_barchart"),
-    margin = { top: 70, right: -35, bottom: 50, left: 110 },
+    margin = { top: 70, right: -35, bottom: 80, left: 110 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
 
@@ -77,6 +77,7 @@ function chart(csv) {
       .attr("transform", "translate(0," + (height - margin.bottom) + ")")
       .call(d3.axisBottom(x).tickSizeOuter(0))
       .selectAll("text")
+      .attr("class", "yAxisAnnualLabels")
       .attr("y", 0)
       .attr("x", -10)
       .attr("dy", ".35em")
@@ -95,11 +96,10 @@ function chart(csv) {
     .attr("class", "y-axis")
     .append("text")
     .attr("class", "yAxisPRCP")
-    .attr("y", -30)
-    .attr("x", -90)
+    .attr("y", 80 - margin.left)
+    .attr("x", 0 - height / 2)
     .attr("transform", `rotate(-90)`)
-    // .attr("fill", "#635f5d")
-    // .style("font-size", "2.5em")
+    .style("text-anchor", "middle")
     .text("Precipitation (in)");
 
   svg
