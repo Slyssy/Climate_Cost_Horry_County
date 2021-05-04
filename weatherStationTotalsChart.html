@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet3.css" />
+
+    <title>Weather Station Precipitation Totals</title>
+  </head>
+  <body>
+    <div class="container">
+      <!-- <h1>Land Usage 1996 vs 2016</h1> -->
+    </div>
+    <div id="precipitationTrendsBar" class="col-md-6 col-sm-6 mb-4">
+      Choose Weather Station:
+      <select id="weatherStation"></select>
+      <input type="checkbox" id="sortPRCP" />
+      Toggle sort by Precipitation Volume
+      <div class="row">
+        <svg id="prcpTrends" width="1200" height="600"></svg>
+        <div id="tooltipTrends">
+          <!-- Station Name:<span id="stationName" class="info"></span><br>  -->
+          Annual Precipitation:<span
+            id="annualPrecipitationTrends"
+            class="info"
+          ></span>
+          <br />
+        </div>
+      </div>
+    </div>
+    <!-- <div id="my_dataviz_horz"></div> -->
+
+    <script src="../static/prcpTrends.js"></script>
+  </body>
+</html>

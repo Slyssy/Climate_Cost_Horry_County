@@ -96,11 +96,11 @@ function chartTrend(csvTrends) {
     .attr("class", "y-axis")
     .append("text")
     .attr("class", "yAxisPRCP")
-    .attr("y", -30)
-    .attr("x", -130)
+    .attr("y", 50 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
     .attr("transform", `rotate(-90)`)
-    // .attr("fill", "#635f5d")
-    // .style("font-size", "2.5em")
+    .style("text-anchor", "middle")
     .text("Precipitation (in)");
 
   svg
