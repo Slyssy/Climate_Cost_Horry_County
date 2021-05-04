@@ -77,7 +77,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
 
   // Three function that change the tooltip when user hover / move / leave a cell
   var mouseover = function (d) {
-    // d3.select(this).style("fill", "#ce42f5");
+    d3.select(this).style("fill", "#ce42f5");
     var year = d.key;
     var coverage = d.value;
 
@@ -98,9 +98,9 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
       .style("top", d3.select(this).attr("rect") + 90 + "px");
   };
   var mouseleave = function (d) {
-    // d3.select(this).style("fill", function (d) {
-    //   return color(subgroups);
-    // });
+    d3.select(this).style("fill", function (d) {
+      return color(d.key);
+    });
     tooltip.style("opacity", 0);
   };
   console.log(data);
