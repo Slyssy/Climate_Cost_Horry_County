@@ -53,7 +53,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .text("Land Coverage (sq mi)");
 
   // color palette = one color per subgroup
-  var color = d3.scaleOrdinal().domain(subgroups).range(["#149ece", "#ed5151"]);
+  var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
 
   //stack the data? --> stack per subgroup
   var stackedData = d3.stack().keys(subgroups)(data);
