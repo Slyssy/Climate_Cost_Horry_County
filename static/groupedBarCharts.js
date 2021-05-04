@@ -93,9 +93,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
       .style("opacity", 1);
   };
   var mousemove = function (d) {
-    tooltip
-      .style("left", d3.select(this).attr("rect") + 90 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", d3.select(this).attr("rect") + 90 + "px");
+    tooltip.style("top", event.pageY + "px").style("left", event.pageX + "px");
   };
   var mouseleave = function (d) {
     d3.select(this).style("fill", function (d) {
