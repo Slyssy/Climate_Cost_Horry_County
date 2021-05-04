@@ -20,11 +20,13 @@
   <body>
     <div class="container">
       <!-- <div class="row"> -->
-      <div id="precipitationVisualization" class="col-md-6 col-sm-6 mb-4">
-        Choose year:
+      <!-- <div id="precipitationVisualization" class="col-md-6 col-sm-6 mb-4"> -->
+        <div class="selectToggle">
+            Choose year:
         <select id="year"></select>
         <input type="checkbox" id="sort" />
         Toggle sort by Precipitation Volume
+        </div>
         <div class="row">
           <svg id="precipitation_barchart" width="1200" height="600"></svg>
           <div id="tooltip">

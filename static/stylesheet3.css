@@ -8,7 +8,7 @@
   display: grid;
 
   grid-template-columns: 1fr;
-  grid-template-rows: 80 1fr;
+  grid-template-rows: 20px 1fr;
 
   gap: 10px;
 
@@ -16,6 +16,10 @@
   box-sizing: border-box;
 }
 
+.selectToggle {
+  display: flex;
+  justify-content: center;
+}
 h1 {
   float: left;
   margin-left: 255px;
