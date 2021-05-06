@@ -24,7 +24,7 @@ function chartTrend(csvTrends) {
     .text((d) => d);
 
   var svg = d3
-    .select("div#weatherStationTotals")
+    .select("#weatherStationTotals")
     .append("div")
     .classed("svg-container", true)
     .append("svg")
