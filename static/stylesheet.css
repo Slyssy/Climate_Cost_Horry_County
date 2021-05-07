@@ -44,7 +44,7 @@ body {
   margin-right: auto;
 }
 
-#weatherStationTotals {
+.weatherStationTotals {
   grid-column-start: 1;
   grid-column-end: 3;
 }

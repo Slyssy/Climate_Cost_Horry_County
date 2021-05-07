@@ -19,16 +19,13 @@
   </head>
   <body>
     <div class="container">
-      <!-- <div class="row"> -->
       <div class="selectToggle">
-        <!-- <div id="precipitationTrendsBar"> -->
           Choose Weather Station:
           <select id="weatherStation"></select>
           <input type="checkbox" id="sortPRCP" />
           Toggle Sort by Precipitation Volume
         </div>
-        <div class="row">
-          <div id="weatherStationTotals"></div>
+        <svg id="prcpTrends" width="1200" height="548"></svg>
           <div id="tooltipTrends">
             Station Name:<span id="stationName" class="info"></span><br />
             Annual Precipitation:<span
@@ -37,10 +34,8 @@
             ></span>
             <br />
           </div>
-        </div>
       </div>
     </div>
-    <!-- <div id="my_dataviz_horz"></div> -->
 
     <script src="../static/prcpTrends.js"></script>
   </body>

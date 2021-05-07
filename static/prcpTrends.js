@@ -23,20 +23,18 @@ function chartTrend(csvTrends) {
     .append("option")
     .text((d) => d);
 
-  var svg = d3
-    .select("#weatherStationTotals")
-    .append("div")
-    .classed("svg-container", true)
-    .append("svg")
-    .attr("preserveAspectRatio", "xMinYMin meet")
-    .attr("viewBox", "0 0 1200 548")
-    .classed("prcpTrends", true)
-    .attr("width", 1200)
-    .attr("height", 548);
-
-  let margin = { top: 70, right: -35, bottom: 20, left: 110 };
-  let width = +svg.attr("width") - margin.left - margin.right;
-  let height = +svg.attr("height") - margin.top - margin.bottom;
+  var svg = d3.select("#prcpTrends"),
+    margin = { top: 70, right: -35, bottom: 20, left: 110 },
+    width = +svg.attr("width") - margin.left - margin.right,
+    height = +svg.attr("height") - margin.top - margin.bottom;
+  // .append("div")
+  // .classed("svg-container", true)
+  // .append("svg")
+  // .attr("preserveAspectRatio", "xMinYMin meet")
+  // .attr("viewBox", "0 0 1200 548")
+  // .classed("prcpTrends", true)
+  // .attr("width", 1200)
+  // .attr("height", 548);
 
   //   Setting x Scale
   const x = d3
