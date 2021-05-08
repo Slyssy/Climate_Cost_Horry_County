@@ -280,17 +280,17 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     .style("text-decoration", "underline")
     .text("# of Households Grouped by Reported Annual Household Income");
 
-  var tooltip = d3
-    .select("#householdIncome")
-    .append("div")
-    .style("opacity", 0)
-    .attr("class", "tooltip")
-    .style("position", "absolute")
-    .style("background-color", "white")
-    .style("border", "solid")
-    .style("border-width", "1px")
-    .style("border-radius", "5px")
-    .style("padding", "10px");
+  // var tooltip = d3
+  //   .select("#householdIncome")
+  //   .append("div")
+  //   .style("opacity", 0)
+  //   .attr("class", "tooltip")
+  //   .style("position", "absolute")
+  //   .style("background-color", "white")
+  //   .style("border", "solid")
+  //   .style("border-width", "1px")
+  //   .style("border-radius", "5px")
+  //   .style("padding", "10px");
 
   // *Adding Bars
   svg
@@ -312,8 +312,8 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     })
     .on("mouseover", function (event, d) {
       d3.select(this).style("fill", "#ce42f5");
-      d3.select("#tool_tip_income").text(" " + d.group);
-      d3.select("#tool_tip_income").text(" " + d.count);
+      d3.select("#tool_tip_income_group").text(" " + d.group);
+      d3.select("#tool_tip_income_count").text(" " + d.count);
 
       //Position the tooltip <div> and set its content
       let x = event.pageX;

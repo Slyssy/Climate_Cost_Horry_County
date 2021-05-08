@@ -316,8 +316,8 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     })
     .on("mouseover", function (event, d) {
       d3.select(this).style("fill", "#ce42f5");
-      d3.select("#tool_tip_oopGroup").text(" " + d.group);
-      d3.select("#tool_tip_oop").text(" " + d.count);
+      d3.select("#tool_tip_oop_group").text(" " + d.group);
+      d3.select("#tool_tip_oop_count").text(" " + d.count);
 
       //Position the tooltip <div> and set its content
       let x = event.pageX;
