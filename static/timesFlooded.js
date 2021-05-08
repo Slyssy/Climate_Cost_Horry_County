@@ -78,10 +78,11 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (
   yAxisG
     .append("text")
     .attr("class", "yAxisLabel")
-    .attr("y", -140)
-    .attr("x", -200)
-    .attr("transform", `rotate(-90)`)
-    .attr("fill", "black")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -60 - margin.left)
+    .attr("x", 60 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
     .text("# of  Houses");
 
   g.append("text")
