@@ -34,7 +34,7 @@ var yAxisG = g.append("g").attr("class", "y axis");
 
 yAxisG
   .append("text")
-  .attr("class", "yAxis-Label")
+  .attr("class", "yAxisLabel")
   .attr("y", -140)
   .attr("x", -200)
   .attr("transform", `rotate(-90)`)
@@ -42,7 +42,7 @@ yAxisG
   .text("# of  Houses");
 
 g.append("text")
-  .attr("class", "xAxis-Label")
+  .attr("class", "xAxisLabel")
   .attr("x", 280)
   .attr("y", 400)
   .text("Number of Reported Flood Events");
@@ -62,7 +62,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (
     d.NumberFlooding = d.NumberFlooding;
     d.CountFlooding = +d.CountFlooding;
   });
-  // console.log(data1)
+  console.log(data1);
 
   // Scale the range of the data in the domains
   x1.domain(
