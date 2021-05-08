@@ -229,7 +229,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
   x.domain([
     0,
     d3.max(data, function (d) {
-      return d.count;
+      return d.count + 2;
     }),
   ]);
   svg
