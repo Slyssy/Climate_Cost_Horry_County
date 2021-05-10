@@ -32,17 +32,18 @@ var yAxisG = g.append("g").attr("class", "y axis");
 
 yAxisG
   .append("text")
-  .attr("class", "yAxis-Label")
-  .attr("y", -140)
-  .attr("x", -250)
-  .attr("transform", `rotate(-90)`)
-  .attr("fill", "black")
+  .attr("class", "yAxisLabel")
+  .attr("transform", "rotate(-90)")
+  .attr("y", -60 - margin.left)
+  .attr("x", 60 - height / 2)
+  .attr("dy", "1em")
+  .style("text-anchor", "middle")
   .text("# of  Houses Flooded");
 
 g.append("text")
-  .attr("class", "xAxis-Label")
-  .attr("x", 370)
-  .attr("y", 400)
+  .attr("class", "xAxisLabel")
+  .attr("transform", "translate(" + (width / 2 - 80) + " ," + height + ")")
+  .style("text-anchor", "middle")
   .text("Flood Zones");
 
 g.append("text")
