@@ -269,6 +269,28 @@ function chart(csv) {
       .attr("transform", "translate(0,0)")
       .style("text-anchor", "middle");
 
+  // *Adding X Axis Label
+  svg
+    .append("text")
+    .attr("class", "xAxisLabel")
+    .attr(
+      "transform",
+      "translate(" + width / 2 + " ," + (height + margin.bottom - 5) + ")"
+    )
+    .style("text-anchor", "middle")
+    .text("Precipitation (in)");
+
+  // *Adding Y Axis Label
+  svg
+    .append("text")
+    .attr("class", "yAxisLabel")
+    .attr("transform", "rotate(-90)")
+    .attr("y", 0 - margin.left)
+    .attr("x", 0 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("Weather Station Name");
+
   var yAxis = (g) => g.call(d3.axisLeft(y).tickSize(0));
 
   svg.append("g").attr("class", "x-axis");
