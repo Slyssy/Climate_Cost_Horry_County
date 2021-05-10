@@ -223,7 +223,7 @@ function chart(csv) {
     .text((d) => d);
 
   // *Set dimensions and margins for chart
-  let margin = { top: 60, right: 80, bottom: 50, left: 220 },
+  let margin = { top: 60, right: 80, bottom: 50, left: 250 },
     width = 1200 - margin.left - margin.right,
     height = 548 - margin.top - margin.bottom;
 
@@ -319,7 +319,9 @@ function chart(csv) {
   function update(year, speed) {
     var data = csv.filter((d) => d.DATE == year);
     // console.log(data);
-    x.domain([0, d3.max(data, (d) => d.PRCP + 1)]);
+    x.domain([0, d3.max(data, (d) => d.PRCP + 1)]).call((g) =>
+      g.select(".domain").remove()
+    );
 
     svg.selectAll(".x-axis").transition().duration(speed).call(xAxis);
 

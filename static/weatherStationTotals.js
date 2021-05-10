@@ -84,18 +84,22 @@ function chartTrend(csvTrends) {
     .append("g")
     .attr("class", "y-axis")
     .append("text")
-    .attr("class", "yAxisPRCP")
-    .attr("y", 80 - margin.left)
-    .attr("x", 0 - height / 2)
+    .attr("class", "yAxisLabel")
+    .attr("y", 0 - margin.left)
+    .attr("x", -20 - height / 2)
+    .attr("dy", "3em")
     .attr("transform", `rotate(-90)`)
     .style("text-anchor", "middle")
     .text("Precipitation (in)");
 
+  // * Adding Chart Title
   svg
     .append("text")
-    .attr("y", 40)
-    .attr("x", 125)
     .attr("class", "title")
+    .attr("x", 80 + width / 2)
+    .attr("y", 70 - margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("text-decoration", "underline")
     .text("Weather Station Precipitation Totals");
 
   update(d3.select("#weatherStation").property("value"), 0);

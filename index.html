@@ -138,10 +138,12 @@
 
       <!-- * Related Projects Row -->
       <div class="weatherStationTotals">
-        Choose Weather Station:
-        <select id="weatherStation"></select>
-        <input type="checkbox" id="sortPRCP" />
-        Toggle Sort
+        <div class="selectToggle">
+          Choose Weather Station:
+          <select id="weatherStation"></select>
+          <input type="checkbox" id="sortPRCP" />
+          Toggle Sort
+        </div>
         <svg id="prcpTrends" width="1200" height="548"></svg>
         <div id="tooltipTrends">
           Station Name:<span id="stationName" class="info"></span><br />
@@ -153,13 +155,15 @@
         </div>
       </div>
       <div class="annualTotals">
-        Choose year:
-        <select id="year"></select>
-        <input type="checkbox" id="sort" />
-        Toggle Sort
-        <svg id="precipitation_barchart" width="1200" height="548"></svg>
+        <div class="selectToggle">
+          Choose year:
+          <select id="year"></select>
+          <input type="checkbox" id="sort" />
+          Toggle Sort
+        </div>
+        <div id="precipitation_barchart"></div>
         <div id="tooltip">
-          Station Name:<span id="stationName" class="info"></span><br />
+          <!-- Station Name:<span id="stationName" class="info"></span><br /> -->
           Annual Precipitation:<span
             id="annualPrecipitation"
             class="info"
@@ -198,8 +202,8 @@
     <script src="../static/floodedHouses.js"></script>
     <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
     <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
-    <script src="../static/precipitation.js"></script>
-    <script src="../static/prcpTrends.js"></script>
+    <script src="../static/annualTotals.js"></script>
+    <script src="../static/weatherStationTotals.js"></script>
     <script src="../static/timesFlooded.js"></script>
     <script src="../static/oopExpense.js"></script>
     <script src="../static/householdIncome.js"></script>
