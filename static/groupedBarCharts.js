@@ -17,7 +17,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
 
   // set the dimensions and margins of the graph
   var margin = { top: 40, right: 80, bottom: 212, left: 70 },
-    width = 860 - margin.left - margin.right,
+    width = 1200 - margin.left - margin.right,
     height = 800 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
@@ -62,6 +62,15 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     .domain(subgroups)
     .range([0, x.bandwidth()])
     .padding([0.05]);
+
+  svg
+    .append("text")
+    .attr("class", "title")
+    .attr("x", width / 2)
+    .attr("y", 0 - margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("text-decoration", "underline")
+    .text("Land Usage 1996 vs 2016");
 
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
@@ -144,7 +153,9 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     })
     .on("mouseover", function (event, d, i) {
       tooltip
-        .html(`<div>Year: ${d.key}</div><div>Land Coverage: ${d.value}</div>`)
+        .html(
+          `<div>Year: ${d.key}</div><div>Land Coverage: ${d.value} Square Miles</div>`
+        )
         .style("opacity", "1");
       d3.select(this).transition().attr("fill", "#ce42f5").duration(100);
     })
