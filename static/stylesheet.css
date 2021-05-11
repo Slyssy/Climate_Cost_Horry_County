@@ -84,6 +84,10 @@ body {
   grid-column-end: 5;
 }
 
+.landUsage {
+  grid-column-start: 1;
+  grid-column-end: 3;
+}
 /* .axis text {
   font-family: "Open Sans", sans-serif;
   font-size: 20pt;

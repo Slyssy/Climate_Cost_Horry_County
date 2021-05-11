@@ -1,31 +1,34 @@
 "use strict";
-// set the dimensions and margins of the graph
-var margin = { top: 40, right: 80, bottom: 212, left: 70 },
-  width = 860 - margin.left - margin.right,
-  height = 800 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-var svg = d3
-  .select("#my_dataviz_vert")
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 // Parse the Data
-d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
+d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
   // List of subgroups = header of the csv files = soil condition here
   var subgroups = data.columns.slice(5);
   console.log(subgroups);
 
-  // List of groups = species here = value of the first column called group -> I show them on the X axis
-  var groups = d3
-    .map(data, function (d) {
-      return d.C_CAP;
-    })
-    .keys();
+  // *Grabbing CCAP Groups from CSV Column to be used on X Axis
+  let groups = [...new Set(data.map((d) => d.C_CAP))];
+
+  // var groups = d3
+  //   .map(data, function (d) {
+  //     return d.C_CAP;
+  //   })
+  //   .keys();
   console.log(groups);
+
+  // set the dimensions and margins of the graph
+  var margin = { top: 40, right: 80, bottom: 212, left: 70 },
+    width = 1200 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  var svg = d3
+    .select("#my_dataviz_vert")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   // Add X axis
   var x = d3.scaleBand().domain(groups).range([0, width]).padding([0.2]);
   svg
@@ -60,9 +63,19 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .range([0, x.bandwidth()])
     .padding([0.05]);
 
+  svg
+    .append("text")
+    .attr("class", "title")
+    .attr("x", width / 2)
+    .attr("y", 0 - margin.top / 2)
+    .attr("text-anchor", "middle")
+    .style("text-decoration", "underline")
+    .text("Land Usage 1996 vs 2016");
+
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
 
+  // TODO Starting modifications for tooltip here
   var tooltip = d3
     .select("#my_dataviz_vert")
     .append("div")
@@ -76,27 +89,29 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .style("padding", "10px");
 
   // Three function that change the tooltip when user hover / move / leave a cell
-  var mouseover = function (d) {
-    d3.select(this).style("fill", "#ce42f5");
-    var year = d.key;
-    var coverage = d.value;
+  // var mouseover = function (d) {
+  //   d3.select(this).style("fill", "#ce42f5");
+  //   var year = d.key;
+  //   var coverage = d.value;
+  //   console.log(year);
+  //   console.log(coverage);
 
-    tooltip
-      .html(
-        "Year: " +
-          year +
-          "<br>" +
-          "Land Coverage: " +
-          coverage +
-          " Square Miles"
-      )
-      .style("opacity", 1);
-  };
-  var mousemove = function (d) {
-    tooltip
-      .style("left", d3.event.pageX + 10 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
-      .style("top", d3.event.pageY + 10 + "px");
-  };
+  // tooltip
+  //   .html(
+  //     "Year: " +
+  //       year +
+  //       "<br>" +
+  //       "Land Coverage: " +
+  //       coverage +
+  //       " Square Miles"
+  //   )
+  //     .style("opacity", 1);
+  // };
+  // var mousemove = function (d) {
+  //   tooltip
+  //     .style("left", d3.event.pageX + 10 + "px") // It is important to put the +90: other wise the tooltip is exactly where the point is an it creates a weird effect
+  //     .style("top", d3.event.pageY + 10 + "px");
+  // };
   var mouseleave = function (d) {
     d3.select(this).style("fill", function (d) {
       return color(d.key);
@@ -136,9 +151,27 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     .attr("fill", function (d) {
       return color(d.key);
     })
-    .on("mouseover", mouseover)
-    .on("mousemove", mousemove)
-    .on("mouseleave", mouseleave);
+    .on("mouseover", function (event, d, i) {
+      tooltip
+        .html(
+          `<div>Year: ${d.key}</div><div>Land Coverage: ${d.value} Square Miles</div>`
+        )
+        .style("opacity", "1");
+      d3.select(this).transition().attr("fill", "#ce42f5").duration(100);
+    })
+    .on("mousemove", function (event) {
+      tooltip
+        .style("top", event.pageY - 10 + "px")
+        .style("left", event.pageX + 10 + "px");
+    })
+    .on("mouseout", function (event) {
+      d3.select(this)
+        .transition()
+        .attr("fill", function (d) {
+          return color(d.key);
+        });
+      tooltip.style("opacity", 0);
+    });
 
   var years = ["1996", "2016"];
 
