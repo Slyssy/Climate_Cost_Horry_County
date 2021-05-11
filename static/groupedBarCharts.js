@@ -1,31 +1,34 @@
 "use strict";
-// set the dimensions and margins of the graph
-var margin = { top: 40, right: 80, bottom: 212, left: 70 },
-  width = 860 - margin.left - margin.right,
-  height = 800 - margin.top - margin.bottom;
-
-// append the svg object to the body of the page
-var svg = d3
-  .select("#my_dataviz_vert")
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
 // Parse the Data
-d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
+d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
   // List of subgroups = header of the csv files = soil condition here
   var subgroups = data.columns.slice(5);
   console.log(subgroups);
 
-  // List of groups = species here = value of the first column called group -> I show them on the X axis
-  var groups = d3
-    .map(data, function (d) {
-      return d.C_CAP;
-    })
-    .keys();
+  // *Grabbing CCAP Groups from CSV Column to be used on X Axis
+  let groups = [...new Set(data.map((d) => d.C_CAP))];
+
+  // var groups = d3
+  //   .map(data, function (d) {
+  //     return d.C_CAP;
+  //   })
+  //   .keys();
   console.log(groups);
+
+  // set the dimensions and margins of the graph
+  var margin = { top: 40, right: 80, bottom: 212, left: 70 },
+    width = 860 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+
+  // append the svg object to the body of the page
+  var svg = d3
+    .select("#my_dataviz_vert")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
   // Add X axis
   var x = d3.scaleBand().domain(groups).range([0, width]).padding([0.2]);
   svg
@@ -80,6 +83,8 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv", function (data) {
     d3.select(this).style("fill", "#ce42f5");
     var year = d.key;
     var coverage = d.value;
+    console.log(year);
+    console.log(coverage);
 
     tooltip
       .html(
