@@ -260,7 +260,7 @@ d3.csv("/static/FOIA_flood_data_0.csv").then(function (csv) {
     0,
     d3.max(data, function (d) {
       return d.count;
-    }) + 2,
+    }) + 50,
   ]);
 
   // append the rectangles for the bar chart
