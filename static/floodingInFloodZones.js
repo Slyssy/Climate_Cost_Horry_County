@@ -215,9 +215,7 @@ let xAxis = svg.append("g").attr("transform", "translate(0," + height + ")");
 var y = d3.scaleLinear().range([height, 0]);
 let yAxis = svg.append("g");
 
-var color = d3
-  .scaleOrdinal()
-  .range(["#ed5151", "#149ece", "#3caf99", "#004c73", "#fc921f"]);
+var color = d3.scaleOrdinal().range(["rgb(252, 146, 31)"]);
 
 // *Function that creates and updates the plot for given set of data.
 function update(data) {
