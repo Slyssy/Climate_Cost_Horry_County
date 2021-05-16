@@ -14,7 +14,13 @@
   <body>
     <div class="container">
       <div class="header"></div>
-      <div id="timesFlooded" class="row"></div>
+      <div id="timesFlooded" class="row">
+        <button onclick="update(data)">All Flood Events</button>
+        <button onclick="update(dataAE)">AE</button>
+        <button onclick="update(dataVE)">VE</button>
+        <button onclick="update(dataX)">X</button>
+        <button onclick="update(data02)">0.2 PCT</button>
+      </div>
       <div id="tooltip-bar-timesFlooded">
         Flood Zone:
         <span id="tool_tip_floodZone" class="info"></span><br />
