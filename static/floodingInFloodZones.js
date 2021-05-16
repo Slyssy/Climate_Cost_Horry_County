@@ -3,27 +3,27 @@
 // // *Load the Data
 // d3.csv("/static/FOIA_flood_data_0.csv").then(function (csv) {
 //   // *Parsing data to make it useable for chart
-//   let counts = {};
-//   csv.forEach(function (d) {
-//     let timesFloodedGroup = d.Times_Flooded;
-//     if (counts[timesFloodedGroup] === undefined) {
-//       counts[timesFloodedGroup] = 1;
-//     } else {
-//       counts[timesFloodedGroup] = counts[timesFloodedGroup] + 1;
-//     }
-//   });
-//   csv.forEach(function (d) {
-//     let timesFloodedGroup = d.Times_Flooded;
-//     d.count = counts[timesFloodedGroup];
-//   });
+// let counts = {};
+// csv.forEach(function (d) {
+//   let timesFloodedGroup = d.Times_Flooded;
+//   if (counts[timesFloodedGroup] === undefined) {
+//     counts[timesFloodedGroup] = 1;
+//   } else {
+//     counts[timesFloodedGroup] = counts[timesFloodedGroup] + 1;
+//   }
+// });
+// csv.forEach(function (d) {
+//   let timesFloodedGroup = d.Times_Flooded;
+//   d.count = counts[timesFloodedGroup];
+// });
 
-//   console.log(counts);
+// console.log(counts);
 
-//   // Split the count object into an array of objects
-//   data = Object.keys(counts).map((k) => ({ group: k, count: counts[k] }));
+// // Split the count object into an array of objects
+// data = Object.keys(counts).map((k) => ({ group: k, count: counts[k] }));
 
-//   const sortOrder = ["0", "1", "2", "3"];
-//   data.sort((a, b) => sortOrder.indexOf(a.group) - sortOrder.indexOf(b.group));
+// const sortOrder = ["0", "1", "2", "3"];
+// data.sort((a, b) => sortOrder.indexOf(a.group) - sortOrder.indexOf(b.group));
 
 //   console.log(data);
 
@@ -162,9 +162,10 @@
 
 // *Load the Data
 d3.csv("/static/FOIA_flood_data_0.csv").then(function (csv) {
-  // *Parsing data to make it useable for chart
+  // *Parsing data use for total number of houses in each flood zone to report flooding.
 
   let countsFloodZone = {};
+
   csv.forEach(function (d) {
     let floodZone = d.Flood_Zone;
     if (d.Times_Flooded != 0) {
@@ -175,15 +176,9 @@ d3.csv("/static/FOIA_flood_data_0.csv").then(function (csv) {
       }
     }
   });
+
   console.log(countsFloodZone);
-  // csv.forEach(function (d) {
-  //   let floodZone = d.Flood_Zone;
-  //   d.count = countsFloodZone[floodZone];
-  // });
 
-  // console.log(countsFloodZone);
-
-  // Split the count object into an array of objects
   data = Object.keys(countsFloodZone).map((k) => ({
     group: k,
     count: countsFloodZone[k],
@@ -192,6 +187,126 @@ d3.csv("/static/FOIA_flood_data_0.csv").then(function (csv) {
   data.sort((a, b) => sortOrder.indexOf(a.group) - sortOrder.indexOf(b.group));
 
   console.log(data);
+
+  // * Creating AE Dataset to show number times Group AE houses reported flooding
+  let countsAE = {};
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    let floodZone = d.Flood_Zone;
+    if (floodZone === "AE") {
+      if (countsAE[timesFloodedGroup] === undefined) {
+        countsAE[timesFloodedGroup] = 1;
+      } else {
+        countsAE[timesFloodedGroup] = countsAE[timesFloodedGroup] + 1;
+      }
+    }
+  });
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    d.count = countsAE[timesFloodedGroup];
+  });
+
+  console.log(countsAE);
+
+  // Split the count object into an array of objects
+  dataAE = Object.keys(countsAE).map((k) => ({ group: k, count: countsAE[k] }));
+
+  const sortOrderAE = ["0", "1", "2", "3"];
+  dataAE.sort(
+    (a, b) => sortOrderAE.indexOf(a.group) - sortOrderAE.indexOf(b.group)
+  );
+
+  console.log(dataAE);
+
+  // * Creating VE Dataset to show number times Group AE houses reported flooding
+  let countsVE = {};
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    let floodZone = d.Flood_Zone;
+    if (floodZone === "VE") {
+      if (countsVE[timesFloodedGroup] === undefined) {
+        countsVE[timesFloodedGroup] = 1;
+      } else {
+        countsVE[timesFloodedGroup] = countsVE[timesFloodedGroup] + 1;
+      }
+    }
+  });
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    d.count = countsVE[timesFloodedGroup];
+  });
+
+  console.log(countsVE);
+
+  // Split the count object into an array of objects
+  dataVE = Object.keys(countsVE).map((k) => ({ group: k, count: countsVE[k] }));
+
+  const sortOrderVE = ["0", "1", "2", "3"];
+  dataVE.sort(
+    (a, b) => sortOrderVE.indexOf(a.group) - sortOrderVE.indexOf(b.group)
+  );
+
+  console.log(dataVE);
+
+  // * Creating X Dataset to show number times Group AE houses reported flooding
+  let countsX = {};
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    let floodZone = d.Flood_Zone;
+    if (floodZone === "X") {
+      if (countsX[timesFloodedGroup] === undefined) {
+        countsX[timesFloodedGroup] = 1;
+      } else {
+        countsX[timesFloodedGroup] = countsX[timesFloodedGroup] + 1;
+      }
+    }
+  });
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    d.count = countsX[timesFloodedGroup];
+  });
+
+  console.log(countsX);
+
+  // Split the count object into an array of objects
+  dataX = Object.keys(countsX).map((k) => ({ group: k, count: countsX[k] }));
+
+  const sortOrderX = ["0", "1", "2", "3"];
+  dataX.sort(
+    (a, b) => sortOrderX.indexOf(a.group) - sortOrderX.indexOf(b.group)
+  );
+
+  console.log(dataX);
+
+  // * Creating 0.2 Dataset to show number times Group AE houses reported flooding
+  let counts02 = {};
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    let floodZone = d.Flood_Zone;
+    if (floodZone === "0.2 PCT ANNUAL CHANCE") {
+      if (counts02[timesFloodedGroup] === undefined) {
+        counts02[timesFloodedGroup] = 1;
+      } else {
+        counts02[timesFloodedGroup] = counts02[timesFloodedGroup] + 1;
+      }
+    }
+  });
+  csv.forEach(function (d) {
+    let timesFloodedGroup = d.Times_Flooded;
+    d.count = counts02[timesFloodedGroup];
+  });
+
+  console.log(counts02);
+
+  // Split the count object into an array of objects
+  data02 = Object.keys(counts02).map((k) => ({ group: k, count: counts02[k] }));
+
+  const sortOrder02 = ["0", "1", "2", "3"];
+  data02.sort(
+    (a, b) => sortOrder02.indexOf(a.group) - sortOrder02.indexOf(b.group)
+  );
+
+  console.log(data02);
 
   var width = 1080;
   height = 393;
