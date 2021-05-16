@@ -13,14 +13,30 @@
   </head>
   <body>
     <div class="container">
-      <div class="header"></div>
-      <div id="timesFlooded" class="row">
-        <button onclick="update(data)">All Flood Events</button>
-        <button onclick="update(dataAE)">AE</button>
-        <button onclick="update(dataVE)">VE</button>
-        <button onclick="update(dataX)">X</button>
-        <button onclick="update(data02)">0.2 PCT</button>
+      <div class="header">
+        <div class="row">
+          <button class="primaryButton" onclick="update(data)">
+            All Flood Events
+          </button>
+          <label class="buttonText" style="margin-left: 15px">
+            Click this button to see how many houses in each flood zone has
+            reported flooding. (The chart automatically loads with this data.)
+          </label>
+        </div>
+        <div class="row" style="margin-top: 15px">
+          <button class="secondaryButton" onclick="update(dataAE)">AE</button>
+          <button class="secondaryButton" onclick="update(dataVE)">VE</button>
+          <button class="secondaryButton" onclick="update(dataX)">X</button>
+          <button class="secondaryButton" onclick="update(data02)">
+            0.2 PCT
+          </button>
+          <label class="buttonText" style="margin-left: 15px">
+            Click these buttons to filter the data to see how many households in
+            the corresponding flood zone reported 0, 1, 2 or 3 flooding events.
+          </label>
+        </div>
       </div>
+      <div id="timesFlooded" class="row"></div>
       <div id="tooltip-bar-timesFlooded">
         Flood Zone:
         <span id="tool_tip_floodZone" class="info"></span><br />
