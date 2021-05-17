@@ -275,7 +275,7 @@ function update(data) {
       });
 
       //Hide the tooltip
-      d3.select("#tooltip-bar-timesFlooded").style("opacity", "0");
+      d3.select("#tooltip-bar-floodingInFloodZones").style("opacity", "0");
     })
     .transition()
     .duration(1000)
