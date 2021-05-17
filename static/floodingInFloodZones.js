@@ -165,7 +165,7 @@ margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
 // *Appending SVG object to the correct div on page
 var svg = d3
-  .select("#timesFlooded")
+  .select("#floodingInFloodZones")
   .append("svg")
   .attr("width", width + margin.left + margin.right)
   .attr("height", height + margin.top + margin.bottom)
@@ -231,7 +231,7 @@ function update(data) {
     .duration(1000)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
-    .attr("class", "timesFlooded_xAxis_tickLabel");
+    .attr("class", "floodinInFloodZones_xAxis_tickLabel");
 
   y.domain([
     0,
@@ -264,7 +264,7 @@ function update(data) {
       let y = event.pageY;
 
       //Position tooltip and make it visible
-      d3.select("#tooltip-bar-timesFlooded")
+      d3.select("#tooltip-bar-floodingInFloodZones")
         .style("left", x + "px")
         .style("top", y + "px")
         .style("opacity", 1);
