@@ -28,8 +28,8 @@ body {
 }
 
 .embed-container {
-  grid-column-start: 1;
-  grid-column-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 4;
 
   display: block;
   margin-left: auto;
@@ -37,7 +37,16 @@ body {
 }
 
 .mapDescription {
-  grid-column-start: 3;
+  grid-column-start: 1;
+  grid-column-end: 2;
+
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.floodZoneDefs {
+  grid-column-start: 4;
   grid-column-end: 5;
 
   display: block;
