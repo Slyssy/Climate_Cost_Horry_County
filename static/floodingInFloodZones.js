@@ -248,8 +248,8 @@ function update(data) {
     .duration(1000)
     .call(d3.axisLeft(y).ticks(5).tickSize(-1080));
 
-  // append the rectangles for the bar chart
-  var u = svg.selectAll(".floodingInFloodZoneBar").data(data);
+  //* Adding Tooltip Behavior
+  var u = svg.selectAll(".bar").data(data);
 
   u.enter()
     .append("rect")
@@ -274,12 +274,13 @@ function update(data) {
         return color(d.group);
       });
 
-      //Hide the tooltip
+      // *append the rectangles for the bar chart
+
       d3.select("#tooltip-bar-floodingInFloodZones").style("opacity", "0");
     })
     .transition()
     .duration(1000)
-    .attr("class", "floodingInFloodZoneBar")
+    .attr("class", "bar")
     .attr("x", function (d) {
       return x(d.group);
     })
@@ -293,8 +294,6 @@ function update(data) {
     .attr("fill", function (d) {
       return color(d.group);
     });
-
-  //* Adding Tooltip Behavior
 
   u.exit().remove();
 }
