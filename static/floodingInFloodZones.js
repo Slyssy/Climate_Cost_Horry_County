@@ -231,7 +231,7 @@ function update(data) {
     .duration(1000)
     .call(d3.axisBottom(x).tickSizeOuter(0))
     .selectAll("text")
-    .attr("class", "floodinInFloodZones_xAxis_tickLabel");
+    .attr("class", "floodingInFloodZones_xAxis_tickLabel");
 
   y.domain([
     0,
@@ -249,7 +249,7 @@ function update(data) {
     .call(d3.axisLeft(y).ticks(5).tickSize(-1080));
 
   // append the rectangles for the bar chart
-  var u = svg.selectAll(".bar").data(data);
+  var u = svg.selectAll(".floodingInFloodZoneBar").data(data);
 
   u.enter()
     .append("rect")
@@ -279,7 +279,7 @@ function update(data) {
     })
     .transition()
     .duration(1000)
-    .attr("class", "bar")
+    .attr("class", "floodingInFloodZoneBar")
     .attr("x", function (d) {
       return x(d.group);
     })

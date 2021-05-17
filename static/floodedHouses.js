@@ -1,59 +1,58 @@
-// * Set Demensions and margins for the bar chart
-var width = 1080;
-height = 393;
-margin = { left: 90, top: 70, right: 30, bottom: 85 };
-
-// * Setting the ranges
-var x3 = d3.scaleBand().range([0, width]).padding(0.1);
-var y3 = d3.scaleLinear().range([height, 0]);
-var colorScale = d3.scaleOrdinal().range(["#6aeb5e", "#ebe028", "#976aeb"]);
-
-// * append the svg object to the body of the page
-// * append a 'group' element to 'svg'
-// * moves the 'group' element to the top left margin
-var svg = d3
-  .select("#barChart")
-  .append("svg")
-  .attr("width", width + margin.left + margin.right)
-  .attr("height", height + margin.top + margin.bottom)
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var g = svg
-  .append("g")
-  .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-var xAxisG = g
-  .append("g")
-  .attr("class", "x axis")
-  .attr("transform", "translate(0," + height + ")");
-
-var yAxisG = g.append("g").attr("class", "y axis");
-
-yAxisG
-  .append("text")
-  .attr("class", "yAxisLabel")
-  .attr("transform", "rotate(-90)")
-  .attr("y", -60 - margin.left)
-  .attr("x", 60 - height / 2)
-  .attr("dy", "1em")
-  .style("text-anchor", "middle")
-  .text("# of  Houses Flooded");
-
-g.append("text")
-  .attr("class", "xAxisLabel")
-  .attr("transform", "translate(" + (width / 2 - 80) + " ," + height + ")")
-  .style("text-anchor", "middle")
-  .text("Flood Zones");
-
-g.append("text")
-  .attr("y", -80)
-  .attr("x", 280)
-  .attr("class", "title")
-  .text("Flooded Houses in Each Flood Zone");
-
 // * Load the Data
 d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
+  // * Set Demensions and margins for the bar chart
+  var width = 1080;
+  height = 393;
+  margin = { left: 90, top: 70, right: 30, bottom: 85 };
+
+  // * Setting the ranges
+  var x3 = d3.scaleBand().range([0, width]).padding(0.1);
+  var y3 = d3.scaleLinear().range([height, 0]);
+  var colorScale = d3.scaleOrdinal().range(["#6aeb5e", "#ebe028", "#976aeb"]);
+
+  // * append the svg object to the body of the page
+  // * append a 'group' element to 'svg'
+  // * moves the 'group' element to the top left margin
+  var svg = d3
+    .select("#barChart")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var g = svg
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+  var xAxisG = g
+    .append("g")
+    .attr("class", "x axis")
+    .attr("transform", "translate(0," + height + ")");
+
+  var yAxisG = g.append("g").attr("class", "y axis");
+
+  yAxisG
+    .append("text")
+    .attr("class", "yAxisLabel")
+    .attr("transform", "rotate(-90)")
+    .attr("y", -60 - margin.left)
+    .attr("x", 60 - height / 2)
+    .attr("dy", "1em")
+    .style("text-anchor", "middle")
+    .text("# of  Houses Flooded");
+
+  g.append("text")
+    .attr("class", "xAxisLabel")
+    .attr("transform", "translate(" + (width / 2 - 80) + " ," + height + ")")
+    .style("text-anchor", "middle")
+    .text("Flood Zones");
+
+  g.append("text")
+    .attr("y", -80)
+    .attr("x", 280)
+    .attr("class", "title")
+    .text("Flooded Houses in Each Flood Zone");
   // * Format the data
   data.forEach(function (d) {
     d.Flood_Area = d.Flood_Area;
