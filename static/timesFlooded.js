@@ -38,7 +38,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then(function (
 
   var width = 1080;
   height = 393;
-  margin = { left: 90, top: 70, right: 30, bottom: 85 };
+  margin = { left: 100, top: 70, right: 30, bottom: 85 };
 
   // Setting the ranges
   var x = d3.scaleBand().range([0, width]).padding(0.1);

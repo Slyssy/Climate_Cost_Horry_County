@@ -233,7 +233,7 @@ yAxisG
   .append("text")
   .attr("class", "yAxisLabel")
   .attr("transform", "rotate(-90)")
-  .attr("y", -65 - margin.left)
+  .attr("y", -80 - margin.left)
   .attr("x", 75 - height / 2)
   .attr("dy", "1em")
   .style("text-anchor", "middle")

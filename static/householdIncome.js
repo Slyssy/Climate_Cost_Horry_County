@@ -229,7 +229,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
   }
 
   // *Set dimensions and margins for chart
-  let margin = { top: 60, right: 80, bottom: 60, left: 180 },
+  let margin = { top: 60, right: 80, bottom: 60, left: 270 },
     width = 1200 - margin.left - margin.right,
     height = 548 - margin.top - margin.bottom;
 

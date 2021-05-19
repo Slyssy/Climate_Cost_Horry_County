@@ -261,7 +261,7 @@ function chart(csv) {
   }
 
   // *Set dimensions and margins for chart
-  let margin = { top: 60, right: 80, bottom: 50, left: 250 },
+  let margin = { top: 60, right: 80, bottom: 50, left: 380 },
     width = 1200 - margin.left - margin.right,
     height = 548 - margin.top - margin.bottom;
 
