@@ -9,7 +9,7 @@ body {
   display: grid;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 70px 1fr 20px 1fr 1fr 1fr 1fr 1fr 100px;
+  grid-template-rows: 70px 1fr 20px 1fr 1fr 1fr 1fr 1fr 1fr 100px;
 
   gap: 10px;
   padding: 10px;
@@ -64,14 +64,29 @@ hr.rounded {
   border-radius: 5px;
 }
 
+.visualizationTitle {
+  grid-column-start: 1;
+  grid-column-end: 5;
+
+  font-family: sans-serif;
+}
+
 .selectToggle {
   display: flex;
   justify-content: center;
 }
 
+#weatherStation {
+  height: 24px;
+}
+
 .weatherStationTotals {
   grid-column-start: 1;
   grid-column-end: 3;
+}
+
+#year {
+  height: 24px;
 }
 
 .annualTotals {
@@ -114,7 +129,7 @@ hr.rounded {
 } */
 .yAxisLabel {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 
   stroke: #57595a;
@@ -162,7 +177,7 @@ hr.rounded {
 .tick {
   stroke: #57595a;
   fill: #57595a;
-  font-size: 8pt;
+  font-size: 16pt;
 }
 
 .oop_xAxis_tickLabel {
@@ -174,7 +189,7 @@ hr.rounded {
 .timesFlooded_xAxis_tickLabel {
   stroke: #57595a;
   fill: #57595a;
-  font-size: 10pt;
+  font-size: 16pt;
 }
 
 .floodedHouses_xAxis_tickLabel {

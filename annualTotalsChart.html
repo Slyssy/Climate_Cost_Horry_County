@@ -19,21 +19,24 @@
   </head>
   <body>
     <div class="container">
+      <div class="header"></div>
+      <div class="annualTotals">
         <div class="selectToggle">
-            Choose year:
-        <select id="year"></select>
-        <input type="checkbox" id="sort" />
-        Toggle sort by Precipitation Volume
+          Choose year:
+      <select id="year"></select>
+      <input type="checkbox" id="sort" />
+      Toggle sort by Precipitation Volume
+      </div>       
+      <div id="precipitation_barchart"></div>
+        <div id="tooltip">
+          Station Name:<span id="stationName" class="info"></span><br />
+          Annual Precipitation:<span
+            id="annualPrecipitation"
+            class="info"
+          ></span
+          ><br />
         </div>
-        <div id="precipitation_barchart">
-          <div id="tooltip">
-            Station Name:<span id="stationName" class="info"></span><br />
-            Annual Precipitation:<span
-              id="annualPrecipitation"
-              class="info"
-            ></span
-            ><br />
-          </div>
+      </div>
         </div>
       </div>
     </div>
