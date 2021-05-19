@@ -64,13 +64,6 @@ function chartTrend(csvTrends) {
     margin = { top: 70, right: 20, bottom: 20, left: 110 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
-  // .append("div")
-  // .classed("svg-container", true)
-  // .append("svg")
-  // .attr("preserveAspectRatio", "xMinYMin meet")
-  // .attr("viewBox", "0 0 1200 548")
-  // .attr("width", 1200)
-  // .attr("height", 548);
 
   //   Setting x Scale
   const x = d3

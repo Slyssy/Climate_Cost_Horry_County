@@ -79,6 +79,7 @@ hr.rounded {
 #weatherStation {
   height: 24px;
 }
+
 .weatherStationTotals {
   grid-column-start: 1;
   grid-column-end: 3;

@@ -273,7 +273,6 @@ function chart(csv) {
     .call(responsivefy)
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
   // Setting x Scale
   const x = d3.scaleLinear().range([0, width]);
 
