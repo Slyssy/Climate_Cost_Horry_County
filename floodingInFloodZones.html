@@ -14,6 +14,7 @@
   <body>
     <div class="container">
       <div class="header">
+        <!-- <div class="buttons"> -->
         <div class="row">
           <button class="primaryButton" onclick="update(data)">
             All Flood Events
@@ -35,13 +36,16 @@
             the corresponding flood zone reported 0, 1, 2 or 3 flooding events.
           </label>
         </div>
+        <!-- </div> -->
       </div>
-      <div id="floodingInFloodZones" class="row"></div>
-      <div id="tooltip-bar-floodingInFloodZones">
-        Group:
-        <span id="tool_tip_floodZone" class="info"></span><br />
-        # of Households That Reported Flooding:
-        <span id="tool_tip_reportedFlooding_count" class="info"></span><br />
+      <div class="foiaDataBarchart">
+        <div id="floodingInFloodZones" class="row"></div>
+        <div id="tooltip-bar-floodingInFloodZones">
+          Group:
+          <span id="tool_tip_floodZone" class="info"></span><br />
+          # of Households That Reported Flooding:
+          <span id="tool_tip_reportedFlooding_count" class="info"></span><br />
+        </div>
       </div>
     </div>
 

@@ -19,8 +19,8 @@ body {
   box-sizing: border-box;
 }
 .header {
-  grid-column-start: 1;
-  grid-column-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 4;
 }
 .selectToggle {
   grid-column-start: 2;
@@ -55,6 +55,20 @@ body {
 }
 
 .householdIncome {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.landUsage {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.buttons {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+.foiaDataBarchart {
   grid-column-start: 2;
   grid-column-end: 4;
 }
@@ -263,12 +277,12 @@ h1 {
 } */
 
 .xAxisText {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 .yAxisLabel {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 
   stroke: #57595a;
@@ -277,7 +291,7 @@ h1 {
 
 .xAxisLabel {
   font-family: Arial, Helvetica, sans-serif;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
 
   stroke: #57595a;
