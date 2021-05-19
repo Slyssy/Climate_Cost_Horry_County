@@ -9,7 +9,7 @@ body {
   display: grid;
 
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 70px 1fr 20px 1fr 1fr 1fr 1fr 1fr 100px;
+  grid-template-rows: 70px 1fr 20px 1fr 1fr 1fr 1fr 1fr 1fr 100px;
 
   gap: 10px;
   padding: 10px;
@@ -62,6 +62,13 @@ body {
 hr.rounded {
   border-top: 8px solid darkslategray;
   border-radius: 5px;
+}
+
+.visualizationTitle {
+  grid-column-start: 1;
+  grid-column-end: 5;
+
+  font-family: sans-serif;
 }
 
 .selectToggle {
