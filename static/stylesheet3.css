@@ -49,6 +49,16 @@ body {
   grid-column-end: 4;
 }
 
+.outOfPocketExpense {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
+.householdIncome {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
 h1 {
   float: left;
   margin-left: 255px;
