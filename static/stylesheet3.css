@@ -68,7 +68,7 @@ body {
   grid-column-start: 2;
   grid-column-end: 4;
 }
-.foiaDataBarchart {
+.floodingInFloodZones {
   grid-column-start: 2;
   grid-column-end: 4;
 }
@@ -334,6 +334,7 @@ h1 {
 }
 
 .buttonText {
+  margin-left: 15px;
   font-family: sans-serif;
   font-size: 16px;
 }
