@@ -44,6 +44,11 @@ body {
   grid-column-end: 4;
 }
 
+.reportedFloodEvents {
+  grid-column-start: 2;
+  grid-column-end: 4;
+}
+
 h1 {
   float: left;
   margin-left: 255px;
