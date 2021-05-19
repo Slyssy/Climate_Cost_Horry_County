@@ -61,7 +61,7 @@ function chartTrend(csvTrends) {
     .text((d) => d);
 
   var svg = d3.select("#prcpTrends").call(responsivefy),
-    margin = { top: 70, right: 50, bottom: 20, left: 110 },
+    margin = { top: 70, right: 20, bottom: 20, left: 110 },
     width = +svg.attr("width") - margin.left - margin.right,
     height = +svg.attr("height") - margin.top - margin.bottom;
   // .append("div")
