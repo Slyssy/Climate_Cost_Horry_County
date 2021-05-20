@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
+      rel="stylesheet"
+    />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
+    <script src="https://d3js.org/d3.v6.min.js"></script>
+
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet2.css" />
+    <title>index2</title>
+  </head>
+  <body>
+    <div class="nav-container">
+      <nav class="navbar">
+        <img src="../images/climateCostLogo.png" alt="Logo" id="navbar-logo" />
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-links">Home</a></li>
+          <li><a href="#" class="nav-links">Introduction</a></li>
+          <li><a href="#financialImpact" class="nav-links">Financial</a></li>
+          <li><a href="#" class="nav-links">Flooding Mapping</a></li>
+          <li><a href="#" class="nav-links">Proposed Flood Zones</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="introduction">
+      <div class="container">
+        <!-- TODO This will need to be replaced with a background image and text. -->
+        <img
+          src="../images/titleImage.png"
+          alt="Introduction Image"
+          class="titleImage"
+        />
+        <p class="paragraph">
+          Horry County lies in the northeastern coastal region of South
+          Carolina. The natural landscape is characterized by coastal, marsh,
+          and forested ecosystems, Horry. Human activity has brought farming and
+          paved surfaces to the landscape. Due to it's location Horry County's
+          location on The Atlantic Coast, and and the presence of multiple
+          watersheds fed by the Waccamaw, Lumber, and Little Pee Dee, and Great
+          Pee Dee Rivers, Horry County has always been prone to flooding.
+        </p>
+      </div>
+
+      <div class="container2">
+        <img
+          src="../images/stormStatImage.png"
+          alt="stormStatImage"
+          class="stormStatImage"
+        />
+        <p class="paragraph">
+          However, in the past five years, residents of Horry County have begun
+          to experience more severe flooding due to increasing frequency of
+          hurricanes and heavy rainfall. Since 2016, Horry County has been
+          directly hit by two major hurricanes, and impacted by severe winds and
+          tropical storms from eight additional hurricanes.<br /><br />
+          The damaged caused by the increased rainfall can be seen in the money
+          paid out by the federal government for storm recovery. number on size
+          of FEMA payouts over the years, which have far exceeded the growth in
+          the population.<br /><br />
+          On behalf of the flood survivor advocacy group, Horry County Rising,
+          the Climate Cost Project survey the residents of Horry County to
+          understand how their livelihood has been affected by flooding. The
+          analysis relied on a household economic survey (n=127) of flood
+          survivors, and follow-up phone interviews (n=15) of a subsample of
+          households to validate results and obtain more context on survey
+          response.
+        </p>
+      </div>
+    </div>
+    <div class="container">
+      <div id="financialImpact">
+        <div class="header">
+          <h1>Financial Impact</h1>
+          <p class="paragraph">
+            The survey revealed significant financial harm to households, and
+            found that having flood insurance or receiving financial aid did not
+            protect houses from significant financial harm.
+          </p>
+          <p class="quote">
+            "To restore our home we spent $45,000. FEMA gave us $24,000."
+          </p>
+          <p class="quote">
+            "FEMA paid only 10% of the damage to make the house livable."
+          </p>
+          <p class="quote">
+            "It was a complicated nightmare to receive a relative pittance."
+          </p>
+        </div>
+        <div class="OOP_Expense">
+          <div id="outOfPocketExpense" class="row"></div>
+          <div id="tooltip-bar-oop">
+            # of Houses: <span id="tool_tip_oop_count" class="info"></span
+            ><br />
+          </div>
+        </div>
+        <div class="subheader">
+          <h2>
+            The median household income of people in the survey was $32,000
+            dollars.
+          </h2>
+        </div>
+        <div class="householdIncome">
+          <div id="householdIncome" class="row"></div>
+          <div id="tooltip-bar-income">
+            # of House: <span id="tool_tip_income_count" class="info"></span
+            ><br />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="../static/app.js"></script>
+    <script src="../static/oopExpense.js"></script>
+    <script src="../static/householdIncome.js"></script>
+  </body>
+</html>
