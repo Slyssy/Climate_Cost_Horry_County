@@ -144,30 +144,111 @@
 /* ?Container 1 Styling */
 .container {
   display: grid;
-  /* grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); */
-  max-width: 90%;
+  grid-template-columns: repeat(12, [col-start] 1fr);
+  /* max-width: 90%;
   width: 90%;
-  align-items: center;
+  align-items: center; */
+  gap: 10px;
 
   border: 2px solid magenta;
   margin: 0 auto;
 }
 
 .titleImage {
+  grid-column-start: 1;
+  grid-column-end: 13;
+  /* grid-column: col-start / span 12; */
   width: 100%;
   max-width: 2160px;
 }
 
+.introductionParagraph {
+  grid-column-start: 4;
+  grid-column-end: 12;
+}
+
+.header {
+  grid-column-start: 1;
+  grid-column-end: 13;
+  padding: 2em 0em 1em 2em;
+}
+
+.stormStatImage {
+  grid-column: col-start / span 3;
+  /* padding: 0em 0em 0em 2em; */
+  /* float: left; */
+  margin: 0px;
+  transform: scale(0.9, 0.9);
+  -ms-transform: scale(0.9, 0.9);
+  -webkit-transform: scale(0.9, 0.9);
+}
+
 .paragraph {
+  grid-column-start: 2;
+  grid-column-end: 12;
   text-align: justify;
+  font-size: 1.4em;
+  margin: 0em 1em 1em 1em;
+}
+
+.quote {
+  grid-column-start: 2;
+  grid-column-end: 12;
+
+  text-align: center;
+  font-style: italic;
   font-size: 1.4em;
   margin: 1em 1em 1em 1em;
 }
 
 .OOP_Expense {
-  grid-column-start: 1;
-  grid-column-end: 1;
+  grid-column-start: 3;
+  grid-column-end: 11;
 }
+
+.subheader {
+  grid-column-start: 2;
+  grid-column-end: 12;
+
+  padding: 2em;
+  font-style: oblique;
+  text-align: center;
+}
+
+.householdIncome {
+  grid-column-start: 3;
+  grid-column-end: 11;
+}
+
+.twitterImage {
+  grid-column-start: 3;
+  grid-column-end: 11;
+  /* padding: 0em 0em 0em 2em; */
+  /* float: left; */
+
+  width: 100%;
+  max-width: 2160px;
+  /* margin: 0px;
+  transform: scale(0.9, 0.9);
+  -ms-transform: scale(0.9, 0.9);
+  -webkit-transform: scale(0.9, 0.9); */
+}
+
+.precipitationTotals {
+  grid-column-start: 1;
+  grid-column-end: 4;
+}
+
+.weatherStationTotals {
+  grid-column-start: 3;
+  grid-column-end: 11;
+}
+
+.annualTotals {
+  grid-column-start: 2;
+  grid-column-end: 11;
+}
+
 .container2 {
   display: grid;
   max-width: 90%;
@@ -176,40 +257,13 @@
 
   border: 2px solid magenta;
   margin: 0 auto;
-  grid-template-columns: 0.5fr 1fr;
+  grid-template-columns: 1fr 1fr;
 }
 
-.quote {
-  text-align: center;
-  font-style: italic;
-  font-size: 1.4em;
-  margin: 1em 1em 1em 1em;
-}
-
-.container3 {
-  display: grid;
-  max-width: 90%;
-  width: 90%;
-  align-items: center;
-
-  border: 2px solid magenta;
-  margin: 0 auto;
-  grid-template-columns: 0.5fr 1fr;
-}
-
-.stormStatImage {
+/* .twitterImage {
   width: 100%;
   max-width: 2160px;
-}
-
-.header {
-  padding: 2em;
-}
-
-.subheader {
-  padding: 2em;
-  font-style: oblique;
-}
+} */
 
 /* *D3 Styling */
 .yAxisLabel {
@@ -262,6 +316,7 @@ rect {
 }
 
 /* *Tooltip Styling */
+/* ?Tooltip for Out Of Pocket Expense */
 #tooltip-bar-oop {
   position: absolute;
   top: 0;
@@ -281,7 +336,48 @@ rect {
   pointer-events: none;
 }
 
+/* ?Tooltip for Household Income Chart */
 #tooltip-bar-income {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: rgba(34, 35, 36, 0.75);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ?Tooltip for Weather Station Precipitation Totals */
+#tooltipTrends {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  margin: 0;
+  padding: 10px;
+  width: auto;
+  height: auto;
+  color: white;
+  font-family: sans-serif;
+  font-size: 12px;
+  font-weight: bold;
+  text-align: left;
+  background-color: rgba(34, 35, 36, 0.75);
+  opacity: 0;
+  pointer-events: none;
+}
+
+/* ?Tooltip for Annual Precipitation Totals */
+#tooltip {
   position: absolute;
   top: 0;
   left: 0;

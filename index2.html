@@ -27,48 +27,48 @@
         </div>
         <ul class="nav-menu">
           <li><a href="#" class="nav-links">Home</a></li>
-          <li><a href="#" class="nav-links">Introduction</a></li>
+          <li><a href="#introduction" class="nav-links">Introduction</a></li>
           <li><a href="#financialImpact" class="nav-links">Financial</a></li>
           <li><a href="#" class="nav-links">Flooding Mapping</a></li>
           <li><a href="#" class="nav-links">Proposed Flood Zones</a></li>
         </ul>
       </nav>
     </div>
-    <div class="introduction">
-      <div class="container">
-        <!-- TODO This will need to be replaced with a background image and text. -->
-        <img
-          src="../images/titleImage.png"
-          alt="Introduction Image"
-          class="titleImage"
-        />
-        <p class="paragraph">
-          Horry County lies in the northeastern coastal region of South
-          Carolina. The natural landscape is characterized by coastal, marsh,
-          and forested ecosystems, Horry. Human activity has brought farming and
-          paved surfaces to the landscape. Due to it's location Horry County's
-          location on The Atlantic Coast, and and the presence of multiple
-          watersheds fed by the Waccamaw, Lumber, and Little Pee Dee, and Great
-          Pee Dee Rivers, Horry County has always been prone to flooding.
-        </p>
+    <div class="container">
+      <!-- TODO This will need to be replaced with a background image and text. -->
+      <img
+        src="../images/titleImage.png"
+        alt="Introduction Image"
+        class="titleImage"
+      />
+      <div id="introduction" class="header">
+        <h1 style="text-align: left">Introduction</h1>
       </div>
-
-      <div class="container2">
-        <img
-          src="../images/stormStatImage.png"
-          alt="stormStatImage"
-          class="stormStatImage"
-        />
+      <img
+        src="../images/stormStatImage.png"
+        alt="stormStatImage"
+        class="stormStatImage"
+      />
+      <div class="introductionParagraph">
         <p class="paragraph">
-          However, in the past five years, residents of Horry County have begun
-          to experience more severe flooding due to increasing frequency of
-          hurricanes and heavy rainfall. Since 2016, Horry County has been
-          directly hit by two major hurricanes, and impacted by severe winds and
-          tropical storms from eight additional hurricanes.<br /><br />
+          <br /><br />Horry County lies in the northeastern coastal region of
+          South Carolina. The natural landscape is characterized by coastal,
+          marsh, and forested ecosystems, Horry. Human activity has brought
+          farming and paved surfaces to the landscape. Due to it's location
+          Horry County's location on <br /><br />
+
+          The Atlantic Coast, and and the presence of multiple watersheds fed by
+          the Waccamaw, Lumber, and Little Pee Dee, and Great Pee Dee Rivers,
+          Horry County has always been prone to flooding. However, in the past
+          five years, residents of Horry County have begun to experience more
+          severe flooding due to increasing frequency of hurricanes and heavy
+          rainfall. Since 2016, Horry County has been directly hit by two major
+          hurricanes, and impacted by severe winds and tropical storms from
+          eight additional hurricanes.<br /><br />
           The damaged caused by the increased rainfall can be seen in the money
-          paid out by the federal government for storm recovery. number on size
-          of FEMA payouts over the years, which have far exceeded the growth in
-          the population.<br /><br />
+          paid out by the federal government for storm recovery. The number and
+          size of FEMA payouts over the years, which have far exceeded the
+          growth in the population.<br /><br />
           On behalf of the flood survivor advocacy group, Horry County Rising,
           the Climate Cost Project survey the residents of Horry County to
           understand how their livelihood has been affected by flooding. The
@@ -78,45 +78,158 @@
           response.
         </p>
       </div>
-    </div>
-    <div class="container">
-      <div id="financialImpact">
-        <div class="header">
-          <h1>Financial Impact</h1>
-          <p class="paragraph">
-            The survey revealed significant financial harm to households, and
-            found that having flood insurance or receiving financial aid did not
-            protect houses from significant financial harm.
-          </p>
-          <p class="quote">
-            "To restore our home we spent $45,000. FEMA gave us $24,000."
-          </p>
-          <p class="quote">
-            "FEMA paid only 10% of the damage to make the house livable."
-          </p>
-          <p class="quote">
-            "It was a complicated nightmare to receive a relative pittance."
-          </p>
+      <div id="financialImpact" class="header">
+        <h1>Financial Impact</h1>
+      </div>
+      <p class="paragraph">
+        The survey revealed significant financial harm to households, and found
+        that having flood insurance or receiving financial aid did not protect
+        houses from significant financial harm.
+      </p>
+      <p class="quote">
+        "To restore our home we spent $45,000. FEMA gave us $24,000."
+      </p>
+      <p class="quote">
+        "FEMA paid only 10% of the damage to make the house livable."
+      </p>
+      <p class="quote">
+        "It was a complicated nightmare to receive a relative pittance."
+      </p>
+      <br /><br />
+      <p class="paragraph">
+        The barchart below shows a breakdown of reported out of pocket expenses
+        for the 103 residents surveyed. As you can see, the group of those
+        reporting between $5,000 and $10,000 makes up the largest portion of
+        those surveyed; however, those reporting between $10,000 and $30,000 and
+        $50,000 in out of pocket expense make up a significant portion of those
+        surveyed as well. These reported out of pocket expenses are substantial.
+      </p>
+      <div class="OOP_Expense">
+        <div id="outOfPocketExpense" class="row"></div>
+        <div id="tooltip-bar-oop">
+          # of Houses: <span id="tool_tip_oop_count" class="info"></span><br />
         </div>
-        <div class="OOP_Expense">
-          <div id="outOfPocketExpense" class="row"></div>
-          <div id="tooltip-bar-oop">
-            # of Houses: <span id="tool_tip_oop_count" class="info"></span
-            ><br />
-          </div>
+      </div>
+      <div class="subheader">
+        <h2>
+          The median household income of people in the survey was $32,000
+          dollars.
+        </h2>
+      </div>
+      <p class="paragraph">
+        Next we look at the reported household income reported by those
+        surveyed. When you take into consideration the reported out of pocket
+        expense numbers that were visualized in the barchart above, it is easy
+        to see that these out of pocket expenses can devistate families and ruin
+        lives.
+      </p>
+      <div class="householdIncome">
+        <div id="householdIncome" class="row"></div>
+        <div id="tooltip-bar-income">
+          # of House: <span id="tool_tip_income_count" class="info"></span
+          ><br />
         </div>
-        <div class="subheader">
-          <h2>
-            The median household income of people in the survey was $32,000
-            dollars.
-          </h2>
+      </div>
+      <p class="paragraph">
+        In order to afford to restore their house, people went into their
+        savings, and took on debt. People indicated they had lost their savings,
+        suffered from constant stress, and could not afford to retire.
+      </p>
+      <p class="paragraph">
+        From 2000-2020 the number of annual number of FEMA claims in Horry
+        County Has increased by 1670%.
+      </p>
+      <p class="paragraph">
+        During that time the population increase by only 184%
+      </p>
+      <p class="paragraph">
+        From 2000-2020 the average value of a FEMA payout increased by 507%.
+      </p>
+      <p class="paragraph">While average home prices increased 50%.</p>
+      <img
+        src="../images/climateCostTwitterImage.png"
+        alt="twitterImage"
+        class="twitterImage"
+      />
+      <div id="rainfallImpact" class="header">
+        <h1>
+          What impact has increasing rainfall had on Horry County Flooding?
+        </h1>
+      </div>
+      <p class="paragraph">
+        The Charts below look at the rain levels that have been reported over
+        the years. Scroll through charts below to see how much rain was reported
+        for each weather station that reported between 2010 and 2020. You will
+        notice that precipitation data was not available for every weather
+        station for each year.
+      </p>
+      <p class="paragraph">
+        More frequent hurricanes, rainfall, and development has not only
+        increased the flooding experienced by Horry County Residents, but
+        changed patterns of flooding.
+      </p>
+      <p class="paragraph">
+        Here, we look at the rainfall totals for Horry County from 2010 to 2020.
+        For this, we have pulled data from weather stations located across the
+        county. We have included two bar charts to better understand the
+        rainfall totals.
+        <b
+          >**Please note that not all weather stations reported data for every
+          year.</b
+        >
+      </p>
+      <!-- <div class="precipitationTotals"> -->
+      <div class="header">
+        <h2>Weather Station Precipitation Totals</h2>
+      </div>
+      <p class="paragraph">
+        The "Weather Station Precipitation Totals" chart displays the the annual
+        rainfall totals for a particular weather station that is selected using
+        the dropdown menu. You can also easily sort the values from highest to
+        lowest to determine what year reported the highest and lowest rainfall
+        totals by checking the box next to the "Toggle Sort" check box.
+      </p>
+      <!-- </div> -->
+      <div class="weatherStationTotals">
+        <div class="selectToggle">
+          Choose Weather Station:
+          <select id="weatherStation"></select>
+          <input type="checkbox" id="sortPRCP" />
+          Toggle Sort
         </div>
-        <div class="householdIncome">
-          <div id="householdIncome" class="row"></div>
-          <div id="tooltip-bar-income">
-            # of House: <span id="tool_tip_income_count" class="info"></span
-            ><br />
-          </div>
+        <div id="prcpTrends" width="1200" height="548"></div>
+        <div id="tooltipTrends">
+          Station Name:<span id="stationName" class="info"></span><br />
+          Annual Precipitation:<span
+            id="annualPrecipitationTrends"
+            class="info"
+          ></span
+          ><br />
+        </div>
+      </div>
+      <div class="header">
+        <h2>Annual Precipitation Totals</h2>
+      </div>
+      <p class="paragraph">
+        The "Annual Precipitation Totals" chart displays rainfall totals for
+        each weather station. You can select what year you want to view by using
+        the dropdown menu. Again, you can sort these values by selecting "Toggle
+        sort by Precipitation Volume" check box.
+      </p>
+      <div class="annualTotals">
+        <div class="selectToggle">
+          Choose year:
+          <select id="year"></select>
+          <input type="checkbox" id="sort" />
+          Toggle Sort
+        </div>
+        <div id="precipitation_barchart"></div>
+        <div id="tooltip">
+          Annual Precipitation:<span
+            id="annualPrecipitation"
+            class="info"
+          ></span
+          ><br />
         </div>
       </div>
     </div>
@@ -124,5 +237,7 @@
     <script src="../static/app.js"></script>
     <script src="../static/oopExpense.js"></script>
     <script src="../static/householdIncome.js"></script>
+    <script src="../static/weatherStationTotals.js"></script>
+    <script src="../static/annualTotals.js"></script>
   </body>
 </html>
