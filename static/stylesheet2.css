@@ -152,6 +152,8 @@
 
   border: 2px solid magenta;
   margin: 0 auto;
+
+  max-width: 1380px;
 }
 
 .titleImage {
