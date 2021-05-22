@@ -60,10 +60,18 @@ function chartTrend(csvTrends) {
     .append("option")
     .text((d) => d);
 
-  var svg = d3.select("#prcpTrends").call(responsivefy),
-    margin = { top: 70, right: 20, bottom: 20, left: 110 },
-    width = +svg.attr("width") - margin.left - margin.right,
-    height = +svg.attr("height") - margin.top - margin.bottom;
+  let margin = { top: 70, right: 20, bottom: 20, left: 35 },
+    width = 1200 - margin.left - margin.right,
+    height = 548 - margin.top - margin.bottom;
+
+  var svg = d3
+    .select("#prcpTrends")
+    .append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+    .call(responsivefy)
+    .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   //   Setting x Scale
   const x = d3
@@ -114,7 +122,7 @@ function chartTrend(csvTrends) {
     .attr("class", "y-axis")
     .append("text")
     .attr("class", "yAxisLabel")
-    .attr("y", 0 - margin.left)
+    .attr("y", -80 - margin.left)
     .attr("x", -20 - height / 2)
     .attr("dy", "3em")
     .attr("transform", `rotate(-90)`)

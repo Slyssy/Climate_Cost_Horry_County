@@ -2,156 +2,217 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- <link
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
       rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-      crossorigin="anonymous"
-    /> -->
-    <!-- <script
-      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-      crossorigin="anonymous"
-    ></script> -->
-    <!-- <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script> -->
-
+    />
     <script src="//cdnjs.cloudflare.com/ajax/libs/d3/3.5.5/d3.min.js"></script>
     <script src="https://d3js.org/d3.v6.min.js"></script>
 
-    <link rel="stylesheet" type="text/css" href="../static/stylesheet.css" />
-
-    <title>Horry County Flood <Map></Map></title>
+    <link rel="stylesheet" type="text/css" href="../static/stylesheet2.css" />
+    <title>index2</title>
   </head>
-
   <body>
-    <div class="container">
-      <div class="header">
-        <h1 class="page-title">
-          Horry County, South Carolina
-          <small>Flood Zones</small>
-        </h1>
-      </div>
-      <div class="mapDescription">
-        <h2 class="my-3" style="text-align: center; text-decoration: underline">
-          Map Description
-        </h2>
-        <h3>This map consists of 6 Layers.</h3>
-        <ul class="listText" style="font-size: 20px">
-          <li>
-            <b>S_Fld_Haz_AR:</b>Shows Proposed Flood Zones for Horry County.
-          </li>
-          <li>
-            <b>Survey Cost Data Layer:</b> We conducted a survey of houses in
-            the county that have reported flooding. This layer includes pop up
-            data that displays the number of times a particular location has
-            reported flooding, the "out of pocket expense" reported, the
-            "Non-Repaired Damages" reported, the reported "Household Income" and
-            the names of the "Named Storms" that reportedly impacted each
-            location.
-          </li>
-          <li>
-            <b>FOIA w Flood Data Layer: </b>This layer includes information from
-            over 1,000 homes located throughout Horry County. The locations on
-            this layer are color coded. The items that are marked with red dots
-            report 1 flood event. The blue dots indicate 2 flooding events, and
-            the purple dots indicate 3 flooding events. Additionally, this
-            layer's popup diplays whether or not a house is in a flood zone, the
-            names of the named storms that impacted that address and the name of
-            the flood zone that address is located.
-          </li>
-          <li>
-            <b>Horry County Precipitation Layer:</b> Displays location of the
-            weather stations located throughout Horry County. The popup gives in
-            depth precipitation information reported from each station including
-            the station name and id, the annual precipitation reported for a
-            giving year, the max daily rainfall totals for a given year and the
-            latitude and longitude of each weather station. You can select the
-            forward and back button at the top of the popup to cycle through all
-            the years that a particular weather station's data was available.
-          </li>
-          <li>
-            <b>USA Soils Drainage Class: </b> This layer classifies soils in
-            seven classes based on the rate that water moves through the soil.
-          </li>
-          <li>
-            <b>USA NLCD Land Cover: </b>This layer displays a time series of
-            land cover for the United States from the National Land Cover
-            Database (NLCD), at various intervals from 2001 to 2016.
-          </li>
+    <div class="nav-container">
+      <nav class="navbar">
+        <img src="../images/climateCostLogo.png" alt="Logo" id="navbar-logo" />
+        <div class="menu-toggle" id="mobile-menu">
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+        </div>
+        <ul class="nav-menu">
+          <li><a href="#" class="nav-links">Home</a></li>
+          <li><a href="#introduction" class="nav-links">Introduction</a></li>
+          <li><a href="#financialImpact" class="nav-links">Financial</a></li>
+          <li><a href="#" class="nav-links">Flooding Mapping</a></li>
+          <li><a href="#" class="nav-links">Proposed Flood Zones</a></li>
         </ul>
+      </nav>
+    </div>
+    <div class="container">
+      <!-- TODO This will need to be replaced with a background image and text. -->
+      <img
+        src="../images/titleImage.png"
+        alt="Introduction Image"
+        class="titleImage"
+      />
+      <div id="introduction" class="header">
+        <h1 style="text-align: left">Introduction</h1>
       </div>
 
-      <!-- * Portfolio Item Row -->
-      <!-- <!-- <div class="row">
-        <div class="col-md-8"> -->
-      <div class="embed-container">
+      <img
+        src="../images/stormStatImage.png"
+        alt="stormStatImage"
+        class="stormStatImage"
+      />
+      <div class="introductionParagraph">
+        <p class="paragraph">
+          <br /><br />
+          Horry County lies in the northeastern coastal region of South
+          Carolina. The natural landscape is characterized by coastal, marsh,
+          and forested ecosystems, Horry. Human activity has brought farming and
+          paved surfaces to the landscape. Due to it's location Horry County's
+          location on the Atlantic Coast, and and the presence of multiple
+          watersheds fed by the Waccamaw, Lumber, and Little Pee Dee, and Great
+          Pee Dee Rivers, Horry County has always been prone to flooding.
+        </p>
+        <p class="paragraph">
+          However, in the past five years, residents of Horry County have begun
+          to experience more severe flooding due to increasing frequency of
+          hurricanes and heavy rainfall. Since 2016, Horry County has been
+          directly hit by two major hurricanes, and impacted by severe winds and
+          tropical storms from eight additional hurricanes.
+        </p>
+        <p class="paragraph">
+          The damaged caused by the increased rainfall can be seen in the money
+          paid out by the federal government for storm recovery. The number and
+          size of FEMA payouts over the years, which have far exceeded the
+          growth in the population.
+        </p>
+        <p class="paragraph">
+          On behalf of the flood survivor advocacy group, Horry County Rising,
+          the Climate Cost Project survey the residents of Horry County to
+          understand how their livelihood has been affected by flooding. The
+          analysis relied on a household economic survey (n=127) of flood
+          survivors, and follow-up phone interviews (n=15) of a subsample of
+          households to validate results and obtain more context on survey
+          response.
+        </p>
+      </div>
+      <div id="financialImpact" class="header">
+        <h1>Financial Impact</h1>
+      </div>
+      <div class="surveyedEmbed-container">
         <iframe
-          width="1250"
-          height="700"
+          width="750"
+          height="250"
           frameborder="0"
           scrolling="no"
           marginheight="0"
           marginwidth="0"
-          title="Horry County Flood Map"
-          src="https://ccpic2050.maps.arcgis.com/apps/webappviewer/index.html?id=a1d7c87b48dd4e92a067e6c366500eab"
+          title="Surveyed Households"
+          src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=c5187adc607e404bb37e23962592897a&extent=-79.6744,33.0858,-78.0471,34.4772&zoom=true&previewImage=false&scale=true&disable_scroll=true&theme=light"
         ></iframe>
-        <!-- <iframe
-              src="https://storymaps.arcgis.com/stories/1486613dc2584559b191d92a7145550f"
-              width="4000px"
-              height="1500px"
-              frameborder="0"
-              allowfullscreen
-              allow="geolocation"
-            ></iframe> -->
       </div>
-
-      <div class="floodZoneDefs">
-        <h2 class="my-3" style="text-align: center; text-decoration: underline">
-          Flood Zones Definitions
+      <p class="paragraph">
+        The survey revealed significant financial harm to households, and found
+        that having flood insurance or receiving financial aid did not protect
+        houses from significant financial harm.
+      </p>
+      <p class="paragraph">
+        People who received FEMA assistance still ended up paying a median
+        amount of $20,000 out of their financials to restore their houses to a
+        livable condition.
+      </p>
+      <p class="quote">
+        "To restore our home we spent $45,000. FEMA gave us $24,000."
+      </p>
+      <p class="quote">
+        "FEMA paid only 10% of the damage to make the house livable."
+      </p>
+      <p class="quote">
+        "It was a complicated nightmare to receive a relative pittance."
+      </p>
+      <br /><br />
+      <p class="paragraph">
+        The barchart below shows a breakdown of reported out of pocket expenses
+        for the 103 residents surveyed. As you can see, the group of those
+        reporting between $5,000 and $10,000 makes up the largest portion of
+        those surveyed; however, those reporting between $10,000 and $30,000 and
+        $50,000 in out of pocket expense make up a significant portion of those
+        surveyed as well. These reported out of pocket expenses are substantial.
+      </p>
+      <div class="OOP_Expense">
+        <div id="outOfPocketExpense" class="row"></div>
+        <div id="tooltip-bar-oop">
+          # of Houses: <span id="tool_tip_oop_count" class="info"></span><br />
+        </div>
+      </div>
+      <div class="subheader">
+        <h2>
+          The median household income of people in the survey was $32,000
+          dollars.
         </h2>
-        <ul class="listText" style="font-size: 20px">
-          <li>
-            <b>0.2 PCT ANNUAL CHANCE FLOOD HAZARD:</b> Area of moderate flood
-            hazard, usually the area between the limits of the 100yearand 500
-            year floodplains.
-          </li>
-          <br />
-          <li>
-            <b>AE:</b> Areas with a 1% annual chance of flooding and a 26%
-            chance of flooding over the life of a 30 year mortgage. Base flood
-            elevations (BFE) and flood hazard factors are determined.
-          </li>
-          <br />
-          <li>
-            <b>X:</b> Areas of minimal flood hazard, determined to be outside
-            the 500 year flood plain.
-          </li>
-          <br />
-          <li>
-            <b>VE:</b> Coastal areas with a 1% or greater chance of flooding and
-            an additional hazard associated with storm waves. These areas have a
-            26% chance of flooding over the life of a 30 year mortgage. Base
-            flood elevations (BFE) derived from detailed analyses are shown at
-            selected intervals within these zones.
-          </li>
-          <br />
-          <li>
-            <b>A:</b> Areas with a 1% annual chance of flooding and a 26% chance
-            of flooding over the life of a 30 year mortgage. Base flood
-            elevations(BFE) are not available forthese zones.
-          </li>
-        </ul>
       </div>
-      <div class="divider">
-        <hr class="rounded" />
+      <p class="paragraph">
+        Next we look at the reported household income reported by those
+        surveyed. When you take into consideration the reported out of pocket
+        expense numbers that were visualized in the barchart above, it is easy
+        to see that these out of pocket expenses can devistate families and ruin
+        lives.
+      </p>
+      <div class="householdIncome">
+        <div id="householdIncome" class="row"></div>
+        <div id="tooltip-bar-income">
+          # of House: <span id="tool_tip_income_count" class="info"></span
+          ><br />
+        </div>
       </div>
-      <div class="visualizationTitle">
-        <h1 style="text-align: center">Data Visualizations</h1>
+      <p class="paragraph">
+        In order to afford to restore their house, people went into their
+        savings, and took on debt. People indicated they had lost their savings,
+        suffered from constant stress, and could not afford to retire.
+      </p>
+      <p class="paragraph">
+        From 2000-2020 the number of annual number of FEMA claims in Horry
+        County Has increased by 1670%.
+      </p>
+      <p class="paragraph">
+        During that time the population increase by only 184%
+      </p>
+      <p class="paragraph">
+        From 2000-2020 the average value of a FEMA payout increased by 507%.
+      </p>
+      <p class="paragraph">While average home prices increased 50%.</p>
+      <img
+        src="../images/climateCostTwitterImage.png"
+        alt="twitterImage"
+        class="twitterImage"
+      />
+      <div id="rainfallImpact" class="header">
+        <h1>
+          What impact has increasing rainfall had on Horry County Flooding?
+        </h1>
       </div>
-      <!-- * Related Projects Row -->
+      <p class="paragraph">
+        The Charts below look at the rain levels that have been reported over
+        the years. Scroll through charts below to see how much rain was reported
+        for each weather station that reported between 2010 and 2020. You will
+        notice that precipitation data was not available for every weather
+        station for each year.
+      </p>
+      <p class="paragraph">
+        More frequent hurricanes, rainfall, and development has not only
+        increased the flooding experienced by Horry County Residents, but
+        changed patterns of flooding.
+      </p>
+      <p class="paragraph">
+        Here, we look at the rainfall totals for Horry County from 2010 to 2020.
+        For this, we have pulled data from weather stations located across the
+        county. We have included two bar charts to better understand the
+        rainfall totals.
+        <b
+          >**Please note that not all weather stations reported data for every
+          year.</b
+        >
+      </p>
+      <!-- <div class="precipitationTotals"> -->
+      <div class="header">
+        <h2>Weather Station Precipitation Totals</h2>
+      </div>
+      <p class="paragraph">
+        The "Weather Station Precipitation Totals" chart displays the the annual
+        rainfall totals for a particular weather station that is selected using
+        the dropdown menu. You can also easily sort the values from highest to
+        lowest to determine what year reported the highest and lowest rainfall
+        totals by checking the box next to the "Toggle Sort" check box.
+      </p>
+      <!-- </div> -->
       <div class="weatherStationTotals">
         <div class="selectToggle">
           Choose Weather Station:
@@ -159,7 +220,7 @@
           <input type="checkbox" id="sortPRCP" />
           Toggle Sort
         </div>
-        <svg id="prcpTrends" width="1200" height="548"></svg>
+        <div id="prcpTrends" width="1200" height="548"></div>
         <div id="tooltipTrends">
           Station Name:<span id="stationName" class="info"></span><br />
           Annual Precipitation:<span
@@ -169,6 +230,15 @@
           ><br />
         </div>
       </div>
+      <div class="header">
+        <h2>Annual Precipitation Totals</h2>
+      </div>
+      <p class="paragraph">
+        The "Annual Precipitation Totals" chart displays rainfall totals for
+        each weather station. You can select what year you want to view by using
+        the dropdown menu. Again, you can sort these values by selecting "Toggle
+        sort by Precipitation Volume" check box.
+      </p>
       <div class="annualTotals">
         <div class="selectToggle">
           Choose year:
@@ -178,7 +248,6 @@
         </div>
         <div id="precipitation_barchart"></div>
         <div id="tooltip">
-          <!-- Station Name:<span id="stationName" class="info"></span><br /> -->
           Annual Precipitation:<span
             id="annualPrecipitation"
             class="info"
@@ -186,31 +255,41 @@
           ><br />
         </div>
       </div>
-      <div class="floodedHouses">
-        <div id="barChart"></div>
-        <div id="tooltip-bar">
-          # of Houses Flooded: <span id="tool_tip" class="info"></span><br />
-        </div>
+      <div class="header">
+        <h2>Increased Development has Impacated Flooding in Horry County</h2>
       </div>
-      <div class="Times_Flooded">
-        <div id="timesFlooded"></div>
-        <div id="tooltip-bar-timesFlooded">
-          # of Houses:
-          <span id="tool_tip_timesFlooded_count" class="info"></span><br />
-        </div>
+      <p class="paragraph">
+        The rapid development and population growth within Horry County over the
+        last decades has lead to significant changes in the land.
+      </p>
+      <div class="landUsageembed-container">
+        <iframe
+          width="500"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          title="Development 1996 - 2016 HTML"
+          src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=e378bd35d155492881fcdc476b275b72&extent=-79.3928,33.573,-78.4933,34.2676&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"
+        ></iframe>
       </div>
-      <div class="OOP_Expense">
-        <div id="outOfPocketExpense" class="row"></div>
-        <div id="tooltip-bar-oop">
-          # of Houses: <span id="tool_tip_oop_count" class="info"></span><br />
-        </div>
-      </div>
-      <div class="householdIncome">
-        <div id="householdIncome" class="row"></div>
-        <div id="tooltip-bar-income">
-          # of House: <span id="tool_tip_income_count" class="info"></span
-          ><br />
-        </div>
+
+      <div class="landUsageParagraph">
+        <p class="paragraph">
+          In the county has a whole, from 1996-2016 there was a significant
+          increased in developed area. This development occurred both in and
+          outside of the flood hazard zone. Inside the AE Zone (High Risk Flood
+          Zone) developed land increased by 24%.
+        </p>
+        <p class="paragraph">
+          This development occurred both in and outside of the flood hazard
+          zone. Inside the AE Zone (High Risk Flood Zone) developed land
+          increased by 24%.
+        </p>
+        <p class="paragraph">
+          The county as a whole experienced a five percent increase in wetlands.
+        </p>
       </div>
       <div class="landUsage">
         <div class="landUsageGroupedBarChart">
@@ -218,52 +297,243 @@
           <div id="my_dataviz_vert"></div>
         </div>
       </div>
-      <div class="floodingInFloodZones">
-        <div class="header">
-          <div class="row">
-            <button class="primaryButton" onclick="update(data)">
-              All Flood Events
-            </button>
-            <label class="buttonText" style="margin-left: 15px">
-              Click this button to see how many houses in each flood zone has
-              reported flooding. (The chart automatically loads with this data.)
-            </label>
+      <div class="header">
+        <h2>Why do these losses matter?</h2>
+      </div>
+      <div class="youTube">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/21YAP8RF_sw"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
+      <div class="header">
+        <h2>Where is the flooding in Horry County</h2>
+      </div>
+      <p class="paragraph">
+        High Risk areas for flooding are demarcated by FEMA's Special Hazard
+        Flood Zones. The AE zone is a 'high-risk' zone. A house in the zone has
+        a 1-percent chance of flooding per year. These zones are normally close
+        to rivers or waterways. You can see this in the map on Horry County's
+        High Risk zone closely follows the the waterways in the county.
+      </p>
+      <p class="paragraph">
+        Do you want to find out if you are at risk, or are you looking to
+        purchace a home in Horry County? Type in the address in the search field
+        in the map below, and find out.
+      </p>
+
+      <div class="areYouInAFloodZoneembed-container">
+        <iframe
+          width="500"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          title="Are You in a Flood Zone?"
+          src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=90605875899d4741a09289ab04769b55&extent=-79.3622,33.5328,-78.521,34.2277&zoom=true&previewImage=false&scale=true&search=true&searchextent=true&legend=true&disable_scroll=true&theme=light"
+        ></iframe>
+      </div>
+      <p class="paragraph">
+        Flood zones, as well as our knowledge of areas that are flooding, change
+        over time, and so flood zones need to be updated.
+      </p>
+      <p class="paragraph">
+        Horry County is the process of updating its high-risk flood zones. We
+        had a look at where the flooded houses in our survey fell in the new
+        proposed flood zone.
+      </p>
+
+      <div class="FOIAembed-container">
+        <small
+          ><a
+            href="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=44bd926d234e4d35830e147d987f9289&extent=-79.283,33.5909,-78.4418,34.2853&zoom=true&scale=true&legend=true&disable_scroll=true&theme=light"
+            style="color: #0000ff; text-align: left"
+            target="_blank"
+            >View larger map</a
+          ></small
+        ><br /><iframe
+          width="500"
+          height="400"
+          frameborder="0"
+          scrolling="no"
+          marginheight="0"
+          marginwidth="0"
+          title="Horry County Flood Map"
+          src="//ccpic2050.maps.arcgis.com/apps/Embed/index.html?webmap=44bd926d234e4d35830e147d987f9289&extent=-79.283,33.5909,-78.4418,34.2853&zoom=true&previewImage=false&scale=true&legend=true&disable_scroll=true&theme=light"
+        ></iframe>
+        <p class="paragraph">
+          The climate cost project was surprised to find that more than one
+          third of respondents to the survey were outside of the FEMA designated
+          flood zone.
+        </p>
+      </div>
+      <div class="FOIAParagraph">
+        <p class="paragraph">
+          Further, while the flood zone indicates a 1% chance per year of
+          flooding, only about 25% of the houses in the survey had flooded only
+          one time. The rest of the houses experienced two or more flooding
+          events.
+        </p>
+        <p class="paragraph">
+          In some of these houses it may be possible to see the influence of
+          development in areas that are outside of the flood zone, but have
+          flooded multiple times in the last five years. In these areas, you can
+          see the increasing intensity of development in the region.
+        </p>
+        <p class="paragraph">
+          How typical were the houses in our survey? To get a sense of this, we
+          mapped all the data points of 1,374 homes that flooded in Horry
+          County's three major hurricanes. houses that had flooded in the
+          county. As was the case with the survey houses, a lot of houses fell
+          outside the flood zone.
+        </p>
+      </div>
+      <div class="FOIAChart">
+        <div class="floodingInFloodZones">
+          <div class="header">
+            <div class="row">
+              <button class="primaryButton" onclick="update(data)">
+                All Flood Events
+              </button>
+              <label class="buttonText" style="margin-left: 15px">
+                Click this button to see how many houses in each flood zone has
+                reported flooding. (The chart automatically loads with this
+                data.)
+              </label>
+            </div>
+            <div class="row" style="margin-top: 15px">
+              <button class="secondaryButton" onclick="update(dataAE)">
+                AE
+              </button>
+              <button class="secondaryButton" onclick="update(dataVE)">
+                VE
+              </button>
+              <button class="secondaryButton" onclick="update(dataX)">X</button>
+              <button class="secondaryButton" onclick="update(data02)">
+                0.2 PCT
+              </button>
+              <label class="buttonText" style="margin-left: 15px">
+                Click these buttons to filter the data to see how many
+                households in the corresponding flood zone reported 0, 1, 2 or 3
+                flooding events.
+              </label>
+            </div>
           </div>
-          <div class="row" style="margin-top: 15px">
-            <button class="secondaryButton" onclick="update(dataAE)">AE</button>
-            <button class="secondaryButton" onclick="update(dataVE)">VE</button>
-            <button class="secondaryButton" onclick="update(dataX)">X</button>
-            <button class="secondaryButton" onclick="update(data02)">
-              0.2 PCT
-            </button>
-            <label class="buttonText" style="margin-left: 15px">
-              Click these buttons to filter the data to see how many households
-              in the corresponding flood zone reported 0, 1, 2 or 3 flooding
-              events.
-            </label>
-          </div>
-        </div>
-        <div class="foiaDataBarchart">
-          <div id="floodingInFloodZones" class="row"></div>
-          <div id="tooltip-bar-floodingInFloodZones">
-            Group:
-            <span id="tool_tip_floodZone" class="info"></span><br />
-            # of Households That Reported Flooding:
-            <span id="tool_tip_reportedFlooding_count" class="info"></span
-            ><br />
+          <div class="foiaDataBarchart">
+            <div id="floodingInFloodZones" class="row"></div>
+            <div id="tooltip-bar-floodingInFloodZones">
+              Group:
+              <span id="tool_tip_floodZone" class="info"></span><br />
+              # of Households That Reported Flooding:
+              <span id="tool_tip_reportedFlooding_count" class="info"></span
+              ><br />
+            </div>
           </div>
         </div>
       </div>
+      <!-- <div class="sidecar1">
+        <iframe
+          width="500"
+          height="400"
+          src="https://storymaps.arcgis.com/stories/3540d9627db14020b1325c5a5b5b30fd"
+        >
+        </iframe>
+      </div> -->
+      <div class="header">
+        <h1>Flood Risk Mapping</h1>
+      </div>
+      <div class="paragraph">
+        <h3>
+          What is a flood risk zone, and how is it different from a flood zone?
+        </h3>
+      </div>
+      <p class="paragraph">
+        Updated flood mapping needs to reflect the real risk of flooding. At
+        present, the highest risk FEMA-designated flood zones are the V and A
+        designated Special Hazard Flood Areas. These zones are supposed to
+        indicate a one percent chance per year of flooding, with additional
+        hazards implied in the V designated zones due to their coastal locations
+        and susceptibility to wave action.
+      </p>
+      <p class="paragraph">
+        Houses and infrastructure that were designed to withstand flooding once
+        every 100 years are now flooding more frequently. Housing and
+        infrastructure development was generally avoided in flood zones where
+        the chance of flooding was significantly greater than one percent per
+        year. But the reality has changed so that much existing infrastructure
+        and housing, as well as planned new developments, are now in high- risk
+        zones for repeat flooding, for which there is no designation in FEMA’s
+        Special Hazard Flood Maps.
+      </p>
+      <p class="paragraph">
+        The County’s ability to update its maps is limited by the lack of the
+        descriptive power in FEMA’s current flood hazard rating system, which,
+        with its implicit assumption of construction compliance for 100-year
+        floods, does not capture real flood risk in extant and developing
+        communities that are facing repeat flooding and climate change. This is
+        a known problem with FEMA’s flood maps. Horry County is yet another
+        example of a situation where the consequences of these problems are
+        being felt in the deteriorating finances and security of its residents.
+      </p>
+      <div class="header">
+        <h1>What can be done?</h1>
+      </div>
+      <p class="paragraph">
+        The City of Horry County is currently in the process of setting up
+        supplemental flood zones that will better understand and define flood
+        risk.
+      </p>
+      <p class="paragraph">
+        Avoiding future construction in high risk areas will both help to make
+        room for future residents of the county, and help leave more land to
+        absorb flood waters.
+      </p>
+      <p class="paragraph">
+        Using the most up-to-date information about how flood zones will change
+        in the future in order to make planning decisions can also help to keep
+        people the county out of high water. The National Atmospheric and
+        Oceanic Administration also has a different set of flood risk maps than
+        FEMA. Incorporating this information into the county's flood maps can
+        help to improve assessment of risk.
+      </p>
+      <div class="header">
+        <h1>Making Room for Water</h1>
+      </div>
+      <p class="paragraph">
+        Recent development in Horry County has been driven by population growth.
+        The county's population has grown by 38.4% percent, from 270,274
+        thousand people to 373,033 people. It is expected to grow by an
+        additional 270,000 by 2040. For this reason, simply avoiding
+        construction may not be viable strategy for the county. However, careful
+        planning of infrastructure in new and existing buildings that
+        accommodates for the water in the landscape can help with flood
+        protection. You can see how Texas is changing its codes to account for
+        water pollution and food waters.
+      </p>
+      <div class="youTube">
+        <iframe
+          width="560"
+          height="315"
+          src="https://www.youtube.com/embed/Vbuw0lGLSEw"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </div>
     </div>
 
-    <script src="../static/floodedHouses.js"></script>
-    <script src="https://d3js.org/d3-scale.v3.min.js" defer></script>
-    <script src="https://d3js.org/d3-axis.v1.min.js" defer></script>
-    <script src="../static/annualTotals.js"></script>
-    <script src="../static/weatherStationTotals.js"></script>
-    <script src="../static/timesFlooded.js"></script>
+    <script src="../static/app.js"></script>
     <script src="../static/oopExpense.js"></script>
     <script src="../static/householdIncome.js"></script>
+    <script src="../static/weatherStationTotals.js"></script>
+    <script src="../static/annualTotals.js"></script>
     <script src="../static/groupedBarCharts.js"></script>
     <script src="../static/floodingInFloodZones.js"></script>
   </body>
