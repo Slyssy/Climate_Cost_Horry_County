@@ -528,6 +528,8 @@ small {
 
 /* ? Map showing land devlopment increase between 1996 - 2016 */
 .landUsageembed-container {
+  grid-column-start: 4;
+  grid-column-end: 10;
   position: relative;
   padding-bottom: 80%;
   height: 0;
@@ -589,6 +591,31 @@ small {
 .FOIAembed-container iframe,
 .FOIAembed-container object,
 .FOIAembed-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+small {
+  position: absolute;
+  z-index: 40;
+  bottom: 0;
+  margin-bottom: -15px;
+}
+.sidecar1 {
+  grid-column-start: 4;
+  grid-column-end: 10;
+
+  position: relative;
+  padding-bottom: 80%;
+  height: 0;
+  max-width: 100%;
+}
+
+.sidecar1 iframe,
+.sidecar1 object,
+.sidecar1 iframe {
   position: absolute;
   top: 0;
   left: 0;
