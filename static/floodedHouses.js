@@ -2,7 +2,7 @@
 d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
   // * Set Demensions and margins for the bar chart
   var width = 1080;
-  height = 393;
+  height = 750;
   margin = { left: 100, top: 70, right: 30, bottom: 85 };
 
   // * Setting the ranges
