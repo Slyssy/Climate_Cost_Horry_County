@@ -13,18 +13,101 @@
 }
 
 /* ? Navbar Styling */
-.nav-container {
-  width: 100%;
-  background-color: var(--darkgray);
+.content {
+  max-width: 1380px;
+  margin: auto;
+  padding: 0px 30px;
 }
 
 .navbar {
-  display: grid;
-  grid-template-columns: 0.2fr auto 1fr;
+  position: fixed;
+  z-index: 5;
+  width: 100%;
+  padding: 10px 0;
+  background: #1b1b1b;
+  transition: all 0.3s ease;
+}
+
+.navbar.sticky {
+  padding: 10px 0;
+  background: #1b1b1b;
+  opacity: 85%;
+}
+
+.navbar .content {
+  display: flex;
   align-items: center;
-  height: 120px;
-  width: 90%;
-  margin: 0 auto;
+  justify-content: space-between;
+}
+
+.navbar .menu-list {
+  display: inline-flex;
+}
+
+.menu-list li {
+  list-style: none;
+}
+
+.menu-list li a {
+  color: #fff;
+  font-size: 18px;
+  font-weight: 500;
+  margin-left: 25px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.menu-list li a:hover {
+  color: #09e2fa;
+}
+
+.icon {
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: none;
+}
+
+.icon.cancel-btn {
+  position: absolute;
+  right: 30px;
+  top: 20px;
+}
+
+@media (max-width: 1255px) {
+  body.disabledScroll {
+    overflow: hidden;
+  }
+  .icon {
+    display: block;
+  }
+  .icon.hide {
+    display: none;
+  }
+  .navbar .menu-list {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    height: 100vh;
+    width: 100%;
+    max-width: 400px;
+    background: #222;
+    display: block;
+    padding: 40px 0;
+    text-align: center;
+    transition: all 0.3s ease;
+  }
+  .navbar .menu-list.active {
+    left: 0%;
+  }
+}
+
+.navbar .menu-list li {
+  margin-top: 45px;
+}
+
+.navbar .menu-list li a {
+  font-size: 18px;
 }
 
 #navbar-logo {
@@ -38,116 +121,14 @@
   cursor: pointer;
 }
 
-.nav-menu {
-  display: grid;
-  grid-template-columns: repeat(6, auto);
-  list-style: none;
-  text-align: center;
-  width: 80%;
-  justify-self: end;
-}
-
-.nav-links {
-  color: white;
-  text-decoration: none;
-}
-
-.nav-links:hover {
-  color: var(--aqua);
-  transition: all 0.2s ease-out;
-}
-
-.menu-toggle .bar {
-  display: none;
-  width: 25px;
-  height: 3px;
-  margin: 5px auto;
-  transition: all 0.3s ease-in-out;
-  background: whitesmoke;
-}
-
-@media screen and (max-width: 1075px) {
-  .nav-container {
-    position: relative;
-  }
-
-  .nav-menu {
-    display: grid;
-    grid-template-columns: auto;
-    background: var(--gray);
-    margin: 0;
-    width: 100%;
-    position: absolute;
-    top: 120px;
-    left: -100%;
-    opacity: 0;
-    transition: all 0.5s ease;
-  }
-
-  #navbar-logo {
-    margin-left: 20px;
-  }
-
-  .nav-menu.active {
-    background: var(--darkgray);
-    left: 0;
-    opacity: 1;
-    transition: all 0.5s ease;
-  }
-
-  .nav-links {
-    text-align: center;
-    line-height: 60px;
-    width: 100%;
-    display: table;
-  }
-
-  .nav-links:hover {
-    background-color: var(--aqua);
-    color: var(--white);
-    transition: all 0.4s ease-out;
-  }
-
-  .navbar {
-    width: 100%;
-  }
-
-  #mobile-menu {
-    position: absolute;
-    top: 30%;
-    right: 5%;
-    transform: translate(5%, 20%);
-  }
-}
-
-.menu-toggle .bar {
-  display: block;
-  cursor: pointer;
-}
-
-.menu-toggle:hover {
-  cursor: pointer;
-}
-
-#mobile-menu.is-active .bar:nth-child(2) {
-  opacity: 0;
-}
-
-#mobile-menu.is-active .bar:nth-child(1) {
-  transform: translateY(8px) rotate(45deg);
-}
-
-#mobile-menu.is-active .bar:nth-child(3) {
-  transform: translateY(-8px) rotate(-45deg);
+#navbar-logo {
+  margin-left: 20px;
 }
 
 /* ?Container 1 Styling */
 .container {
   display: grid;
   grid-template-columns: repeat(12, [col-start] 1fr);
-  /* max-width: 90%;
-  width: 90%;
-  align-items: center; */
   gap: 10px;
 
   /* border: 2px solid magenta; */
@@ -159,7 +140,6 @@
 .titleImage {
   grid-column-start: 1;
   grid-column-end: 13;
-  /* grid-column: col-start / span 12; */
   width: 100%;
   max-width: 2160px;
 }
@@ -230,8 +210,6 @@
 .twitterImage {
   grid-column-start: 3;
   grid-column-end: 11;
-  /* padding: 0em 0em 0em 2em; */
-  /* float: left; */
 
   width: 100%;
   max-width: 2160px;
