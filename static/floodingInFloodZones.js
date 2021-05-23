@@ -198,7 +198,7 @@ function responsivefy(svg) {
 }
 
 var width = 1080;
-height = 393;
+height = 1000;
 margin = { left: 90, top: 70, right: 30, bottom: 85 };
 
 // *Appending SVG object to the correct div on page

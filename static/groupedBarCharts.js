@@ -55,8 +55,8 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
 
   // set the dimensions and margins of the graph
   var margin = { top: 40, right: 80, bottom: 315, left: 100 },
-    width = 1200 - margin.left - margin.right,
-    height = 800 - margin.top - margin.bottom;
+    width = 1000 - margin.left - margin.right,
+    height = 1000 - margin.top - margin.bottom;
 
   // append the svg object to the body of the page
   var svg = d3

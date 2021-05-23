@@ -504,8 +504,8 @@ rect {
 
 /* ?Surveyed Household Itroduction Map */
 .surveyedEmbed-container {
-  grid-column-start: 5;
-  grid-column-end: 9;
+  grid-column-start: 4;
+  grid-column-end: 10;
 
   position: relative;
   padding-bottom: 80%;
