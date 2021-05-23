@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/all.min.css"/>
     <link rel="preconnect" href="https://fonts.gstatic.com" />
     <link
       href="https://fonts.googleapis.com/css2?family=Poppins&display=swap"
@@ -17,7 +17,39 @@
     <title>Horry County Flooding</title>
   </head>
   <body>
-    <div class="nav-container">
+    <nav class="navbar">
+      <div class="content">
+        <div class="logo">
+          <a href="#">
+            <img
+              src="../images/climateCostLogo.png"
+              alt="Logo"
+              id="navbar-logo"
+            />
+          </a>
+        </div>
+        <ul class="menu-list">
+          <div class="icon cancel-btn">
+            <i class="fas fa-times"></i>
+          </div>
+          <li><a href="#introduction" class="nav-links">Introduction</a></li>
+          <li><a href="#financialImpact" class="nav-links">Financial</a></li>
+          <li><a href="#rainfallImpact" class="nav-links">Precipitation</a></li>
+          <li><a href="#landUsage" class="nav-links">Land Usage</a></li>
+          <li><a href="#floodMapping" class="nav-links">Flood Mapping</a></li>
+          <li><a href="#floodRisk" class="nav-links">Flood Risk</a></li>
+        </ul>
+        <div class="icon menu-btn">
+          <i class="fas fa-bars"></i>
+        </div>
+        </div>
+      </div>
+    </nav>
+    <div class="banner"></div>
+    <div class="about">
+      <div class="content"></div>
+    </div>
+    <!-- <div class="nav-container">
       <nav class="navbar">
         <img src="../images/climateCostLogo.png" alt="Logo" id="navbar-logo" />
         <div class="menu-toggle" id="mobile-menu">
@@ -34,7 +66,7 @@
           <li><a href="#floodRisk" class="nav-links">Flood Risk</a></li>
         </ul>
       </nav>
-    </div>
+    </div> -->
     <div class="container">
       <!-- TODO This will need to be replaced with a background image and text. -->
       <img
