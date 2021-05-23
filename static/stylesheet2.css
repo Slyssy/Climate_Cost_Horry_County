@@ -164,6 +164,11 @@
   max-width: 2160px;
 }
 
+#introduction {
+  margin: 2em 0em 0em 0em;
+  padding: 0em 0em 0em 2em;
+}
+
 .introductionParagraph {
   grid-column-start: 4;
   grid-column-end: 12;
@@ -176,10 +181,10 @@
 }
 
 .stormStatImage {
-  grid-column: col-start / span 3;
-  /* padding: 0em 0em 0em 2em; */
-  /* float: left; */
-  margin: 0px;
+  grid-column-start: 1;
+  grid-column-end: 4;
+  width: 100%;
+  margin: 5.5em 1em;
   transform: scale(0.9, 0.9);
   -ms-transform: scale(0.9, 0.9);
   -webkit-transform: scale(0.9, 0.9);
@@ -257,12 +262,12 @@
 }
 
 .landUsageParagraph {
-  grid-column-start: 2;
+  grid-column-start: 1;
   grid-column-end: 5;
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   height: auto;
   resize: vertical;
   overflow: auto;
