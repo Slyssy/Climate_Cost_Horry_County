@@ -561,8 +561,8 @@ small {
 
 /* ? Map showing land devlopment increase between 1996 - 2016 */
 .landUsageembed-container {
-  grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 13;
   position: relative;
   padding-bottom: 80%;
   height: 0;
@@ -587,8 +587,8 @@ small {
 
 /* ?Are you in a flood zone */
 .areYouInAFloodZoneembed-container {
-  grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 13;
 
   position: relative;
   padding-bottom: 80%;
@@ -613,8 +613,8 @@ small {
 
 /* ? FOIA Map */
 .FOIAembed-container {
-  grid-column-start: 4;
-  grid-column-end: 10;
+  grid-column-start: 1;
+  grid-column-end: 13;
 
   position: relative;
   padding-bottom: 80%;
