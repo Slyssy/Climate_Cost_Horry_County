@@ -314,9 +314,7 @@
 .primaryButton {
   grid-column-start: 5;
   grid-column-end: 7;
-}
 
-.primaryButton {
   background-color: #004c73;
   font-size: 20px;
   color: white;
@@ -332,6 +330,9 @@
 }
 
 .secondaryButton {
+  grid-column-start: 5;
+  grid-column-end: 7;
+
   background-color: #777c7b;
   font-size: 14px;
   color: white;
@@ -346,9 +347,12 @@
   background-color: #ce42f5;
 }
 
+.buttonLabel {
+}
+
 .buttonText {
   grid-column-start: 7;
-  grid-column-end: 12;
+  grid-column-end: 13;
 
   font-family: sans-serif;
   font-size: 16px;
