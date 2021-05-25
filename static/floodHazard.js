@@ -1,20 +1,12 @@
-"use strict";
-// Parse the Data
-d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
-  // List of subgroups = header of the csv files = soil condition here
-  var subgroups = data.columns.slice(5);
+d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (data) {
+  var subgroups = data.columns.slice(14);
   console.log(subgroups);
 
-  // *Grabbing CCAP Groups from CSV Column to be used on X Axis
-  let groups = [...new Set(data.map((d) => d.C_CAP))];
-
-  // var groups = d3
-  //   .map(data, function (d) {
-  //     return d.C_CAP;
-  //   })
-  //   .keys();
+  // *Grabbing zone types for groups from CSV Column to be used on X Axis
+  let groups = [...new Set(data.map((d) => d.zone_type))];
   console.log(groups);
 
+  // * Functions to make the svg Responsive
   function responsivefy(svg) {
     // container will be the DOM element
     // that the svg is appended to
@@ -60,7 +52,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
 
   // append the svg object to the body of the page
   var svg = d3
-    .select("#my_dataviz_vert")
+    .select("#floodHazardChart")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
     .attr("height", height + margin.top + margin.bottom)
@@ -76,13 +68,13 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     .call(d3.axisBottom(x).tickSize(0))
     .selectAll("text")
     .attr("class", "xAxisText")
-    .attr("y", 0)
-    .attr("x", -10)
+    .attr("y", -15)
+    .attr("x", 30)
     .attr("dy", ".35em")
-    .attr("transform", "rotate(270)")
-    .style("text-anchor", "end");
+    .attr("transform", "rotate(45)")
+    .style("text-anchor", "start");
   // Add Y axis
-  var y = d3.scaleLinear().domain([0, 300]).range([height, 0]);
+  var y = d3.scaleLinear().domain([0, 1000]).range([height, 0]);
   svg.append("g").call(d3.axisLeft(y));
 
   svg
@@ -93,7 +85,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     .attr("x", 0 - height / 2)
     .attr("dy", "1em")
     .style("text-anchor", "middle")
-    .text("Land Coverage (sq mi)");
+    .text("Number of Households");
 
   // Another scale for subgroup position?
   var xSubgroup = d3
@@ -116,7 +108,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
 
   // TODO Starting modifications for tooltip here
   var tooltip = d3
-    .select("#my_dataviz_vert")
+    .select("#floodHazardChart")
     .append("div")
     .style("opacity", 0)
     .attr("class", "tooltip")
@@ -167,7 +159,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     .enter()
     .append("g")
     .attr("transform", function (d) {
-      return "translate(" + x(d.C_CAP) + ",0)";
+      return "translate(" + x(d.zone_type) + ",0)";
     })
     .selectAll("rect")
     .data(function (d) {
@@ -192,9 +184,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     })
     .on("mouseover", function (event, d, i) {
       tooltip
-        .html(
-          `<div>Year: ${d.key}</div><div>Land Coverage: ${d.value} Square Miles</div>`
-        )
+        .html(`<div>Number of Households ${d.key}: <b>${d.value}<b></div>`)
         .style("opacity", "1");
       d3.select(this).transition().attr("fill", "#ce42f5").duration(100);
     })
@@ -212,16 +202,16 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
       tooltip.style("opacity", 0);
     });
 
-  var years = ["1996", "2016"];
+  var legenText = ["Yes", "No"];
 
   var legend = svg
     .selectAll(".legend")
-    .data(years.slice())
+    .data(legenText.slice())
     .enter()
     .append("g")
     .attr("class", "legend")
     .attr("transform", function (d, i) {
-      return "translate(0," + i * 20 + ")";
+      return "translate(0," + i * 30 + ")";
     });
 
   legend
@@ -239,6 +229,6 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
     .attr("dy", ".35em")
     .style("text-anchor", "start")
     .text(function (d, i) {
-      return years[i];
+      return legenText[i];
     });
 });
