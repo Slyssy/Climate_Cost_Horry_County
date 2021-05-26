@@ -1,5 +1,5 @@
 // * Load the Data
-d3.csv("/static/Flood_Area_Count.csv").then(function (data) {
+d3.csv("/static/Flood_Area_Count.csv").then((data) => {
   // * Set Demensions and margins for the bar chart
   const width = 1080;
   height = 750;

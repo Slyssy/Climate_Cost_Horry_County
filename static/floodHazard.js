@@ -1,4 +1,4 @@
-d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (csv) {
+d3.csv("/static/FOIA_flood_data_NOAA.csv").then((csv) => {
   // *Parsing data to determine how many homes that are and are not in flood hazard zones have reported flooding events
   let countsFloodHazard = {};
 
