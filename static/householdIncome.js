@@ -155,17 +155,17 @@
 d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
   console.log(csv);
   // *Parsing data to make it useable for chart
-  let counts = {};
-  csv.forEach(function (d) {
-    let incomeGroup = d.householdIncome;
+  const counts = {};
+  csv.forEach((d) => {
+    const incomeGroup = d.householdIncome;
     if (counts[incomeGroup] === undefined) {
       counts[incomeGroup] = 1;
     } else {
       counts[incomeGroup] = counts[incomeGroup] + 1;
     }
   });
-  csv.forEach(function (d) {
-    let incomeGroup = d.householdIncome;
+  csv.forEach((d) => {
+    const incomeGroup = d.householdIncome;
     d.count = counts[incomeGroup];
   });
 
@@ -229,12 +229,12 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
   }
 
   // *Set dimensions and margins for chart
-  let margin = { top: 60, right: 80, bottom: 60, left: 270 },
+  const margin = { top: 60, right: 80, bottom: 60, left: 270 },
     width = 1200 - margin.left - margin.right,
     height = 548 - margin.top - margin.bottom;
 
   // *Appending the svg to the DOM
-  let svg = d3
+  const svg = d3
     .select("#householdIncome")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -243,7 +243,7 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     .append("g")
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-  let color = d3
+  const color = d3
     .scaleOrdinal()
     .range([
       "#ed5151",
@@ -260,13 +260,8 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     ]);
 
   // *Adding X Axis
-  let x = d3.scaleLinear().range([0, width]);
-  x.domain([
-    0,
-    d3.max(data, function (d) {
-      return d.count + 1;
-    }),
-  ]);
+  const x = d3.scaleLinear().range([0, width]);
+  x.domain([0, d3.max(data, (d) => d.count + 1)]);
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
@@ -287,14 +282,10 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     .text("# of Houses");
 
   // *Adding Y axis
-  let y = d3
+  const y = d3
     .scaleBand()
     .range([0, height])
-    .domain(
-      data.map(function (d) {
-        return d.group;
-      })
-    )
+    .domain(data.map((d) => d.group))
     .padding(0.1);
   svg.append("g").call(d3.axisLeft(y).tickSize(0));
 
@@ -319,18 +310,6 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     .style("text-decoration", "underline")
     .text("# of Households Grouped by Reported Annual Household Income");
 
-  // var tooltip = d3
-  //   .select("#householdIncome")
-  //   .append("div")
-  //   .style("opacity", 0)
-  //   .attr("class", "tooltip")
-  //   .style("position", "absolute")
-  //   .style("background-color", "white")
-  //   .style("border", "solid")
-  //   .style("border-width", "1px")
-  //   .style("border-radius", "5px")
-  //   .style("padding", "10px");
-
   // *Adding Bars
   svg
     .selectAll("myRect")
@@ -339,16 +318,10 @@ d3.csv("/static/SurveyCostDataWithLatitudeAndLongitude.csv").then((csv) => {
     .append("rect")
     .attr("class", "bar")
     .attr("x", x(0))
-    .attr("y", function (d) {
-      return y(d.group);
-    })
-    .attr("width", function (d) {
-      return x(d.count);
-    })
+    .attr("y", (d) => y(d.group))
+    .attr("width", (d) => x(d.count))
     .attr("height", y.bandwidth())
-    .attr("fill", function (d) {
-      return color(d.group);
-    })
+    .attr("fill", (d) => color(d.group))
     .on("mouseover", function (event, d) {
       d3.select(this).style("fill", "#ce42f5");
       d3.select("#tool_tip_income_group").text(" " + d.group);
