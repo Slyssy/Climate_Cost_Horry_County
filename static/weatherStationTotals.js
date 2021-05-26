@@ -64,7 +64,7 @@ function chartTrend(csvTrends) {
     width = 1200 - margin.left - margin.right,
     height = 548 - margin.top - margin.bottom;
 
-  var svg = d3
+  const svg = d3
     .select("#prcpTrends")
     .append("svg")
     .attr("width", width + margin.left + margin.right)
@@ -80,28 +80,29 @@ function chartTrend(csvTrends) {
     .padding(0.1)
     .paddingOuter(0.2);
 
-  var y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
+  const y = d3.scaleLinear().range([height - margin.bottom, margin.top]);
 
-  var colorScale = d3
-    .scaleOrdinal()
-    .range([
-      "#ed5151",
-      "#149ece",
-      "#3caf99",
-      "#004c73",
-      "#fc921f",
-      "#a8a800",
-      "#f789d8",
-      "#732600",
-      "#ff00c5",
-      "#9e559c",
-      "#a7c636",
-      "#7f7f7f",
-      "#6b6bd6",
-      "#a87000",
-    ]);
+  // !Turn this on if you want the bars to be colored
+  // const colorScale = d3
+  //   .scaleOrdinal()
+  //   .range([
+  //     "#ed5151",
+  //     "#149ece",
+  //     "#3caf99",
+  //     "#004c73",
+  //     "#fc921f",
+  //     "#a8a800",
+  //     "#f789d8",
+  //     "#732600",
+  //     "#ff00c5",
+  //     "#9e559c",
+  //     "#a7c636",
+  //     "#7f7f7f",
+  //     "#6b6bd6",
+  //     "#a87000",
+  //   ]);
 
-  var xAxis = (g) =>
+  const xAxis = (g) =>
     g
       .attr("transform", "translate(0," + (height - margin.bottom) + ")")
       .call(d3.axisBottom(x).tickSizeOuter(0))
@@ -110,7 +111,7 @@ function chartTrend(csvTrends) {
       .attr("y", 10)
       .attr("x", 0);
 
-  var yAxis = (g) =>
+  const yAxis = (g) =>
     g
       .attr("transform", "translate(" + margin.left + ",0)")
       .call(d3.axisLeft(y).ticks(5).tickSize(-width));
@@ -142,7 +143,7 @@ function chartTrend(csvTrends) {
   update(d3.select("#weatherStation").property("value"), 0);
 
   function update(name, speed) {
-    var data = csvTrends.filter((d) => d.NAME == name);
+    const data = csvTrends.filter((d) => d.NAME == name);
     // console.log(data);
     y.domain([0, d3.max(data, (d) => d.PRCP)]).nice();
 
@@ -188,8 +189,8 @@ function chartTrend(csvTrends) {
         d3.select("#annualPrecipitationTrends").text(" " + d.PRCP + " inches");
 
         //Position the tooltip <div> and set its content
-        let x = event.pageX;
-        let y = event.pageY;
+        const x = event.pageX;
+        const y = event.pageY;
 
         //Position tooltip and make it visible
         d3.select("#tooltipTrends")
@@ -208,14 +209,14 @@ function chartTrend(csvTrends) {
   chartTrend.update1 = update;
 }
 
-var select = d3
+const select = d3
   .select("#weatherStation")
   .style("border-radius", "5px")
   .on("change", function () {
     chartTrend.update1(this.value, 750);
   });
 
-var checkbox = d3
+const weatherCheckbox = d3
   .select("#sortPRCP")
   .style("margin-left", "1%")
   .on("click", function () {

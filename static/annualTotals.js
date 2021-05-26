@@ -435,7 +435,7 @@ var select1 = d3
     chart.update(this.value, 750);
   });
 
-var checkbox = d3
+const annualCheckbox = d3
   .select("#sort")
   .style("margin-left", "30%")
   .on("click", function () {

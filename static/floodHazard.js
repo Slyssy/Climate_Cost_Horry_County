@@ -1,9 +1,53 @@
-d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (data) {
-  var subgroups = data.columns.slice(14);
+d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (csv) {
+  // *Parsing data to determine how many homes that are and are not in flood hazard zones have reported flooding events
+  let countsFloodHazard = {};
+
+  csv.forEach(function (d) {
+    let floodHazard = d.Flood_Hazard_Zone;
+    if (d.Times_Flooded != 0) {
+      if (countsFloodHazard[floodHazard] === undefined) {
+        countsFloodHazard[floodHazard] = 1;
+      } else {
+        countsFloodHazard[floodHazard] = countsFloodHazard[floodHazard] + 1;
+      }
+    }
+  });
+
+  countsFloodHazard = {
+    floodZoneType: "NOAA Hazard Zone",
+    ...countsFloodHazard,
+  };
+  // countsFloodHazard.floodZoneType = "NOAA Hazard Zone";
+  console.log(countsFloodHazard);
+
+  // * Determining how many homes that are in a Flood Zone that have reported at least one flood event
+  let countsFloodZone = {};
+
+  csv.forEach(function (d) {
+    let floodZone = d.In_Flood_Zone;
+    if (d.Times_Flooded != 0) {
+      if (countsFloodZone[floodZone] === undefined) {
+        countsFloodZone[floodZone] = 1;
+      } else {
+        countsFloodZone[floodZone] = countsFloodZone[floodZone] + 1;
+      }
+    }
+  });
+
+  countsFloodZone = {
+    floodZoneType: "FEMA Flood Zone",
+    ...countsFloodZone,
+  };
+  // countsFloodZone.floodZoneType = "FEMA Flood Zone";
+  console.log(countsFloodZone);
+
+  const data = [countsFloodHazard, countsFloodZone];
+  console.log(data);
+
+  let subgroups = ["Yes", "No"];
   console.log(subgroups);
 
-  // *Grabbing zone types for groups from CSV Column to be used on X Axis
-  let groups = [...new Set(data.map((d) => d.zone_type))];
+  let groups = [...new Set(data.map((d) => d.floodZoneType))];
   console.log(groups);
 
   // * Functions to make the svg Responsive
@@ -61,18 +105,19 @@ d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (data) {
     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
   // Add X axis
-  var x = d3.scaleBand().domain(groups).range([0, width]).padding([0.2]);
+  var x = d3.scaleBand().range([0, width]).padding([0.2]);
+  x.domain(groups);
   svg
     .append("g")
     .attr("transform", "translate(0," + height + ")")
     .call(d3.axisBottom(x).tickSize(0))
     .selectAll("text")
     .attr("class", "xAxisText")
-    .attr("y", -15)
-    .attr("x", 30)
+    .attr("y", 20)
+    .attr("x", 0)
     .attr("dy", ".35em")
-    .attr("transform", "rotate(45)")
-    .style("text-anchor", "start");
+    .attr("transform", "rotate(0)")
+    .style("text-anchor", "middle");
   // Add Y axis
   var y = d3.scaleLinear().domain([0, 1000]).range([height, 0]);
   svg.append("g").call(d3.axisLeft(y));
@@ -101,7 +146,7 @@ d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (data) {
     .attr("y", 0 - margin.top / 2)
     .attr("text-anchor", "middle")
     .style("text-decoration", "underline")
-    .text("Land Usage 1996 vs 2016");
+    .text("NOAA Flood Hazard vs FEMA Flood Zone");
 
   // color palette = one color per subgroup
   var color = d3.scaleOrdinal().domain(subgroups).range(["#aec7e8", "#1f76b4"]);
@@ -159,7 +204,7 @@ d3.csv("/static/FOIA_flood_data_NOAA.csv").then(function (data) {
     .enter()
     .append("g")
     .attr("transform", function (d) {
-      return "translate(" + x(d.zone_type) + ",0)";
+      return "translate(" + x(d.floodZoneType) + ",0)";
     })
     .selectAll("rect")
     .data(function (d) {
