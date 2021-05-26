@@ -11,9 +11,7 @@ function chartTrend(csvTrends) {
   const weatherStation = csvTrends
     .map((a) => a.NAME)
     .filter((value, index, self) => self.indexOf(value) === index);
-  weatherStation.sort(function (a, b) {
-    return b - a;
-  });
+  weatherStation.sort((a, b) => b - a);
   // console.log(weatherStation);
   function responsivefy(svg) {
     // container will be the DOM element

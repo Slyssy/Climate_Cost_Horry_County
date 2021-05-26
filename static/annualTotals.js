@@ -11,9 +11,7 @@ function chart(csv) {
   const years = csv
     .map((a) => a.DATE)
     .filter((value, index, self) => self.indexOf(value) === index);
-  years.sort(function (a, b) {
-    return b - a;
-  });
+  years.sort((a, b) => b - a);
   // console.log(years)
 
   d3.select("#year")
