@@ -13,7 +13,7 @@ d3.csv("/static/Simplified_C-CAP_Scheme.csv").then(function (data) {
   //     return d.C_CAP;
   //   })
   //   .keys();
-  // console.log(groups);
+  console.log(groups);
 
   function responsivefy(svg) {
     // container will be the DOM element
